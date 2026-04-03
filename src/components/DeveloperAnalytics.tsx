@@ -26,6 +26,24 @@ interface AgentCallRecord {
   timestamp?: { toDate?: () => Date } | Date;
 }
 
+type AgentBreakdownRow = {
+  id: string;
+  name: string;
+  calls: number;
+  latency: number;
+  trust: number;
+  rating: number;
+  revenue: number;
+};
+
+const numericSortKeys: Exclude<keyof AgentBreakdownRow, "id" | "name">[] = [
+  "calls",
+  "latency",
+  "trust",
+  "rating",
+  "revenue",
+];
+
 const formatDayLabel = (date: Date) =>
   date.toLocaleDateString("en-US", { weekday: "short" });
 
@@ -44,6 +62,12 @@ export const DeveloperAnalytics = ({ agents }: { agents: Agent[] }) => {
 
   useEffect(() => {
     if (agents.length === 0) {
+      return;
+    }
+
+    if (typeof navigator !== "undefined" && !navigator.onLine) {
+      setCalls([]);
+      setCallsToday(0);
       return;
     }
 
@@ -69,11 +93,17 @@ export const DeveloperAnalytics = ({ agents }: { agents: Agent[] }) => {
       where("timestamp", ">=", Timestamp.fromDate(startOfToday))
     );
 
-    const unsubscribe = onSnapshot(liveQuery, (snapshot) => {
-      setCallsToday(snapshot.docs.length);
-      setPulse(true);
-      window.setTimeout(() => setPulse(false), 1500);
-    });
+    const unsubscribe = onSnapshot(
+      liveQuery,
+      (snapshot) => {
+        setCallsToday(snapshot.docs.length);
+        setPulse(true);
+        window.setTimeout(() => setPulse(false), 1500);
+      },
+      () => {
+        setCallsToday(0);
+      }
+    );
 
     return unsubscribe;
   }, [agents]);
@@ -150,7 +180,7 @@ export const DeveloperAnalytics = ({ agents }: { agents: Agent[] }) => {
     const last7Days = new Date();
     last7Days.setDate(last7Days.getDate() - 7);
 
-    const rows = agents.map((agent) => {
+    const rows: AgentBreakdownRow[] = agents.map((agent) => {
       const agentCalls = (calls || []).filter((call) => call.agentId === agent.id);
       const recentCalls = agentCalls.filter((call) => normalizeDate(call.timestamp) >= last7Days);
       const avgLatency = recentCalls.length
@@ -171,7 +201,8 @@ export const DeveloperAnalytics = ({ agents }: { agents: Agent[] }) => {
 
     return rows.sort((a, b) => {
       if (sortKey === "name") return a.name.localeCompare(b.name);
-      return (b as Record<string, number>)[sortKey] - (a as Record<string, number>)[sortKey];
+      const activeKey = numericSortKeys.find((key) => key === sortKey) ?? "calls";
+      return b[activeKey] - a[activeKey];
     });
   }, [agents, calls, sortKey]);
 
@@ -240,7 +271,7 @@ export const DeveloperAnalytics = ({ agents }: { agents: Agent[] }) => {
               <tbody>
                 {agentBreakdown.map((row) => (
                   <tr key={row.id} className="border-b border-white/6 text-white/85">
-                    <td className="px-4 py-3"><a href={`/agents/${row.id}`} className="hover:text-blue-300">{row.name}</a></td>
+                    <td className="px-4 py-3"><a href={`/agents/${row.id}`} className="hover:text-[#ff8c7e]">{row.name}</a></td>
                     <td className="px-4 py-3">{row.calls}</td>
                     <td className="px-4 py-3">{row.latency} ms</td>
                     <td className="px-4 py-3">{row.trust}</td>

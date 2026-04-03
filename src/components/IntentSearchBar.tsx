@@ -10,7 +10,7 @@ export function IntentSearchBar() {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
-  const [results, setResults] = useState<{ agent: Agent, matchReason: string }[]>([]);
+  const [results, setResults] = useState<{ agent: Agent; matchReason: string }[]>([]);
   const [recent, setRecent] = useState<string[]>([]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function IntentSearchBar() {
   }, [query]);
 
   const updateRecent = useCallback((q: string) => {
-    const newRecent = [q, ...recent.filter(x => x !== q)].slice(0, 5);
+    const newRecent = [q, ...recent.filter((x) => x !== q)].slice(0, 5);
     setRecent(newRecent);
     localStorage.setItem("recent_searches", JSON.stringify(newRecent));
   }, [recent]);
@@ -81,32 +81,33 @@ export function IntentSearchBar() {
   }, [debouncedQuery, updateRecent]);
 
   return (
-    <div className="w-full max-w-3xl mx-auto relative z-20">
-      <div className={`relative group ${isSearching ? 'animate-pulse' : ''}`}>
-        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <Sparkles className={`h-5 w-5 ${isSearching ? 'text-blue-400' : 'text-muted-foreground'}`} />
+    <div className="relative z-20 mx-auto w-full max-w-5xl">
+      <div className={`group relative ${isSearching ? "animate-pulse" : ""}`}>
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5">
+          <Sparkles className={`h-5 w-5 ${isSearching ? "text-[#ff8c7e]" : "text-[#8a8fa8]"}`} />
         </div>
         <Input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search by use case, workflow, or capability"
-          className="peer block w-full rounded-[1.75rem] border border-neutral-200/60 bg-white/90 pl-12 pr-4 py-7 text-lg text-neutral-900 ring-offset-background placeholder:text-neutral-400 shadow-[0_8px_30px_rgba(0,0,0,0.06)] backdrop-blur-2xl focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-all hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
+          placeholder="Search by workflow, use case, or capability. Try: summarize release notes"
+          className="peer block h-16 w-full rounded-[1.75rem] border border-white/10 bg-[#0c0c0e]/92 pl-14 pr-36 text-lg text-[#e8eaf0] shadow-[0_18px_50px_rgba(0,0,0,0.38)] backdrop-blur-2xl transition-all placeholder:text-[#8a8fa8]/65 focus-visible:border-[#e74c3c]/65 focus-visible:ring-[3px] focus-visible:ring-[rgba(231,76,60,0.18)]"
         />
-        {isSearching && (
-          <div className="absolute inset-y-0 right-0 pr-4 flex items-center">
-            <span className="text-sm text-blue-400 animate-pulse">Searching marketplace...</span>
-          </div>
-        )}
+        <div className="absolute inset-y-0 right-0 flex items-center pr-4">
+          <span className={`rounded-full border px-3 py-1.5 text-xs font-mono uppercase tracking-[0.15em] ${isSearching ? "border-[#e74c3c]/30 bg-[#e74c3c]/10 text-[#ff8c7e]" : "border-white/10 bg-white/[0.03] text-[#8a8fa8]"}`}>
+            {isSearching ? "Searching..." : "Intent Search"}
+          </span>
+        </div>
       </div>
 
       {recent.length > 0 && !query && (
-        <div className="mt-4 flex flex-wrap gap-2 justify-center">
-          {recent.map(r => (
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          {recent.map((r) => (
             <button
               key={r}
+              type="button"
               onClick={() => setQuery(r)}
-              className="px-4 py-1.5 rounded-full bg-white border border-neutral-200 text-sm font-medium text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 transition-colors shadow-sm"
+              className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-sm font-medium text-[#cfd3df] transition-colors hover:border-[#e74c3c]/35 hover:text-white"
             >
               {r}
             </button>
@@ -115,12 +116,12 @@ export function IntentSearchBar() {
       )}
 
       {results.length > 0 && (
-        <div className="glass-surface mt-5 rounded-[1.75rem] p-6 text-left border border-neutral-200 bg-white/80 shadow-lg">
-          <h3 className="text-sm font-bold text-neutral-500 mb-4 uppercase tracking-wider">Search Results</h3>
-          <div className="space-y-4">
-            {results.map(r => (
-              <div key={r.agent.id} className="relative group rounded-2xl border border-neutral-100 bg-white p-4 transition-colors hover:bg-blue-50/50 shadow-sm hover:shadow-md">
-                <p className="text-sm italic text-blue-600 mb-3 border-l-2 border-blue-500 pl-3">&quot;{r.matchReason}&quot;</p>
+        <div className="mt-5 rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(16,16,20,0.96),rgba(9,9,11,0.98))] p-6 text-left shadow-[0_20px_55px_rgba(0,0,0,0.32)]">
+          <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-[#8a8fa8]">Search Results</h3>
+          <div className="grid gap-4 lg:grid-cols-2">
+            {results.map((r) => (
+              <div key={r.agent.id} className="rounded-2xl border border-white/8 bg-black/20 p-4">
+                <p className="mb-3 border-l-2 border-[#e74c3c] pl-3 text-sm italic text-[#ff8c7e]">&quot;{r.matchReason}&quot;</p>
                 <AgentCard agent={r.agent} />
               </div>
             ))}

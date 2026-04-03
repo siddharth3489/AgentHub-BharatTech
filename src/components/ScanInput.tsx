@@ -22,27 +22,27 @@ export function ScanInput({ onAnalyze }: { onAnalyze: (input: string, type: stri
   };
 
   const typeConfig = {
-    github: { icon: <Github className="w-4 h-4" />, label: "GitHub Repo detected", color: "text-neutral-900", bg: "bg-neutral-100", placeholder: "Paste a GitHub repo URL e.g. github.com/vercel/next.js" },
-    notion: { icon: <FileText className="w-4 h-4" />, label: "Notion Doc detected", color: "text-neutral-900", bg: "bg-neutral-100", placeholder: "Paste a Notion link..." },
-    errorlog: { icon: <FileJson className="w-4 h-4" />, label: "Error Log detected", color: "text-red-600", bg: "bg-red-50", placeholder: "Paste your error log or stack trace..." },
-    jobdescription: { icon: <Briefcase className="w-4 h-4" />, label: "Job Description detected", color: "text-blue-600", bg: "bg-blue-50", placeholder: "Paste a job description..." },
-    plaintext: { icon: <ScanSearch className="w-4 h-4" />, label: "Plain Text", color: "text-neutral-500", bg: "bg-neutral-100", placeholder: "Describe your project in plain English or paste URLs..." }
+    github: { icon: <Github className="h-4 w-4" />, label: "GitHub Repo detected", color: "text-[#e8eaf0]", bg: "bg-white/[0.06]", placeholder: "Paste a GitHub repo URL e.g. github.com/vercel/next.js" },
+    notion: { icon: <FileText className="h-4 w-4" />, label: "Notion Doc detected", color: "text-[#e8eaf0]", bg: "bg-white/[0.06]", placeholder: "Paste a Notion link..." },
+    errorlog: { icon: <FileJson className="h-4 w-4" />, label: "Error Log detected", color: "text-[#ff8c7e]", bg: "bg-[#e74c3c]/10", placeholder: "Paste your error log or stack trace..." },
+    jobdescription: { icon: <Briefcase className="h-4 w-4" />, label: "Job Description detected", color: "text-[#ff8c7e]", bg: "bg-[#e74c3c]/10", placeholder: "Paste a job description..." },
+    plaintext: { icon: <ScanSearch className="h-4 w-4" />, label: "Plain Text", color: "text-[#8a8fa8]", bg: "bg-white/[0.05]", placeholder: "Describe your project in plain English or paste URLs..." },
   };
 
   const config = typeConfig[type];
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-4">
-      <div className="relative group">
+    <div className="mx-auto w-full max-w-4xl space-y-4">
+      <div className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,22,0.98),rgba(9,9,11,0.98))] p-3 shadow-[0_20px_55px_rgba(0,0,0,0.28)]">
         <textarea
-          className="w-full min-h-[200px] bg-white border border-neutral-200 rounded-2xl p-6 text-lg text-neutral-900 placeholder:text-neutral-400 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 resize-none font-mono shadow-sm"
+          className="min-h-[200px] w-full resize-none rounded-[1.5rem] border border-white/8 bg-black/20 p-6 font-mono text-lg text-[#e8eaf0] outline-none transition-colors placeholder:text-[#8a8fa8]/65 focus:border-[#e74c3c]/55"
           placeholder={config.placeholder}
           value={input}
           onChange={(e) => handleInput(e.target.value)}
         />
 
         {input && (
-          <div className={`absolute top-4 right-4 px-3 py-1.5 rounded-full flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${config.color} ${config.bg} border border-current/20 transition-all`}>
+          <div className={`absolute right-6 top-6 flex items-center gap-2 rounded-full border border-current/20 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider ${config.color} ${config.bg}`}>
             {config.icon}
             {config.label}
           </div>
@@ -54,10 +54,10 @@ export function ScanInput({ onAnalyze }: { onAnalyze: (input: string, type: stri
           size="lg"
           disabled={!input}
           onClick={() => onAnalyze(input, type)}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold flex items-center gap-2 px-8 h-12 rounded-xl text-base"
+          className="flex h-12 items-center gap-2 rounded-xl bg-[#e74c3c] px-8 text-base font-semibold text-white hover:bg-[#ff5645]"
         >
-          <ScanSearch className="w-5 h-5" />
-          Analyse & Match Agents
+          <ScanSearch className="h-5 w-5" />
+          Analyze & Match Agents
         </Button>
       </div>
     </div>

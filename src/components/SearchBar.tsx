@@ -8,14 +8,14 @@ export const SearchBar = () => {
   const [query, setQuery] = useQueryState("q", { defaultValue: "" });
 
   return (
-    <div className="relative max-w-2xl w-full mx-auto">
-      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-        <Search className="h-5 w-5 text-muted-foreground" />
+    <div className="relative mx-auto w-full max-w-4xl">
+      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5">
+        <Search className="h-5 w-5 text-[#8a8fa8]" />
       </div>
       <Input
         type="text"
         placeholder="Try 'summarize prs' or 'extract data'..."
-        className="w-full pl-12 pr-4 py-6 rounded-full bg-white border-neutral-200 focus-visible:ring-blue-500 shadow-sm text-lg backdrop-blur-sm transition-all focus:shadow-md text-neutral-900 placeholder:text-neutral-400"
+        className="h-16 w-full rounded-[22px] border border-white/10 bg-[#0c0c0e]/92 pl-14 pr-5 text-lg text-[#e8eaf0] shadow-[0_18px_50px_rgba(0,0,0,0.38)] backdrop-blur-xl transition-all placeholder:text-[#8a8fa8]/55 focus-visible:border-[#e74c3c]/65 focus-visible:ring-[3px] focus-visible:ring-[rgba(231,76,60,0.18)]"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />

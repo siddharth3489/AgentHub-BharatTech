@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Editor from "@monaco-editor/react";
 import { Agent } from "@/lib/types";
 import { Button } from "@/components/ui/button";
@@ -22,12 +22,11 @@ export const SandboxPanel = ({ agent }: { agent: Agent }) => {
     setOutputCode("Running agent...");
 
     try {
-      // Validate JSON input
       const parsedInput = JSON.parse(inputCode);
 
       const res = await fetch(`/api/sandbox/${agent.id}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${apiKey}` },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
         body: JSON.stringify(parsedInput),
       });
 
@@ -39,29 +38,29 @@ export const SandboxPanel = ({ agent }: { agent: Agent }) => {
 
       setOutputCode(JSON.stringify(data.output, null, 2));
       setLatency(data.latencyMs);
-
-    } catch (err: any) {
-      setError(err.message);
-      setOutputCode(`Error: ${err.message}`);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Execution failed";
+      setError(message);
+      setOutputCode(`Error: ${message}`);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col h-[600px] border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm">
-      <div className="flex items-center justify-between px-4 py-3 bg-neutral-50 border-b border-neutral-200">
+    <div className="flex h-[600px] flex-col overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,22,0.98),rgba(9,9,11,0.98))] shadow-[0_20px_55px_rgba(0,0,0,0.28)]">
+      <div className="flex items-center justify-between border-b border-white/10 bg-black/20 px-4 py-3">
         <div className="flex items-center gap-4">
-          <span className="font-bold text-sm text-neutral-900">Sandbox</span>
+          <span className="text-sm font-bold text-[#e8eaf0]">Sandbox</span>
           {latency !== null && (
-            <span className="text-xs text-neutral-500 font-bold flex items-center gap-1 bg-white border border-neutral-200 px-2 py-1 rounded-md shadow-sm">
-              <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+            <span className="flex items-center gap-1 rounded-md border border-[#4ade80]/20 bg-[#4ade80]/10 px-2 py-1 text-xs font-bold text-[#86efac]">
+              <CheckCircle2 className="h-3 w-3" />
               {latency}ms
             </span>
           )}
           {error && (
-            <span className="text-xs text-red-500 flex items-center gap-1 bg-red-500/10 px-2 py-1 rounded-md">
-              <AlertCircle className="w-3 h-3" />
+            <span className="flex items-center gap-1 rounded-md bg-[#e74c3c]/10 px-2 py-1 text-xs text-[#ff8c7e]">
+              <AlertCircle className="h-3 w-3" />
               Failed
             </span>
           )}
@@ -72,43 +71,55 @@ export const SandboxPanel = ({ agent }: { agent: Agent }) => {
             placeholder="API key"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
-            className="w-48 bg-white border border-neutral-200 rounded-md px-3 h-8 text-xs font-mono focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-blue-500 text-neutral-900 placeholder:text-neutral-400"
+            className="h-9 w-48 rounded-md border border-white/10 bg-white/[0.04] px-3 text-xs font-mono text-[#e8eaf0] outline-none transition-colors placeholder:text-[#8a8fa8]/65 focus:border-[#e74c3c]/55"
           />
-          <Button size="sm" onClick={handleRun} disabled={isLoading || !apiKey} className="bg-blue-600 hover:bg-blue-700 h-8 text-xs font-bold px-4 text-white">
-            {isLoading ? <Loader2 className="w-3.5 h-3.5 mr-2 animate-spin" /> : <Play className="w-3.5 h-3.5 mr-2" />}
+          <Button size="sm" onClick={handleRun} disabled={isLoading || !apiKey} className="h-9 bg-[#e74c3c] px-4 text-xs font-bold text-white hover:bg-[#ff5645]">
+            {isLoading ? <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" /> : <Play className="mr-2 h-3.5 w-3.5" />}
             Run Agent
           </Button>
         </div>
       </div>
 
-      <div className="flex-1 grid grid-cols-2 divide-x divide-neutral-200">
-        <div className="flex flex-col relative h-full">
-          <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-500 px-4 py-2 bg-neutral-50 uppercase border-b border-neutral-200">
+      <div className="grid flex-1 grid-cols-2 divide-x divide-white/10">
+        <div className="relative flex h-full flex-col">
+          <div className="border-b border-white/10 bg-black/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-[#8a8fa8]">
             Input / JSON payload
           </div>
-          <div className="flex-1 overflow-hidden relative group bg-white">
+          <div className="relative flex-1 overflow-hidden bg-[#050505]">
             <Editor
               height="100%"
               defaultLanguage="json"
-              theme="vs-light"
+              theme="vs-dark"
               value={inputCode}
               onChange={(v) => setInputCode(v || "")}
-              options={{ minimap: { enabled: false }, fontSize: 13, formatOnPaste: true, scrollBeyondLastLine: false, padding: { top: 16 } }}
+              options={{
+                minimap: { enabled: false },
+                fontSize: 13,
+                formatOnPaste: true,
+                scrollBeyondLastLine: false,
+                padding: { top: 16 },
+              }}
             />
           </div>
         </div>
 
-        <div className="flex flex-col relative h-full">
-          <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-500 px-4 py-2 bg-neutral-50 border-b border-neutral-200">
+        <div className="relative flex h-full flex-col">
+          <div className="border-b border-white/10 bg-black/20 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-[#8a8fa8]">
             Output / Response JSON
           </div>
-          <div className="flex-1 overflow-hidden relative bg-white">
+          <div className="relative flex-1 overflow-hidden bg-[#050505]">
             <Editor
               height="100%"
               defaultLanguage="json"
-              theme="vs-light"
+              theme="vs-dark"
               value={outputCode}
-              options={{ readOnly: true, minimap: { enabled: false }, fontSize: 13, scrollBeyondLastLine: false, padding: { top: 16 } }}
+              options={{
+                readOnly: true,
+                minimap: { enabled: false },
+                fontSize: 13,
+                scrollBeyondLastLine: false,
+                padding: { top: 16 },
+              }}
             />
           </div>
         </div>

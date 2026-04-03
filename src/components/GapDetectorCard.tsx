@@ -4,22 +4,22 @@ import { AgentCard } from "./AgentCard";
 import { ArrowRight, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 
-export function GapDetectorCard({ gapInfo, onAdd }: { gapInfo: any, onAdd?: () => void }) {
+export function GapDetectorCard({ gapInfo, onAdd }: { gapInfo: any; onAdd?: () => void }) {
   const { category, agent, impact } = gapInfo;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-red-200 bg-white p-1 shadow-sm hover:shadow-md transition-shadow">
-      <div className="absolute top-0 right-0 px-3 py-1 bg-red-50 text-red-600 text-xs font-bold uppercase tracking-wider rounded-bl-xl z-10 border-b border-l border-red-100">
+    <div className="relative overflow-hidden rounded-[1.75rem] border border-[#e74c3c]/16 bg-[linear-gradient(180deg,rgba(18,18,22,0.98),rgba(9,9,11,0.98))] p-1 shadow-[0_18px_45px_rgba(0,0,0,0.22)]">
+      <div className="absolute right-0 top-0 z-10 rounded-bl-xl border-b border-l border-[#e74c3c]/20 bg-[#e74c3c]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#ff8c7e]">
         Missing Context
       </div>
 
-      <div className="p-5 bg-neutral-50 rounded-xl border border-neutral-100 relative z-0 h-full flex flex-col">
+      <div className="relative z-0 flex h-full flex-col rounded-[1.4rem] border border-white/8 bg-black/20 p-5">
         <div className="mb-4">
-          <h3 className="font-bold text-lg flex items-center gap-2 text-neutral-900">
-            <Zap className="w-4 h-4 text-amber-500" />
+          <h3 className="flex items-center gap-2 text-lg font-bold text-[#e8eaf0]">
+            <Zap className="h-4 w-4 text-[#ffd07f]" />
             {category.replace("-", " ")}
           </h3>
-          <p className="text-sm font-medium text-emerald-600 mt-2 p-2 bg-emerald-50 rounded-lg border border-emerald-200 font-bold">
+          <p className="mt-2 rounded-lg border border-[#4ade80]/18 bg-[#4ade80]/10 p-2 text-sm font-bold text-[#86efac]">
             {impact}
           </p>
         </div>
@@ -28,8 +28,8 @@ export function GapDetectorCard({ gapInfo, onAdd }: { gapInfo: any, onAdd?: () =
           <AgentCard agent={agent} />
         </div>
 
-        <Button onClick={onAdd} className="mt-4 w-full bg-white hover:bg-neutral-50 text-blue-600 font-bold border border-neutral-200 group shadow-sm">
-          Add to your stack <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+        <Button onClick={onAdd} className="group mt-4 w-full border border-white/10 bg-white/[0.04] font-bold text-[#e8eaf0] hover:bg-white/[0.08]">
+          Add to your stack <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Button>
       </div>
     </div>

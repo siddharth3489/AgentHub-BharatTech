@@ -33,10 +33,17 @@ export default function DashboardPage() {
 
   if (!user || !githubProfile) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-6">
-        <CloudFog className="w-16 h-16 text-muted-foreground mb-4" />
-        <h2 className="text-2xl font-bold tracking-tight mb-2">Authentication Required</h2>
-        <p className="text-muted-foreground mb-6 max-w-sm">You must be logged in to view your developer dashboard and manage your custom agents.</p>
+      <div className="min-h-[70vh] px-6 py-20 text-[#e8eaf0]">
+        <div className="mx-auto flex max-w-2xl flex-col items-center rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.18),transparent_55%),#0b0b0f] px-8 py-14 text-center shadow-[0_28px_90px_rgba(0,0,0,0.4)]">
+          <CloudFog className="mb-5 h-16 w-16 text-[#ff8c7e]" />
+          <span className="mb-5 inline-flex rounded-full border border-[#e74c3c]/30 bg-[#e74c3c]/10 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[#ff8c7e]">
+            [ Developer Access ]
+          </span>
+          <h2 className="mb-3 text-3xl font-bold tracking-tight">Authentication Required</h2>
+          <p className="max-w-md text-base leading-7 text-[#8a8fa8]">
+            Sign in with GitHub to open your creator dashboard, manage API keys, and track the performance of your published agents.
+          </p>
+        </div>
       </div>
     );
   }
@@ -68,73 +75,82 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="container mx-auto px-6 py-12 min-h-screen">
-      <div className="flex justify-between items-start mb-12">
+    <div className="mx-auto min-h-screen max-w-[1280px] px-6 py-14 text-[#e8eaf0] md:px-10">
+      <div className="mb-12 flex flex-col gap-8 rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(231,76,60,0.18),transparent_42%),#0b0b0f] p-8 shadow-[0_24px_90px_rgba(0,0,0,0.4)] lg:flex-row lg:items-start lg:justify-between">
         <div className="flex items-center gap-6">
           <Image
             src={githubProfile.avatarUrl}
             width={80}
             height={80}
-            className="h-20 w-20 rounded-full border border-white/10"
+            className="h-20 w-20 rounded-full border border-[#e74c3c]/25 object-cover shadow-[0_0_0_6px_rgba(231,76,60,0.08)]"
             alt={`${githubProfile.githubUsername} avatar`}
           />
           <div>
-            <h1 className="text-3xl font-bold">{githubProfile.githubUsername} Dashboard</h1>
-            <p className="text-muted-foreground mt-1 text-sm bg-white/5 inline-flex px-3 rounded py-1 items-center gap-2 border border-white/5">
-              <CheckCircle2 className="w-4 h-4 text-green-500" /> Developer Account Verified
+            <span className="mb-3 inline-flex rounded-full border border-[#e74c3c]/30 bg-[#e74c3c]/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-[#ff8c7e]">
+              [ Creator Console ]
+            </span>
+            <h1 className="text-3xl font-bold md:text-4xl">{githubProfile.githubUsername} Dashboard</h1>
+            <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-[#8a8fa8]">
+              <CheckCircle2 className="h-4 w-4 text-[#ff8c7e]" /> Developer Account Verified
             </p>
           </div>
         </div>
+        <p className="max-w-md text-sm leading-7 text-[#8a8fa8]">
+          Track earnings, rotate keys, and watch your marketplace agents perform in one place.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <div className="p-6 bg-[#111] border border-white/10 rounded-xl relative overflow-hidden group">
-          <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">Total Earnings</p>
+      <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#101014] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#e74c3c]/50 to-transparent" />
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a8fa8]">Total Earnings</p>
           <div className="text-4xl font-mono">${totalEarnings.toFixed(2)}</div>
         </div>
-        <div className="p-6 bg-[#111] border border-white/10 rounded-xl relative overflow-hidden group">
-          <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">Active Agents</p>
+        <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#101014] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#e74c3c]/50 to-transparent" />
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a8fa8]">Active Agents</p>
           <div className="text-4xl font-mono">{myAgents.length}</div>
         </div>
-        <div className="p-6 bg-[#111] border border-white/10 rounded-xl relative overflow-hidden group">
-          <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-2">Global Usage</p>
-          <div className="text-4xl font-mono">{myAgents.reduce((a, c) => a + (c.totalCalls || 0), 0).toLocaleString()} <span className="text-sm text-foreground/50">calls</span></div>
+        <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#101014] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#e74c3c]/50 to-transparent" />
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a8fa8]">Global Usage</p>
+          <div className="text-4xl font-mono">{myAgents.reduce((a, c) => a + (c.totalCalls || 0), 0).toLocaleString()} <span className="text-sm text-[#8a8fa8]">calls</span></div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+      <div className="mb-12 grid grid-cols-1 gap-12 lg:grid-cols-2">
         <div>
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <Key className="w-5 h-5 text-blue-500" /> API Keys
+          <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
+            <Key className="h-5 w-5 text-[#ff8c7e]" /> API Keys
           </h2>
-          <div className="bg-[#111] border border-white/10 p-6 rounded-2xl">
-            <div className="flex items-end gap-3 mb-6">
+          <div className="rounded-[1.75rem] border border-white/10 bg-[#101014] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
+            <div className="mb-6 flex items-end gap-3">
               <div className="flex-1">
-                <label className="text-xs uppercase text-muted-foreground mb-1 block font-semibold">New Key Label</label>
+                <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.18em] text-[#8a8fa8]">New Key Label</label>
                 <input
                   type="text"
                   value={newKeyLabel}
                   onChange={e => setNewKeyLabel(e.target.value)}
                   placeholder="e.g. Production App"
-                  className="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2 text-sm focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-blue-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-3 text-sm text-[#e8eaf0] outline-none transition focus:border-[#e74c3c]/50 focus:ring-1 focus:ring-[#e74c3c]/40"
                 />
               </div>
-              <Button onClick={createKey} className="bg-blue-600 hover:bg-blue-700 h-10">
+              <Button onClick={createKey} className="h-11 rounded-xl bg-[#e74c3c] px-5 text-white hover:bg-[#f05a48]">
                 <Plus className="w-4 h-4 mr-2" /> Create Key
               </Button>
             </div>
 
             <div className="space-y-2">
               {apiKeys.map(k => (
-                <div key={k.id} className="flex items-center justify-between p-3 border border-white/5 bg-white/5 rounded-lg">
+                <div key={k.id} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] p-3">
                   <div>
-                    <h4 className="font-semibold text-sm flex items-center gap-2">
-                      {k.label} {k.isActive ? <span className="w-2 h-2 rounded-full bg-green-500"></span> : <span className="w-2 h-2 rounded-full bg-red-500"></span>}
+                    <h4 className="flex items-center gap-2 text-sm font-semibold">
+                      {k.label} {k.isActive ? <span className="h-2 w-2 rounded-full bg-[#ff8c7e]"></span> : <span className="h-2 w-2 rounded-full bg-[#6f7487]"></span>}
                     </h4>
-                    <span className="font-mono text-xs text-muted-foreground">{k.isActive ? `${k.keyPrefix}...` : 'REVOKED'}</span>
+                    <span className="font-mono text-xs text-[#8a8fa8]">{k.isActive ? `${k.keyPrefix}...` : 'REVOKED'}</span>
                   </div>
                   {k.isActive && (
-                    <Button variant="ghost" size="sm" onClick={() => revokeKey(k.id)} className="h-8 text-red-400 hover:text-red-300 hover:bg-red-500/10">
+                    <Button variant="ghost" size="sm" onClick={() => revokeKey(k.id)} className="h-8 text-[#ff8c7e] hover:bg-[#e74c3c]/10 hover:text-[#ffc1b7]">
                       <Trash2 className="w-4 h-4" />
                     </Button>
                   )}
@@ -145,12 +161,12 @@ export default function DashboardPage() {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold mb-6">Your Published Agents</h2>
+          <h2 className="mb-6 text-2xl font-bold">Your Published Agents</h2>
           {myAgents.length === 0 && !isLoading ? (
-            <div className="rounded-2xl border border-dashed border-white/15 bg-white/4 p-10 text-center">
+            <div className="rounded-[1.75rem] border border-dashed border-[#e74c3c]/25 bg-[linear-gradient(180deg,rgba(231,76,60,0.08),rgba(255,255,255,0.02))] p-10 text-center">
               <h3 className="text-xl font-semibold">You haven&apos;t published any agents yet</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Publish your first agent to start generating usage, trust signals, and revenue.</p>
-              <Link href="/publish" className="mt-6 inline-flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white hover:bg-blue-700">
+              <p className="mt-2 text-sm text-[#8a8fa8]">Publish your first agent to start generating usage, trust signals, and revenue.</p>
+              <Link href="/publish" className="mt-6 inline-flex h-11 items-center rounded-xl bg-[#e74c3c] px-5 text-sm font-medium text-white hover:bg-[#f05a48]">
                 Publish your first agent
               </Link>
             </div>
@@ -163,14 +179,14 @@ export default function DashboardPage() {
       <DeveloperAnalytics agents={myAgents} />
 
       {showKeyModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-          <div className="bg-zinc-900 border border-white/10 rounded-2xl p-6 w-full max-w-lg">
-            <h3 className="text-xl font-bold mb-2">API Key Created</h3>
-            <p className="text-sm text-yellow-500 mb-6 bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-lg">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4">
+          <div className="w-full max-w-lg rounded-[1.75rem] border border-white/10 bg-[#0e0f14] p-6 text-[#e8eaf0] shadow-[0_28px_90px_rgba(0,0,0,0.5)]">
+            <h3 className="mb-2 text-xl font-bold">API Key Created</h3>
+            <p className="mb-6 rounded-xl border border-[#e74c3c]/20 bg-[#e74c3c]/10 p-3 text-sm text-[#ffb2a7]">
               Copy and store this key securely. For security reasons, it will only be shown once.
             </p>
             <div className="flex gap-2">
-              <input readOnly value={showKeyModal} className="w-full bg-black border border-white/10 rounded-xl px-4 py-3 font-mono text-blue-400" />
+              <input readOnly value={showKeyModal} className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 font-mono text-[#ff8c7e]" />
               <Button onClick={() => {
                 navigator.clipboard.writeText(showKeyModal);
                 toast("Copied!");
@@ -178,7 +194,7 @@ export default function DashboardPage() {
                 <Copy className="w-4 h-4" />
               </Button>
             </div>
-            <Button onClick={() => setShowKeyModal(null)} className="w-full mt-6">Done</Button>
+            <Button onClick={() => setShowKeyModal(null)} className="mt-6 w-full bg-[#e74c3c] text-white hover:bg-[#f05a48]">Done</Button>
           </div>
         </div>
       )}

@@ -29,15 +29,15 @@ export function ChainStudio() {
   const filteredAgents = useMemo(() => agents.filter(a => a.name.toLowerCase().includes(search.toLowerCase())), [agents, search]);
 
   return (
-    <div className="flex h-[calc(100vh-64px)] w-full overflow-hidden bg-black text-white relative">
+    <div className="relative flex h-[calc(100vh-64px)] w-full overflow-hidden bg-[#050505] text-white">
 
       {/* Sidebar sidebar */}
-      <div className="w-80 border-r border-white/10 bg-black/50 p-6 flex flex-col z-10 shadow-xl backdrop-blur-md">
+      <div className="z-10 flex w-80 flex-col border-r border-white/10 bg-[linear-gradient(180deg,rgba(231,76,60,0.08),rgba(0,0,0,0.45))] p-6 shadow-xl backdrop-blur-md">
         <h2 className="text-xl font-bold mb-6">Agent Toolkit</h2>
         <div className="relative mb-6">
           <Search className="w-4 h-4 absolute left-3 top-3 text-muted-foreground" />
           <Input
-            className="w-full bg-white/5 border-white/10 text-white pl-10"
+            className="w-full border-white/10 bg-white/5 pl-10 text-white focus-visible:ring-[#e74c3c]/45"
             placeholder="Search agents..."
             value={search}
             onChange={e => setSearch(e.target.value)}
@@ -45,7 +45,7 @@ export function ChainStudio() {
         </div>
         <div className="flex-1 overflow-y-auto space-y-3 pr-2 custom-scrollbar">
           {filteredAgents.map(a => (
-            <div key={a.id} className="p-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors cursor-pointer" onClick={() => addNode(a)}>
+            <div key={a.id} className="cursor-pointer rounded-xl border border-white/10 bg-white/[0.04] p-4 transition-colors hover:border-[#e74c3c]/35 hover:bg-[#17181f]" onClick={() => addNode(a)}>
               <div className="font-semibold text-sm mb-1">{a.name}</div>
               <div className="text-xs text-muted-foreground truncate">{a.description}</div>
             </div>
@@ -63,9 +63,9 @@ export function ChainStudio() {
           onPaneClick={() => setSelectedEdge(null)}
           nodeTypes={nodeTypes}
           fitView
-          className="bg-black/20"
+          className="bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.08),transparent_45%),#050505]"
         >
-          <Background variant={BackgroundVariant.Dots} gap={24} size={2} color="#1e3a8a" />
+          <Background variant={BackgroundVariant.Dots} gap={24} size={2} color="#5f221c" />
           <Controls className="fill-white" />
           <MiniMap className="bg-black/90 border border-white/10" maskColor="rgba(0,0,0,0.5)" />
         </ReactFlow>
@@ -93,7 +93,7 @@ export function ChainStudio() {
           <Button onClick={async () => {
             const id = await saveChain();
             alert("Chain Saved! ID: " + id);
-          }} className="bg-blue-600 hover:bg-blue-700 font-bold px-6">
+          }} className="bg-[#e74c3c] px-6 font-bold hover:bg-[#f05a48]">
             <Save className="w-4 h-4 mr-2" /> Save & Deploy Endpoint
           </Button>
         </div>

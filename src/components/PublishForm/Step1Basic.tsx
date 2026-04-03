@@ -22,7 +22,7 @@ export const Step1Basic = () => {
         <textarea
           placeholder="What does it do? Who is it for?"
           {...register("description")}
-          className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-sm min-h-[100px] hover:border-white/20 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-y"
+          className="min-h-[100px] w-full resize-y rounded-md border border-white/10 bg-white/5 p-3 text-sm outline-none transition-all hover:border-white/20 focus:border-[#e74c3c]/50 focus:ring-1 focus:ring-[#e74c3c]/40"
         />
         {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description?.message as string}</p>}
       </div>
@@ -36,7 +36,7 @@ export const Step1Basic = () => {
               name="capabilityTags"
               control={control}
               render={({ field }) => (
-                <label className={`cursor-pointer px-3 py-1.5 rounded-full text-xs font-mono transition-colors border ${field.value?.includes(tag) ? 'bg-blue-500/20 text-blue-400 border-blue-500/50' : 'bg-white/5 text-muted-foreground border-white/10 hover:bg-white/10'}`}>
+                <label className={`cursor-pointer rounded-full border px-3 py-1.5 text-xs font-mono transition-colors ${field.value?.includes(tag) ? 'border-[#e74c3c]/45 bg-[#e74c3c]/12 text-[#ff9b8f]' : 'border-white/10 bg-white/5 text-muted-foreground hover:bg-white/10'}`}>
                   <input
                     type="checkbox"
                     className="hidden"
@@ -75,7 +75,7 @@ export const Step1Basic = () => {
                         : field.value?.filter((l: string) => l !== lang);
                       field.onChange(updated);
                     }}
-                    className="border-white/20 data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500"
+                    className="border-white/20 data-[state=checked]:border-[#e74c3c] data-[state=checked]:bg-[#e74c3c]"
                   />
                   <span className="text-sm text-muted-foreground group-hover:text-white transition-colors">{lang}</span>
                 </label>

@@ -46,10 +46,10 @@ export default async function StackPage({ params }: { params: Promise<{ owner: s
   if (!stack) {
     return (
       <div className="container mx-auto min-h-[70vh] px-6 py-24">
-        <div className="mx-auto max-w-2xl rounded-[2rem] border border-white/10 bg-[#0d1117] p-10 text-center">
+        <div className="mx-auto max-w-2xl rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.18),transparent_55%),#0d1117] p-10 text-center">
           <h1 className="text-4xl font-black tracking-tight text-white">{ownerRepo}</h1>
-          <p className="mt-4 text-lg text-blue-100/60">Stack not generated yet.</p>
-          <Link href="/scan" className="mt-8 inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 font-semibold text-white">
+          <p className="mt-4 text-lg text-[#8a8fa8]">Stack not generated yet.</p>
+          <Link href="/scan" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#e74c3c] px-6 py-3 font-semibold text-white hover:bg-[#f05a48]">
             Add your repo
             <ArrowRight className="h-4 w-4" />
           </Link>
@@ -64,11 +64,11 @@ export default async function StackPage({ params }: { params: Promise<{ owner: s
     <div className="container mx-auto px-6 py-20">
       <header className="mb-12 text-center">
         <p className="font-mono text-5xl font-black text-white">{ownerRepo}</p>
-        <p className="mt-4 text-lg text-blue-100/65">Agent stack powered by AgentHub</p>
-        <p className="mt-2 text-sm uppercase tracking-[0.22em] text-blue-100/35">
+        <p className="mt-4 text-lg text-[#8a8fa8]">Agent stack powered by AgentHub</p>
+        <p className="mt-2 text-sm uppercase tracking-[0.22em] text-[#ff8c7e]/70">
           Generated {generatedAt.toLocaleDateString()}
         </p>
-        <Link href="/scan" className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white">
+        <Link href="/scan" className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#e74c3c]/25 bg-[#e74c3c]/10 px-5 py-3 text-sm font-semibold text-white hover:bg-[#e74c3c]/16">
           Add your repo
           <ArrowRight className="h-4 w-4" />
         </Link>

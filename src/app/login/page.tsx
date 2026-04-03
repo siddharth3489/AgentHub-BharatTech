@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Activity, ArrowRight, Github, ShieldCheck, Sparkles, Workflow } from "lucide-react";
@@ -25,7 +26,7 @@ const highlights = [
   },
 ];
 
-export default function LoginPage() {
+function LoginPageContent() {
   const { user, loading, signInWithGitHub } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -42,26 +43,37 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-[linear-gradient(180deg,#05070d_0%,#09101a_100%)]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(37,99,235,0.22),transparent_26%),radial-gradient(circle_at_78%_12%,rgba(56,189,248,0.14),transparent_22%),radial-gradient(circle_at_60%_70%,rgba(37,99,235,0.12),transparent_30%)]" />
-      <div className="absolute inset-x-0 top-0 h-64 bg-[linear-gradient(180deg,rgba(37,99,235,0.14),transparent)]" />
+    <div className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-[linear-gradient(180deg,#060606_0%,#0c0c0f_100%)]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(231,76,60,0.22),transparent_28%),radial-gradient(circle_at_78%_16%,rgba(192,57,43,0.14),transparent_22%),radial-gradient(circle_at_60%_70%,rgba(231,76,60,0.1),transparent_32%)]" />
+      <div className="absolute inset-0 hero-grid opacity-[0.04]" />
+      <div className="pointer-events-none absolute inset-y-0 right-[-4%] hidden w-[48vw] max-w-[640px] md:block">
+        <div className="animate-ambient-glow absolute inset-[18%_10%_10%_14%] rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.18)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
+        <Image
+          src="/hero/ezgif-frame-007.png"
+          alt=""
+          fill
+          aria-hidden="true"
+          className="animate-hero-drift object-contain object-center opacity-18"
+          sizes="48vw"
+        />
+      </div>
 
       <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl items-center px-6 py-16">
         <div className="grid w-full gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <section className="animate-in fade-in slide-in-from-left-8 duration-700">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.26em] text-blue-200">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#e74c3c]/25 bg-[#e74c3c]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.26em] text-[#ff8c7e]">
               <Activity className="h-3.5 w-3.5" />
               AgentHub Access
             </div>
 
             <h1 className="max-w-4xl text-5xl font-black tracking-tight text-white md:text-7xl">
-              Secure access for the
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-500 to-sky-300">
-                AI agent marketplace
+              Enter the marketplace for
+              <span className="block bg-gradient-to-r from-white via-[#ffb0a5] to-[#e74c3c] bg-clip-text text-transparent">
+                autonomous agents
               </span>
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-blue-100/70 md:text-xl">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#a1a6ba] md:text-xl">
               Sign in to create API keys, test agents in the sandbox, publish your own services, and manage marketplace usage from one place.
             </p>
 
@@ -69,43 +81,43 @@ export default function LoginPage() {
               {highlights.map(({ icon: Icon, title, description }) => (
                 <div
                   key={title}
-                  className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-md transition-transform duration-300 hover:-translate-y-1"
+                  className="rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-md transition-transform duration-300 hover:-translate-y-1 hover:border-[#e74c3c]/25"
                 >
-                  <div className="mb-4 inline-flex rounded-2xl border border-blue-400/20 bg-blue-500/10 p-3 text-blue-300">
+                  <div className="mb-4 inline-flex rounded-2xl border border-[#e74c3c]/25 bg-[#e74c3c]/10 p-3 text-[#ff8c7e]">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h2 className="text-base font-semibold text-white">{title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-blue-100/60">{description}</p>
+                  <p className="mt-2 text-sm leading-6 text-[#8a8fa8]">{description}</p>
                 </div>
               ))}
             </div>
           </section>
 
           <section className="animate-in fade-in zoom-in-95 slide-in-from-bottom-6 duration-700 lg:justify-self-end">
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(10,14,24,0.98),rgba(9,16,28,0.94))] p-8 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-10">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.22),transparent_30%)]" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(17,17,21,0.98),rgba(9,9,11,0.96))] p-8 shadow-[0_30px_120px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-10">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(231,76,60,0.2),transparent_30%)]" />
               <div className="relative">
-                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 shadow-[0_0_40px_rgba(37,99,235,0.45)]">
+                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e74c3c] shadow-[0_0_40px_rgba(231,76,60,0.38)]">
                   <Github className="h-7 w-7 text-white" />
                 </div>
 
                 <h2 className="text-3xl font-bold tracking-tight text-white">Sign in with GitHub</h2>
-                <p className="mt-3 text-sm leading-7 text-blue-100/65">
+                <p className="mt-3 text-sm leading-7 text-[#a1a6ba]">
                   We use GitHub identity to provision developer access, connect published agents to creators, and secure API key issuance.
                 </p>
 
                 <Button
                   onClick={handleSignIn}
                   disabled={loading}
-                  className="mt-8 h-12 w-full rounded-xl bg-blue-600 text-base font-semibold text-white hover:bg-blue-700"
+                  className="mt-8 h-12 w-full rounded-xl bg-[#e74c3c] text-base font-semibold text-white hover:bg-[#ff5645]"
                 >
                   <Github className="mr-2 h-5 w-5" />
                   {loading ? "Checking session..." : "Continue with GitHub"}
                 </Button>
 
-                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-6 text-sm text-blue-100/55">
+                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-6 text-sm text-[#8a8fa8]">
                   <span>Developer access only</span>
-                  <Link href="/" className="inline-flex items-center gap-2 text-blue-200 transition-colors hover:text-white">
+                  <Link href="/" className="inline-flex items-center gap-2 text-[#ff8c7e] transition-colors hover:text-white">
                     Return home
                     <ArrowRight className="h-4 w-4" />
                   </Link>
@@ -116,5 +128,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-[calc(100vh-4rem)] bg-[linear-gradient(180deg,#060606_0%,#0c0c0f_100%)]" />}>
+      <LoginPageContent />
+    </Suspense>
   );
 }

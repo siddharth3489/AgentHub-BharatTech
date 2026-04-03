@@ -10,7 +10,7 @@ export const Step4Examples = ({ onSubmit, isSubmitting }: { onSubmit: () => void
     <div className="space-y-1 pb-3 mb-3 border-b border-white/5 last:border-0">
       <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</div>
       {typeof value === 'object' ? (
-        <pre className="text-xs font-mono p-2 bg-black/40 rounded border border-white/5 overflow-x-auto text-blue-300">
+        <pre className="overflow-x-auto rounded border border-white/5 bg-black/40 p-2 text-xs font-mono text-[#ffb2a7]">
           {JSON.stringify(value, null, 2)}
         </pre>
       ) : (
@@ -23,7 +23,7 @@ export const Step4Examples = ({ onSubmit, isSubmitting }: { onSubmit: () => void
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="bg-white/5 border border-white/10 rounded-xl p-6">
         <h4 className="text-lg font-bold mb-4 font-mono flex items-center gap-2">
-          <CopyIcon className="w-5 h-5 text-blue-500" />
+          <CopyIcon className="w-5 h-5 text-[#ff8c7e]" />
           Review Configuration
         </h4>
 
@@ -53,7 +53,7 @@ export const Step4Examples = ({ onSubmit, isSubmitting }: { onSubmit: () => void
         <Button
           onClick={onSubmit}
           disabled={isSubmitting}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold h-12 px-8 rounded-full shadow-lg hover:scale-[1.02] transition-transform w-full"
+          className="h-12 w-full rounded-full bg-[#e74c3c] px-8 font-bold text-white shadow-lg transition-transform hover:scale-[1.02] hover:bg-[#f05a48]"
         >
           {isSubmitting ? "Publishing Agent..." : "Deploy to Marketplace"}
         </Button>

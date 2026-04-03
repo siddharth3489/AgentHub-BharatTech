@@ -117,8 +117,8 @@ export async function POST(req: Request) {
 
     try {
       const nearest = await queryNearestAgents(query, 10);
-      const candidateIds = nearest.map((n: { id: string }) => n.id);
-      const candidateDocs = await Promise.all(candidateIds.map((id: string) => getAgentById(id)));
+      const candidateIds = nearest.map((candidate) => String(candidate.id));
+      const candidateDocs = await Promise.all(candidateIds.map((id) => getAgentById(id)));
       validCandidates = candidateDocs.filter(Boolean) as Agent[];
     } catch (e) {
       console.warn("Vector search failed, falling back to local ranking", e);

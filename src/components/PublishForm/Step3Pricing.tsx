@@ -13,7 +13,7 @@ export const Step3Pricing = () => {
       <div className="space-y-4">
         <Label className="flex justify-between items-end">
           <span>Cost Per Call (USD) <span className="text-red-500">*</span></span>
-          <span className="font-mono text-xl font-medium text-blue-400">
+          <span className="font-mono text-xl font-medium text-[#ff8c7e]">
             $<Controller
               name="costPerCall"
               control={control}
@@ -78,7 +78,7 @@ export const Step3Pricing = () => {
                 id="isOpenSource"
                 checked={field.value}
                 onCheckedChange={field.onChange}
-                className="border-white/20 data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500"
+                className="border-white/20 data-[state=checked]:border-[#e74c3c] data-[state=checked]:bg-[#e74c3c]"
               />
             )}
           />

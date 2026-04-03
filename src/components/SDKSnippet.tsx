@@ -48,9 +48,9 @@ console.log(result);`;
 
   useEffect(() => {
     const highlight = async () => {
-      const p = await codeToHtml(pyCode, { lang: "python", theme: "github-light" });
-      const j = await codeToHtml(jsCode, { lang: "javascript", theme: "github-light" });
-      const c = await codeToHtml(curlCode, { lang: "bash", theme: "github-light" });
+      const p = await codeToHtml(pyCode, { lang: "python", theme: "github-dark" });
+      const j = await codeToHtml(jsCode, { lang: "javascript", theme: "github-dark" });
+      const c = await codeToHtml(curlCode, { lang: "bash", theme: "github-dark" });
       setSnippets({ py: p, js: j, cur: c });
     };
     highlight();
@@ -64,15 +64,16 @@ console.log(result);`;
   };
 
   return (
-    <div className="rounded-xl overflow-hidden border border-neutral-200 bg-white mt-8 shadow-sm">
+    <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,22,0.98),rgba(9,9,11,0.98))] shadow-[0_20px_55px_rgba(0,0,0,0.28)]">
       <Tabs defaultValue="python" className="w-full">
-        <div className="flex items-center justify-between border-b border-neutral-200 bg-neutral-50 pr-4">
-          <TabsList className="bg-transparent rounded-none p-0 h-10 border-0">
-            <TabsTrigger value="python" className="data-[state=active]:bg-white data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:text-blue-600 rounded-none h-10 border-b-2 border-transparent hover:text-neutral-900 transition-colors px-4 font-bold text-neutral-500">Python</TabsTrigger>
-            <TabsTrigger value="javascript" className="data-[state=active]:bg-white data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:text-blue-600 rounded-none h-10 border-b-2 border-transparent hover:text-neutral-900 transition-colors px-4 font-bold text-neutral-500">JavaScript</TabsTrigger>
-            <TabsTrigger value="curl" className="data-[state=active]:bg-white data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:text-blue-600 rounded-none h-10 border-b-2 border-transparent hover:text-neutral-900 transition-colors px-4 font-bold text-neutral-500">cURL</TabsTrigger>
+        <div className="flex items-center justify-between border-b border-white/10 bg-black/20 pr-4">
+          <TabsList variant="line" className="h-11 bg-transparent p-0">
+            <TabsTrigger value="python" className="h-11 rounded-none border-b-2 border-transparent px-4 font-bold text-[#8a8fa8] data-active:border-[#e74c3c] data-active:text-[#ff8c7e]">Python</TabsTrigger>
+            <TabsTrigger value="javascript" className="h-11 rounded-none border-b-2 border-transparent px-4 font-bold text-[#8a8fa8] data-active:border-[#e74c3c] data-active:text-[#ff8c7e]">JavaScript</TabsTrigger>
+            <TabsTrigger value="curl" className="h-11 rounded-none border-b-2 border-transparent px-4 font-bold text-[#8a8fa8] data-active:border-[#e74c3c] data-active:text-[#ff8c7e]">cURL</TabsTrigger>
           </TabsList>
           <button
+            type="button"
             onClick={() => {
               const el = document.querySelector('[data-state="active"][role="tab"]');
               if (!el) return;
@@ -81,15 +82,15 @@ console.log(result);`;
               else if (v === "javascript") onCopy(jsCode);
               else onCopy(curlCode);
             }}
-            className="text-neutral-500 hover:text-neutral-900 transition-colors"
+            className="text-[#8a8fa8] transition-colors hover:text-white"
           >
-            {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+            {copied ? <Check className="h-4 w-4 text-[#4ade80]" /> : <Copy className="h-4 w-4" />}
           </button>
         </div>
 
-        <TabsContent value="python" className="p-4 overflow-x-auto text-sm my-0 ui-highlight-container" dangerouslySetInnerHTML={{ __html: snippets.py }} />
-        <TabsContent value="javascript" className="p-4 overflow-x-auto text-sm my-0 ui-highlight-container" dangerouslySetInnerHTML={{ __html: snippets.js }} />
-        <TabsContent value="curl" className="p-4 overflow-x-auto text-sm my-0 ui-highlight-container" dangerouslySetInnerHTML={{ __html: snippets.cur }} />
+        <TabsContent value="python" className="ui-highlight-container m-0 overflow-x-auto p-4 text-sm" dangerouslySetInnerHTML={{ __html: snippets.py }} />
+        <TabsContent value="javascript" className="ui-highlight-container m-0 overflow-x-auto p-4 text-sm" dangerouslySetInnerHTML={{ __html: snippets.js }} />
+        <TabsContent value="curl" className="ui-highlight-container m-0 overflow-x-auto p-4 text-sm" dangerouslySetInnerHTML={{ __html: snippets.cur }} />
       </Tabs>
       <style>{`
         .ui-highlight-container pre { background-color: transparent !important; margin: 0; }
