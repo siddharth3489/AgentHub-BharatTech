@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ScanInput } from "@/components/ScanInput";
 import { RepoDNAResult } from "@/components/RepoDNAResult";
 import { GapDetectorCard } from "@/components/GapDetectorCard";
+import { ScanHeroTree } from "@/components/agenthub/ScanHeroTree";
 
 export default function ScanPage() {
   const [scanResult, setScanResult] = useState<any>(null);
@@ -50,20 +51,18 @@ export default function ScanPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#080808]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.16)_0%,rgba(8,8,8,0)_32%),linear-gradient(180deg,rgba(20,20,24,0.72)_0%,rgba(8,8,8,1)_40%)]" />
+    <div className="relative min-h-screen overflow-hidden bg-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.16)_0%,rgba(255,255,255,0)_32%),linear-gradient(180deg,rgba(250,250,252,0.72)_0%,rgba(255,255,255,1)_40%)]" />
       <div className="absolute inset-0 hero-grid opacity-[0.04]" />
 
       <div className="page-container relative py-24">
         <div className="mx-auto mb-16 max-w-4xl text-center">
-          <div className="mb-10 flex justify-center">
-            <img src="/assets/images/scan_hero.png" alt="Repository Scanner Illustration" className="h-56 w-auto opacity-90 drop-shadow-[0_20px_45px_rgba(0,0,0,0.35)] transition-transform duration-700 hover:scale-105" />
-          </div>
+          <ScanHeroTree />
           <span className="eyebrow-badge mb-6 inline-flex">
             Repository Scan
           </span>
-          <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-[#e8eaf0] md:text-5xl">Analyze a GitHub repository and identify agent opportunities</h1>
-          <p className="text-lg text-[#8a8fa8]">
+          <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-[#1a1a2e] md:text-5xl">Analyze a GitHub repository and identify agent opportunities</h1>
+          <p className="text-lg text-[#64748b]">
             Paste a GitHub repository URL to inspect the codebase, surface missing automation capabilities, and match relevant agents from the marketplace.
           </p>
         </div>
@@ -79,9 +78,9 @@ export default function ScanPage() {
         {(isScanning || scanResult) && <RepoDNAResult result={scanResult} />}
 
         {scanResult && gapAgents.length > 0 && (
-          <div className="mt-24 animate-in slide-in-from-bottom-8 fade-in border-t border-white/10 pt-12 duration-1000 delay-500">
-            <h2 className="mb-8 text-center text-2xl font-bold tracking-tight text-[#e8eaf0]">Suggested capabilities</h2>
-            <p className="mx-auto mb-12 max-w-2xl text-center text-[#8a8fa8]">
+          <div className="mt-24 animate-in slide-in-from-bottom-8 fade-in border-t border-black/10 pt-12 duration-1000 delay-500">
+            <h2 className="mb-8 text-center text-2xl font-bold tracking-tight text-[#1a1a2e]">Suggested capabilities</h2>
+            <p className="mx-auto mb-12 max-w-2xl text-center text-[#64748b]">
               Based on the repository structure and detected categories, AgentHub identified capabilities that could strengthen the current stack.
             </p>
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

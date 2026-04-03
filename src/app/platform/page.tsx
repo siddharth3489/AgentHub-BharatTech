@@ -3,7 +3,7 @@ import { HowItWorks } from "@/components/agenthub/HowItWorks";
 import { CoreCapabilities } from "@/components/agenthub/CoreCapabilities";
 import { SandboxPreview } from "@/components/agenthub/SandboxPreview";
 import { SDKPreview } from "@/components/agenthub/SDKPreview";
-import { ScrollGlassReveal } from "@/components/ScrollGlassReveal";
+
 
 export default function PlatformPage() {
   return (
@@ -22,18 +22,10 @@ export default function PlatformPage() {
         { href: "/publish", label: "Publish an Agent" },
       ]}
     >
-      <ScrollGlassReveal delayMs={40}>
-        <HowItWorks />
-      </ScrollGlassReveal>
-      <ScrollGlassReveal delayMs={70}>
-        <CoreCapabilities />
-      </ScrollGlassReveal>
-      <ScrollGlassReveal delayMs={100}>
-        <SandboxPreview />
-      </ScrollGlassReveal>
-      <ScrollGlassReveal delayMs={130}>
-        <SDKPreview />
-      </ScrollGlassReveal>
+      <HowItWorks />
+      <CoreCapabilities />
+      <SandboxPreview />
+      <SDKPreview />
     </FeaturePageShell>
   );
 }
