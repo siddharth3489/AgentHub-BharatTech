@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agent Hub
 
-## Getting Started
+Agent Hub is a Next.js 16 marketplace for discovering, comparing, and testing AI agents. The app uses Firebase for auth and Firestore-backed data, plus Upstash services for vector search and rate limiting.
 
-First, run the development server:
+## Local development
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create `.env.local` from `.env.example` and fill in your project values.
+
+3. Start the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Use the following variables locally and in Firebase App Hosting:
 
-## Learn More
+```dotenv
+NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-web-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.firebasestorage.app
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-web-app-id
+ANTHROPIC_API_KEY=your-anthropic-api-key
+UPSTASH_VECTOR_REST_URL=https://your-vector-index.upstash.io
+UPSTASH_VECTOR_REST_TOKEN=your-upstash-vector-token
+UPSTASH_REDIS_REST_URL=https://your-redis-instance.upstash.io
+UPSTASH_REDIS_REST_TOKEN=your-upstash-redis-token
+```
 
-To learn more about Next.js, take a look at the following resources:
+`NEXT_PUBLIC_*` values are safe for the browser. Keep `ANTHROPIC_API_KEY` and the Upstash tokens in Firebase Secret Manager.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Firebase App Hosting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This repo now includes [apphosting.yaml](./apphosting.yaml) for Firebase App Hosting.
 
-## Deploy on Vercel
+Recommended setup:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Create or open a Firebase project on the Blaze plan.
+2. In the Firebase console, open App Hosting and create a backend.
+3. Connect the GitHub repo `yathboss/hackind` and deploy the `main` branch from the repo root.
+4. In the backend's Environment settings, add the plain-text values from `.env.local` or `.env.example`:
+   `NEXT_PUBLIC_FIREBASE_API_KEY`, `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`, `NEXT_PUBLIC_FIREBASE_PROJECT_ID`, `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`, `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`, `NEXT_PUBLIC_FIREBASE_APP_ID`, `UPSTASH_VECTOR_REST_URL`, and `UPSTASH_REDIS_REST_URL`.
+5. Create these secrets in Secret Manager so they match `apphosting.yaml`:
+   `anthropic-api-key`, `upstash-vector-rest-token`, and `upstash-redis-rest-token`.
+6. Roll out the backend.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you want CLI-based local source deployments later, install `firebase-tools` 14.4.0 or newer, run `firebase init apphosting`, and then deploy with `firebase deploy`.
+
+## Build check
+
+```bash
+npm run build
+```

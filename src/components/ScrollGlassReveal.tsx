@@ -18,6 +18,20 @@ export function ScrollGlassReveal({
     const node = ref.current;
     if (!node) return;
 
+    const revealImmediately = () => {
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const rect = node.getBoundingClientRect();
+      return rect.top <= viewportHeight * 0.94;
+    };
+
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      revealImmediately()
+    ) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -25,11 +39,23 @@ export function ScrollGlassReveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -6% 0px" }
     );
 
-    observer.observe(node);
-    return () => observer.disconnect();
+    const frame = window.requestAnimationFrame(() => {
+      if (revealImmediately()) {
+        setIsVisible(true);
+        observer.disconnect();
+        return;
+      }
+
+      observer.observe(node);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
   }, []);
 
   return (

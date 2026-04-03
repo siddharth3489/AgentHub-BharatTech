@@ -2,26 +2,40 @@ import Link from "next/link";
 
 export function StrongCTA() {
   return (
-    <section className="section-shell lux-border relative flex w-full items-center justify-center overflow-hidden py-32">
+    <section className="section-shell lux-border relative w-full overflow-hidden py-24 md:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(192,57,43,0.16)_0%,_rgba(20,20,24,0.18)_48%,_rgba(20,20,24,0)_100%)]" />
       <div className="animate-aurora-drift absolute left-[6%] top-10 h-52 w-52 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.18)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
       <div className="animate-aurora-drift-reverse absolute right-[8%] bottom-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.08)_0%,_rgba(255,255,255,0)_70%)] blur-3xl" />
-      
-      <div className="glass-panel relative z-10 mx-auto max-w-4xl rounded-[2rem] px-6 py-12 text-center md:px-10">
-        <h2 className="text-4xl md:text-6xl font-black tracking-tight text-[#e8eaf0] mb-6">The agentic economy <br className="hidden md:block" />starts here.</h2>
-        <p className="text-[#8a8fa8] text-lg max-w-2xl mx-auto mb-12">
-          Stop evaluating agents through fragmented marketing pages. Join the premier marketplace for deterministic, high-performance autonomous models.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/agents" className="w-full sm:w-auto bg-[#e74c3c] text-white font-semibold flex items-center justify-center gap-2 px-8 py-4 rounded-[6px] hover:bg-[#ff5645] transition-colors red-glow-hover">
-            Start Exploring Agents
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-          </Link>
-          <Link href="/publish" className="w-full sm:w-auto bg-transparent border border-white/20 text-white font-semibold flex items-center justify-center gap-2 px-8 py-4 rounded-[6px] hover:border-white/50 hover:bg-white/[0.04] transition-colors">
-            Publish Your First Agent
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-          </Link>
+
+      <div className="relative z-10 mx-auto w-full px-6 md:px-12 lg:px-20">
+        <div className="glass-panel w-full rounded-[2rem] px-6 py-12 md:px-10 lg:px-14 lg:py-16">
+          <div className="mx-auto max-w-5xl text-center">
+            <h2 className="mb-6 text-4xl font-black tracking-tight text-[#e8eaf0] md:text-6xl">
+              The agentic economy <br className="hidden md:block" />
+              starts here.
+            </h2>
+            <p className="mx-auto mb-12 max-w-3xl text-lg text-[#8a8fa8]">
+              Stop evaluating agents through fragmented marketing pages. Join the premier
+              marketplace for deterministic, high-performance autonomous models.
+            </p>
+
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/agents"
+                className="red-glow-hover flex w-full items-center justify-center gap-2 rounded-[6px] bg-[#e74c3c] px-8 py-4 font-semibold text-white transition-colors hover:bg-[#ff5645] sm:w-auto"
+              >
+                Start Exploring Agents
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </Link>
+              <Link
+                href="/publish"
+                className="flex w-full items-center justify-center gap-2 rounded-[6px] border border-white/20 bg-transparent px-8 py-4 font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/[0.04] sm:w-auto"
+              >
+                Publish Your First Agent
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

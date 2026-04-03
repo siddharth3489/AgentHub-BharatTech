@@ -90,20 +90,19 @@
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.022)),
       linear-gradient(135deg, rgba(231, 76, 60, 0.08), rgba(255, 255, 255, 0.01) 48%, rgba(255, 255, 255, 0.04));
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(10px);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.04),
-      0 18px 60px rgba(0, 0, 0, 0.34);
+      0 14px 42px rgba(0, 0, 0, 0.28);
   }
   .glass-panel::before {
     content: "";
     position: absolute;
     inset: -1px;
     background: linear-gradient(115deg, transparent 18%, rgba(255, 255, 255, 0.08) 38%, rgba(231, 76, 60, 0.14) 52%, transparent 74%);
-    opacity: 0.65;
+    opacity: 0.22;
     pointer-events: none;
-    transform: translateX(-135%);
-    animation: sheen-sweep 14s linear infinite;
+    transform: translateX(-18%);
   }
   .glass-panel::after {
     content: "";
@@ -112,9 +111,8 @@
     height: 11rem;
     background: radial-gradient(circle, rgba(231, 76, 60, 0.2) 0%, rgba(231, 76, 60, 0) 72%);
     filter: blur(28px);
-    opacity: 0.5;
+    opacity: 0.28;
     pointer-events: none;
-    animation: ember-drift 8s ease-in-out infinite;
   }
   .glass-panel > * {
     position: relative;
@@ -145,7 +143,6 @@
       linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     background-size: 76px 76px;
     mask-image: radial-gradient(circle at center, black 12%, transparent 88%);
-    animation: grid-pan 26s linear infinite;
   }
   .premium-noise {
     background-image:
@@ -154,7 +151,6 @@
       radial-gradient(circle at 35% 72%, rgba(231, 76, 60, 0.1) 0.9px, transparent 1.1px),
       radial-gradient(circle at 66% 68%, rgba(255, 255, 255, 0.05) 0.7px, transparent 1px);
     background-size: 210px 210px, 270px 270px, 320px 320px, 280px 280px;
-    animation: noise-drift 18s linear infinite;
   }
   .section-shell {
     position: relative;
@@ -400,11 +396,11 @@
 .scroll-glass-reveal {
   opacity: 0;
   transform: translate3d(0, 42px, 0) scale(0.985);
-  filter: blur(12px);
+  filter: blur(6px);
   transition:
-    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
 }
 
@@ -412,6 +408,31 @@
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   filter: blur(0);
+}
+
+@media (max-width: 1024px) {
+  .glass-panel {
+    backdrop-filter: blur(6px);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.03),
+      0 10px 28px rgba(0, 0, 0, 0.24);
+  }
+
+  .glass-panel::before,
+  .glass-panel::after,
+  .premium-grid,
+  .premium-noise,
+  .animate-aurora-drift,
+  .animate-aurora-drift-reverse,
+  .animate-ambient-glow,
+  .animate-hero-drift,
+  .animate-sheen-slow {
+    animation: none !important;
+  }
+
+  .scanline {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

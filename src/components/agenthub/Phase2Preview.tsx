@@ -16,7 +16,7 @@ export function Phase2Preview() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-20 text-center flex flex-col items-center">
         
         <span className="font-mono text-[#8a8fa8] text-xs uppercase tracking-[0.15em] mb-6 block border border-white/10 px-3 py-1 bg-white/[0.02]">
-          [ PHASE 2 — IN DEVELOPMENT ]
+          [ COMING SOON ]
         </span>
         
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#e8eaf0] mb-16 max-w-2xl">The Future of Agent Discovery and Automation</h2>
@@ -24,7 +24,7 @@ export function Phase2Preview() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full max-w-5xl mb-16 text-left">
           {features.map((feature) => (
             <div key={feature.title} className="glass-panel p-6 rounded-xl border border-white/5 opacity-60 hover:opacity-100 transition-opacity flex flex-col relative overflow-hidden group">
-               <div className="absolute top-4 right-4 bg-[#141418] border border-white/10 text-[10px] uppercase font-mono px-2 py-0.5 rounded text-[#8a8fa8]">SOON</div>
+               <div className="absolute top-4 right-4 bg-[#141418] border border-white/10 text-[10px] uppercase font-mono px-2 py-0.5 rounded text-[#8a8fa8]">COMING SOON</div>
                <feature.icon className="w-5 h-5 text-[#8a8fa8] mb-4 group-hover:text-[#e8eaf0] transition-colors" strokeWidth={1.5} />
                <h3 className="text-[#e8eaf0] font-semibold text-base mb-1">{feature.title}</h3>
                <p className="text-[#8a8fa8] text-sm">{feature.desc}</p>

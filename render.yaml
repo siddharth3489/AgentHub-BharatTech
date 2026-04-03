@@ -18,9 +18,13 @@ services:
         sync: false
       - key: NEXT_PUBLIC_FIREBASE_APP_ID
         sync: false
-      - key: CLAUDE_API_KEY
+      - key: ANTHROPIC_API_KEY
         sync: false
       - key: UPSTASH_VECTOR_REST_URL
         sync: false
       - key: UPSTASH_VECTOR_REST_TOKEN
+        sync: false
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
         sync: false

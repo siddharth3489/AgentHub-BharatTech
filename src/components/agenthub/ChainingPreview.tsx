@@ -5,7 +5,7 @@ export function ChainingPreview() {
       <div className="mx-auto flex max-w-[1280px] flex-col items-center px-6 text-center md:px-12 lg:px-20">
         
         <span className="font-mono text-[#8a8fa8] text-xs uppercase tracking-[0.15em] mb-6 block border border-white/10 px-3 py-1 bg-white/[0.02]">
-          [ PHASE 2 — IN DEVELOPMENT ]
+          [ COMING SOON ]
         </span>
         
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#e8eaf0] mb-6 max-w-3xl">Agent Chaining Studio</h2>

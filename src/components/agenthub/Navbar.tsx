@@ -2,16 +2,37 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { topFeatureNavItems } from "@/lib/featureNavigation";
 
 export function AgentHubNavbar() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+    let frameId = 0;
+
+    const syncScrollState = () => {
+      frameId = 0;
+      const nextScrolled = window.scrollY > 50;
+      setScrolled((current) => (current === nextScrolled ? current : nextScrolled));
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const handleScroll = () => {
+      if (frameId !== 0) return;
+      frameId = window.requestAnimationFrame(syncScrollState);
+    };
+
+    syncScrollState();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      if (frameId !== 0) {
+        window.cancelAnimationFrame(frameId);
+      }
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -24,11 +45,26 @@ export function AgentHubNavbar() {
           </div>
           <span className="font-bold text-lg tracking-[-0.02em] text-[#e8eaf0]">AgentHub</span>
         </Link>
-        <div className="hidden md:flex items-center gap-8 text-[14px] font-medium text-[#8a8fa8]">
-          <Link href="/marketplace" className="hover:text-white transition-colors">Marketplace</Link>
-          <Link href="/docs" className="hover:text-white transition-colors">Docs</Link>
-          <Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link>
-          <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+        <div className="hidden md:flex items-center gap-3 text-[14px] font-medium text-[#8a8fa8]">
+          {topFeatureNavItems.map((item) => {
+            const active =
+              pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "rounded-full px-3 py-2 transition-colors",
+                  active
+                    ? "bg-white/[0.06] text-[#e8eaf0]"
+                    : "hover:bg-white/[0.04] hover:text-white"
+                )}
+              >
+                {item.title}
+              </Link>
+            );
+          })}
         </div>
         <div className="flex items-center gap-6">
           <Link href="/login" className="hidden text-[14px] font-medium text-[#8a8fa8] transition-colors hover:text-white sm:block">Sign in with GitHub</Link>
