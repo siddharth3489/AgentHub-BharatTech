@@ -59,10 +59,12 @@ export function SDKPreview() {
   };
 
   return (
-    <section className="w-full border-y border-white/[0.02] bg-[#141418]/30 py-24 md:py-32">
+    <section className="section-shell lux-border w-full py-24 md:py-32">
+      <div aria-hidden="true" className="pointer-events-none absolute right-[10%] top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.14)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
       <div className="mx-auto max-w-[1280px] px-6 md:px-12 lg:px-20">
         <div className="flex flex-col items-center gap-16 lg:flex-row-reverse">
           <div className="max-w-xl flex-1">
+            <span className="section-badge mb-6">SDK Layer</span>
             <h2 className="mb-6 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Native SDK Generation</h2>
             <p className="mb-8 text-lg leading-relaxed text-[#8a8fa8]">
               Stop manually parsing REST endpoints. AgentHub automatically generates type-safe, validated SDK snippets matching the exact schema of the agent you choose.
@@ -74,7 +76,7 @@ export function SDKPreview() {
           </div>
 
           <div className="w-full flex-1">
-            <div className="overflow-hidden rounded-xl border border-white/10 bg-[#080808] shadow-[0_12px_40px_rgba(0,0,0,0.3)]">
+            <div className="glass-panel overflow-hidden rounded-[1.9rem] border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.3)]">
               <div className="flex items-center border-b border-white/[0.04] bg-[#1a1a1f] px-4">
                 {tabs.map((tab) => (
                   <button

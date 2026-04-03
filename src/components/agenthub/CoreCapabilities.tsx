@@ -35,27 +35,28 @@ export function CoreCapabilities() {
   ];
 
   return (
-    <section className="w-full py-24 md:py-32">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-20">
-        
+    <section className="section-shell w-full py-24 md:py-32">
+      <div aria-hidden="true" className="pointer-events-none absolute right-[8%] top-10 h-56 w-56 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.12)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
+      <div className="mx-auto max-w-[1280px] px-6 md:px-12 lg:px-20">
         <div className="mb-20">
-           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#e8eaf0] mb-4">Core Infrastructure Requirements</h2>
-           <p className="text-[#8a8fa8] text-lg max-w-2xl">Phase 1 capabilities built for immediate production utility. No gimmicks, just robust plumbing for AI agents.</p>
+           <span className="section-badge mb-6">Core Systems</span>
+           <h2 className="mb-4 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Core Infrastructure Requirements</h2>
+           <p className="max-w-2xl text-lg text-[#8a8fa8]">Phase 1 capabilities built for immediate production utility. No gimmicks, just robust plumbing for AI agents with a cleaner, more premium operating surface.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
-            <div key={feature.title} className="flex flex-col items-start group">
-               <div className="w-12 h-12 rounded-[8px] bg-[#141418] border border-white/5 flex items-center justify-center mb-6 group-hover:border-[#e74c3c]/30 group-hover:bg-[#1a1a1f] transition-colors relative">
-                 <feature.icon className="w-6 h-6 text-[#e74c3c]" strokeWidth={1.5} />
-                 <div className="absolute inset-0 red-glow opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div key={feature.title} className="glass-panel group flex flex-col items-start rounded-[1.75rem] p-6 md:p-7">
+               <div className="relative mb-6 flex h-14 w-14 items-center justify-center rounded-[1rem] border border-white/8 bg-[#141418]/80 transition-colors group-hover:border-[#e74c3c]/30 group-hover:bg-[#1a1a1f]">
+                 <feature.icon className="h-6 w-6 text-[#e74c3c]" strokeWidth={1.5} />
+                 <div className="red-glow absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100" />
                </div>
-               <h3 className="text-xl font-bold text-[#e8eaf0] tracking-tight mb-3">{feature.title}</h3>
-               <p className="text-[#8a8fa8] leading-relaxed text-sm md:text-base">{feature.desc}</p>
+               <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.32em] text-white/35">Module</div>
+               <h3 className="mb-3 text-xl font-bold tracking-tight text-[#e8eaf0]">{feature.title}</h3>
+               <p className="text-sm leading-relaxed text-[#8a8fa8] md:text-base">{feature.desc}</p>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

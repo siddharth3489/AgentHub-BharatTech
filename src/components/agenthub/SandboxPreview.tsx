@@ -44,10 +44,12 @@ export function SandboxPreview() {
   const responsePayload = isRunning ? runningPayload : completePayload;
 
   return (
-    <section className="w-full py-24 md:py-32">
+    <section className="section-shell w-full py-24 md:py-32">
+      <div aria-hidden="true" className="pointer-events-none absolute left-[6%] top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.12)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
       <div className="mx-auto max-w-[1280px] px-6 md:px-12 lg:px-20">
         <div className="flex flex-col items-center gap-16 lg:flex-row">
           <div className="max-w-xl flex-1">
+            <span className="section-badge mb-6">Sandbox Layer</span>
             <h2 className="mb-6 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Live Sandbox Execution</h2>
             <p className="mb-8 text-lg leading-relaxed text-[#8a8fa8]">
               No blind integrations. Every agent on the marketplace includes a zero-config sandbox. Inspect schemas, validate outputs, and profile latency before you write a single line of code.
@@ -64,7 +66,7 @@ export function SandboxPreview() {
 
           <div className="relative w-full flex-1">
             <div className="absolute -inset-1 rounded-xl bg-gradient-to-tr from-[#141418] to-[#1a1a1f] opacity-50 blur-xl"></div>
-            <div className="relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#080808] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="glass-panel relative flex flex-col overflow-hidden rounded-[1.9rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <div className="flex items-center justify-between border-b border-white/[0.04] bg-[#141418] px-4 py-3">
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1.5">

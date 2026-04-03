@@ -15,7 +15,7 @@ export function AgentHubNavbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-[#080808]/92 backdrop-blur-[12px] border-b border-white/[0.08]" : "bg-transparent border-b border-transparent"}`}>
+    <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(8,8,8,0.95),rgba(8,8,8,0.82))] shadow-[0_14px_40px_rgba(0,0,0,0.28)] backdrop-blur-[16px]" : "border-b border-transparent bg-transparent"}`}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-20 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-8 h-8 bg-[#080808] border border-white/20 rounded-sm flex items-center justify-center relative shadow-[0_4px_12px_rgba(0,0,0,0.5)]">

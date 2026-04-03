@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[100vh] flex-col justify-center overflow-hidden">
+    <section className="relative isolate flex min-h-[100vh] flex-col justify-center overflow-hidden">
       <video
-        className="absolute inset-0 z-0 h-full w-full object-cover opacity-35"
-        src="/hero/agenthub-bg.mp4.mp4"
+        className="absolute inset-0 z-0 h-full w-full object-cover opacity-45"
+        src="/hero/agenthub-bg.mp4"
         poster="/hero/ezgif-frame-007.png"
         autoPlay
         muted
@@ -15,9 +15,15 @@ export function HeroSection() {
         preload="metadata"
       />
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,_rgba(8,8,8,0.4)_0%,_rgba(8,8,8,1)_100%)]"></div>
-      <div className="absolute inset-0 z-0 bg-[#080808]/78"></div>
+      <div className="absolute inset-0 z-0 bg-[#050505]/64"></div>
       <div className="absolute inset-0 z-0 scanline opacity-[0.03]"></div>
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_75%_35%,_rgba(231,76,60,0.18)_0%,_rgba(231,76,60,0)_42%)]"></div>
+      <div className="pointer-events-none absolute inset-0 z-[1]">
+        <div className="animate-aurora-drift absolute left-[8%] top-[12%] h-40 w-40 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.2)_0%,_rgba(231,76,60,0)_74%)] blur-3xl" />
+        <div className="animate-aurora-drift-reverse absolute right-[6%] top-[18%] h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.08)_0%,_rgba(255,255,255,0)_72%)] blur-3xl" />
+        <div className="animate-sheen-slow absolute inset-0 bg-[linear-gradient(118deg,_transparent_16%,_rgba(255,255,255,0.05)_34%,_rgba(231,76,60,0.08)_52%,_transparent_72%)] opacity-40" />
+        <div className="absolute inset-x-0 bottom-[-15%] h-[42%] bg-[radial-gradient(circle_at_center,_rgba(231,76,60,0.22)_0%,_rgba(231,76,60,0)_68%)] blur-3xl" />
+      </div>
       <div className="pointer-events-none absolute inset-0 z-[1] hidden md:block">
         <div className="animate-ambient-glow absolute left-1/2 top-1/2 h-[58vw] w-[58vw] max-h-[760px] max-w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.18)_0%,_rgba(231,76,60,0)_72%)] blur-3xl"></div>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,_rgba(8,8,8,0.92)_0%,_rgba(8,8,8,0.56)_22%,_rgba(8,8,8,0.16)_50%,_rgba(8,8,8,0.56)_78%,_rgba(8,8,8,0.92)_100%)]"></div>
@@ -80,6 +86,13 @@ export function HeroSection() {
             <span className="text-white/20 hidden sm:inline">•</span>
             <span>Instant SDK Generation</span>
           </div>
+        </div>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex">
+        <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/45">Scroll</span>
+        <div className="relative flex h-14 w-8 items-start justify-center rounded-full border border-white/15 bg-white/[0.03]">
+          <div className="animate-scroll-cue mt-2 h-3 w-1 rounded-full bg-[#ff8c7e]" />
         </div>
       </div>
     </section>

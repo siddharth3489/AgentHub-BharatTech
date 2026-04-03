@@ -1,7 +1,8 @@
 export function ChainingPreview() {
   return (
-    <section className="w-full py-24 md:py-32 bg-[#141418]/20 border-y border-white/[0.02] overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-20 text-center flex flex-col items-center">
+    <section className="section-shell lux-border w-full overflow-hidden py-24 md:py-32">
+      <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-16 h-56 w-[34rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.16)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
+      <div className="mx-auto flex max-w-[1280px] flex-col items-center px-6 text-center md:px-12 lg:px-20">
         
         <span className="font-mono text-[#8a8fa8] text-xs uppercase tracking-[0.15em] mb-6 block border border-white/10 px-3 py-1 bg-white/[0.02]">
           [ PHASE 2 — IN DEVELOPMENT ]
@@ -12,7 +13,7 @@ export function ChainingPreview() {
           Visually pipe the output of one agent into the input schema of another. Compose complex, autonomous workflows natively in the browser.
         </p>
 
-        <div className="w-full max-w-5xl rounded-xl bg-[#080808] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)] relative flex items-center justify-center p-8 md:p-16 min-h-[400px]">
+        <div className="glass-panel relative flex min-h-[400px] w-full max-w-5xl items-center justify-center rounded-[2rem] border border-white/10 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.6)] md:p-16">
           {/* Grid Background */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
 
@@ -30,7 +31,8 @@ export function ChainingPreview() {
              </div>
 
              {/* Connection Line 1 */}
-             <div className="hidden md:block flex-1 h-[2px] bg-gradient-to-r from-[#e74c3c]/50 to-white/10 relative">
+             <div className="relative hidden h-[2px] flex-1 bg-gradient-to-r from-[#e74c3c]/50 to-white/10 md:block">
+               <div className="animate-data-flow absolute inset-y-0 h-full w-24 bg-gradient-to-r from-transparent via-[#ff8c7e] to-transparent opacity-90" />
                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 bg-[#080808] border border-white/10 text-[9px] font-mono text-[#8a8fa8] px-2 py-0.5 rounded">
                  MAP
                </div>
@@ -49,7 +51,9 @@ export function ChainingPreview() {
              </div>
 
              {/* Connection Line 2 */}
-             <div className="hidden md:block flex-1 h-[2px] bg-white/10 relative"></div>
+             <div className="relative hidden h-[2px] flex-1 bg-white/10 md:block">
+               <div className="animate-data-flow absolute inset-y-0 h-full w-24 bg-gradient-to-r from-transparent via-white/55 to-transparent opacity-80" />
+             </div>
 
              {/* Node 3 */}
              <div className="w-[200px] bg-[#141418] border border-white/10 rounded-lg p-4 relative hover:border-white/30 transition-colors">

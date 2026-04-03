@@ -2,11 +2,12 @@ import Link from "next/link";
 
 export function StrongCTA() {
   return (
-    <section className="w-full relative py-32 bg-[#141418] border-y border-white/[0.04] overflow-hidden flex items-center justify-center">
-      {/* Background radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(192,57,43,0.12)_0%,_rgba(20,20,24,1)_100%)] pointer-events-none"></div>
+    <section className="section-shell lux-border relative flex w-full items-center justify-center overflow-hidden py-32">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(192,57,43,0.16)_0%,_rgba(20,20,24,0.18)_48%,_rgba(20,20,24,0)_100%)]" />
+      <div className="animate-aurora-drift absolute left-[6%] top-10 h-52 w-52 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.18)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
+      <div className="animate-aurora-drift-reverse absolute right-[8%] bottom-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.08)_0%,_rgba(255,255,255,0)_70%)] blur-3xl" />
       
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="glass-panel relative z-10 mx-auto max-w-4xl rounded-[2rem] px-6 py-12 text-center md:px-10">
         <h2 className="text-4xl md:text-6xl font-black tracking-tight text-[#e8eaf0] mb-6">The agentic economy <br className="hidden md:block" />starts here.</h2>
         <p className="text-[#8a8fa8] text-lg max-w-2xl mx-auto mb-12">
           Stop evaluating agents through fragmented marketing pages. Join the premier marketplace for deterministic, high-performance autonomous models.
@@ -29,8 +30,9 @@ export function StrongCTA() {
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[#080808] pt-20 pb-12">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-20">
+    <footer className="relative w-full pt-20 pb-12">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-[16%] top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+      <div className="mx-auto max-w-[1280px] px-6 md:px-12 lg:px-20">
         
         <div className="grid grid-cols-2 md:grid-cols-4 md:gap-x-12 gap-y-12 mb-20 text-sm">
           {/* Logo Col */}
