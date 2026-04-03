@@ -49,7 +49,7 @@ export const featureNavItems: FeatureNavItem[] = [
     topNav: true,
   },
   {
-    title: "Signal",
+    title: "Trending",
     href: "/signal",
     description: "Track repositories, market coverage, and marketplace activity.",
     icon: Activity,
@@ -120,7 +120,7 @@ export const homePortalCards: PortalCard[] = [
       "from-[#e74c3c]/16 via-[#141418]/82 to-[#080808]",
   },
   {
-    title: "Signal",
+    title: "Trending",
     href: "/signal",
     eyebrow: "Market Intelligence",
     description:
