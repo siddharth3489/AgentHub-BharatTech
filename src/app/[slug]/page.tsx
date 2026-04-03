@@ -20,66 +20,66 @@ const redirects: Record<string, string> = {
 const pages: Record<string, StaticPageConfig> = {
   docs: {
     eyebrow: "Developer Docs",
-    title: "Documentation is being organized around live product flows.",
+    title: "Documentation is coming soon.",
     description:
-      "This build already supports marketplace browsing, publishing, scanning repositories, and chain creation. Use the live app while the full docs hub is being expanded.",
-    primary: { href: "/publish", label: "Open Publish Flow" },
-    secondary: { href: "/scan", label: "Open Repo Scanner" },
-    bullets: ["Schema-first publishing", "Marketplace search", "Repository analysis", "Chain workflows"],
+      "Use the live product routes below to browse the marketplace, run repository scans, publish agents, and build workflows while the documentation hub is prepared.",
+    primary: { href: "/platform", label: "Open Platform" },
+    secondary: { href: "/scan", label: "Run Repository Scan" },
+    bullets: ["Marketplace search", "Repository analysis", "Publishing flow", "Workflow builder"],
   },
   pricing: {
     eyebrow: "Pricing",
-    title: "AgentHub pricing is usage-based and designed for rapid experimentation.",
+    title: "Pricing details are coming soon.",
     description:
-      "You can browse agents, inspect cost-per-call metrics, and review publishing options from the live product today while the dedicated pricing page evolves.",
+      "AgentHub uses usage-based pricing. Review per-request pricing in the marketplace and publish flow until the dedicated pricing page is live.",
     primary: { href: "/agents", label: "Browse Marketplace" },
-    secondary: { href: "/publish", label: "Review Publisher Flow" },
-    bullets: ["Per-call billing", "Trust and latency signals", "Publisher monetization", "Live usage dashboards"],
+    secondary: { href: "/publish", label: "Review Publish Flow" },
+    bullets: ["Usage-based billing", "Cost per request", "Creator analytics", "Live marketplace pricing"],
   },
   blog: {
     eyebrow: "Updates",
-    title: "Product updates are shipping directly into the app right now.",
+    title: "Product updates will be published here.",
     description:
-      "The blog shell is in place, but the fastest way to explore the latest work is through the live marketplace, scan flow, and chain studio already in this repository.",
+      "Until the editorial feed is live, use the working product routes below to explore the latest marketplace, repository scan, and workflow features.",
     primary: { href: "/agents", label: "Explore Marketplace" },
-    secondary: { href: "/chains", label: "Open Chains" },
-    bullets: ["Landing page refresh", "Interactive previews", "Search improvements", "Deployment-ready build fixes"],
+    secondary: { href: "/chains", label: "Open Workflows" },
+    bullets: ["Marketplace updates", "Workflow previews", "Product release notes", "Builder tooling"],
   },
   about: {
     eyebrow: "About AgentHub",
-    title: "AgentHub is focused on discovery, testing, and integration for AI agents.",
+    title: "AgentHub helps teams discover, validate, and integrate AI agents.",
     description:
-      "The platform brings together publishing, validation, marketplace search, and chaining so teams can evaluate agents without leaving the product.",
+      "The product brings together marketplace search, repository analysis, sandbox validation, and publishing so teams can evaluate agents from one workflow.",
     primary: { href: "/agents", label: "See the Marketplace" },
     secondary: { href: "/scan", label: "Try Repo Scan" },
-    bullets: ["Agent discovery", "Live sandbox evaluation", "Schema-aware integration", "Developer monetization"],
+    bullets: ["Agent discovery", "Sandbox validation", "Generated SDKs", "Creator tooling"],
   },
   status: {
     eyebrow: "Platform Status",
-    title: "Core product routes are available from this build.",
+    title: "Core product routes are available.",
     description:
-      "Use the links below to verify the main app flows. This placeholder keeps the status route working while a richer monitoring page is prepared.",
+      "Use the links below to access the main application flows while the dedicated status page is added here.",
     primary: { href: "/agents", label: "Open Marketplace" },
     secondary: { href: "/dashboard", label: "Open Dashboard" },
-    bullets: ["Homepage restored", "Production build fixed", "Interactive CTAs wired", "Protected routes still enforced"],
+    bullets: ["Marketplace", "Repository scan", "Publish flow", "Creator dashboard"],
   },
   terms: {
     eyebrow: "Terms",
-    title: "Terms content is pending, but the legal route is now live.",
+    title: "Terms are coming soon.",
     description:
-      "This placeholder ensures navigation no longer dead-ends while the full legal copy is added. The app itself remains available through the routes below.",
+      "Legal terms will be published here. In the meantime, the live marketplace and platform routes below remain available.",
     primary: { href: "/", label: "Return Home" },
     secondary: { href: "/agents", label: "Browse Agents" },
-    bullets: ["Route restored", "Navigation fixed", "Footer links active", "Ready for full copy later"],
+    bullets: ["Legal route available", "Footer navigation active", "Marketplace access", "Platform access"],
   },
   privacy: {
     eyebrow: "Privacy",
-    title: "Privacy content is pending, but the route is now connected.",
+    title: "Privacy details are coming soon.",
     description:
-      "This page keeps the footer navigation functional and gives users a safe landing page instead of a 404 while full policy content is prepared.",
+      "Privacy details will be published here. Use the live product routes below while this page is completed.",
     primary: { href: "/", label: "Return Home" },
     secondary: { href: "/login", label: "Go to Login" },
-    bullets: ["No broken footer links", "Consistent site navigation", "Safe fallback content", "Ready for policy copy"],
+    bullets: ["Navigation remains active", "Safe fallback route", "Login access", "Live product links"],
   },
 };
 
@@ -105,7 +105,7 @@ export default async function MarketingPage({
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,76,60,0.16)_0%,_rgba(8,8,8,0)_35%)]"></div>
       <div className="relative mx-auto flex max-w-5xl flex-col gap-10 px-6 md:px-12">
         <div className="max-w-3xl">
-          <span className="mb-6 inline-flex rounded-full border border-[#e74c3c]/25 bg-[#e74c3c]/8 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[#ff8c7e]">
+          <span className="eyebrow-badge mb-6 inline-flex">
             {page.eyebrow}
           </span>
           <h1 className="mb-6 text-4xl font-bold tracking-tight text-[#e8eaf0] md:text-6xl">
@@ -139,10 +139,10 @@ export default async function MarketingPage({
               Available now
             </div>
             <div className="space-y-4 text-sm leading-7 text-[#cfd3df]">
-              <p>Marketplace browsing at <span className="text-white">/agents</span></p>
-              <p>Repository scan flow at <span className="text-white">/scan</span></p>
-              <p>Chaining workspace at <span className="text-white">/chains</span></p>
-              <p>Publisher flow at <span className="text-white">/publish</span></p>
+              <p>Marketplace at <span className="text-white">/agents</span></p>
+              <p>Repository scan at <span className="text-white">/scan</span></p>
+              <p>Workflows at <span className="text-white">/chains</span></p>
+              <p>Publish at <span className="text-white">/publish</span></p>
             </div>
           </div>
         </div>

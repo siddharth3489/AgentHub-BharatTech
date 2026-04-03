@@ -5,14 +5,14 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 export const TrustScoreBadge = ({ trustScore }: { trustScore: number }) => {
   let colorClass = "bg-red-500/10 text-red-500 hover:bg-red-500/20";
-  let label = "Unverified";
+  let label = "Limited";
 
   if (trustScore >= 80) {
     colorClass = "bg-green-500/10 text-green-500 hover:bg-green-500/20";
-    label = "Trusted";
+    label = "Verified";
   } else if (trustScore >= 50) {
     colorClass = "bg-amber-500/10 text-amber-500 hover:bg-amber-500/20";
-    label = "Moderate";
+    label = "Review";
   }
 
   return (
@@ -25,7 +25,7 @@ export const TrustScoreBadge = ({ trustScore }: { trustScore: number }) => {
         </span>
       </TooltipTrigger>
       <TooltipContent>
-        <p>Uptime 30% · Accuracy 25% · Rating 20% · Open Source 15% · Age 10%</p>
+        <p>Trust score combines uptime, rating, open-source status, and operating history.</p>
       </TooltipContent>
     </Tooltip>
   );

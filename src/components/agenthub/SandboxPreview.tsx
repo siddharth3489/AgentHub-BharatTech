@@ -46,16 +46,16 @@ export function SandboxPreview() {
   return (
     <section className="section-shell w-full py-24 md:py-32">
       <div aria-hidden="true" className="pointer-events-none absolute left-[6%] top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.12)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12 lg:px-20">
+      <div className="page-container">
         <div className="flex flex-col items-center gap-16 lg:flex-row">
           <div className="max-w-xl flex-1">
-            <span className="section-badge mb-6">Sandbox Layer</span>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Live Sandbox Execution</h2>
+            <span className="section-badge mb-6">Sandbox</span>
+            <h2 className="mb-6 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Validate requests before you integrate</h2>
             <p className="mb-8 text-lg leading-relaxed text-[#8a8fa8]">
-              No blind integrations. Every agent on the marketplace includes a zero-config sandbox. Inspect schemas, validate outputs, and profile latency before you write a single line of code.
+              Run sample requests against marketplace agents, inspect the response format, and confirm latency before you wire the endpoint into your product.
             </p>
             <ul className="mb-8 space-y-4">
-              {["Real-time schema validation", "Exact latency telemetry", "Cost-impact projections"].map((item) => (
+              {["Sample payloads", "Structured response inspection", "Latency verification"].map((item) => (
                 <li key={item} className="flex items-center text-sm font-medium text-[#e8eaf0]">
                   <svg className="mr-3 h-4 w-4 text-[#e74c3c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   {item}
@@ -88,12 +88,12 @@ export function SandboxPreview() {
 
               <div className="grid h-[320px] grid-cols-1 gap-4 bg-[#0c0c0e] p-4 md:grid-cols-2">
                 <div className="flex flex-col">
-                  <span className="mb-2 font-mono text-[10px] uppercase tracking-wider text-[#8a8fa8]">Request Payload (JSON)</span>
+                  <span className="mb-2 font-mono text-[10px] uppercase tracking-wider text-[#8a8fa8]">Request payload</span>
                   <pre className="flex-1 overflow-hidden whitespace-pre-wrap rounded border border-white/5 bg-[#141418] p-3 font-mono text-sm font-medium text-[#8a8fa8]">
                     {requestPayload}
                   </pre>
                   <button type="button" onClick={handleRun} disabled={isRunning} className="red-glow-hover mt-4 w-full rounded border border-white/10 bg-[#141418] py-2 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:border-transparent hover:bg-[#e74c3c] disabled:cursor-not-allowed disabled:bg-[#1f1f24] disabled:text-[#8a8fa8]">
-                    {isRunning ? "Running Agent..." : "Run Agent"}
+                    {isRunning ? "Running request..." : "Run request"}
                   </button>
                 </div>
 

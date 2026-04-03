@@ -14,7 +14,7 @@ export const SearchBar = () => {
       </div>
       <Input
         type="text"
-        placeholder="Try 'summarize prs' or 'extract data'..."
+        placeholder="Try 'code review', 'document extraction', or 'support automation'"
         className="h-16 w-full rounded-[22px] border border-white/10 bg-[#0c0c0e]/92 pl-14 pr-5 text-lg text-[#e8eaf0] shadow-[0_18px_50px_rgba(0,0,0,0.38)] backdrop-blur-xl transition-all placeholder:text-[#8a8fa8]/55 focus-visible:border-[#e74c3c]/65 focus-visible:ring-[3px] focus-visible:ring-[rgba(231,76,60,0.18)]"
         value={query}
         onChange={(e) => setQuery(e.target.value)}

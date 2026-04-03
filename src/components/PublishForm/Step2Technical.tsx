@@ -27,16 +27,21 @@ export const Step2Technical = () => {
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight text-[#e8eaf0]">Technical contract</h2>
+        <p className="text-sm leading-6 text-[#8a8fa8]">Document the endpoint, input schema, output schema, and reference payloads used to validate the agent.</p>
+      </div>
+
+      <div className="space-y-2">
         <Label>Endpoint URL <span className="text-red-500">*</span></Label>
         <div className="flex gap-2">
           <Input placeholder="https://api.example.com/run" {...register("endpointUrl")} className="bg-white/5 border-white/10 font-mono text-sm" />
           <Button onClick={handleTest} disabled={!endpointUrl || testStatus === "testing"} className="bg-[#e74c3c] text-white hover:bg-[#f05a48]">
-            {testStatus === "testing" ? <Loader2 className="w-4 h-4 animate-spin" /> : "Test Ping"}
+            {testStatus === "testing" ? <Loader2 className="w-4 h-4 animate-spin" /> : "Check endpoint"}
           </Button>
         </div>
         {errors.endpointUrl && <p className="text-red-500 text-xs mt-1">{errors.endpointUrl?.message as string}</p>}
-        {testStatus === "pass" && <p className="text-green-500 text-xs mt-1 flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> Endpoint is reachable via HTTPS</p>}
-        {testStatus === "fail" && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> Failed to reach endpoint or invalid HTTPS</p>}
+        {testStatus === "pass" && <p className="text-green-500 text-xs mt-1 flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> HTTPS endpoint looks valid</p>}
+        {testStatus === "fail" && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> Endpoint check failed or URL is not HTTPS</p>}
       </div>
 
       <div className="grid grid-cols-2 gap-6">
@@ -44,7 +49,7 @@ export const Step2Technical = () => {
           <Label>Input Schema (JSON) <span className="text-red-500">*</span></Label>
           <textarea
             {...register("inputSchema")}
-            className="min-h-[150px] w-full rounded-md border border-white/10 bg-white/5 p-3 font-mono text-xs outline-none hover:border-white/20 focus:border-[#e74c3c]/50"
+            className="control-shell textarea-shell min-h-[150px] w-full bg-white/5 p-3 font-mono text-xs"
             placeholder={'{\n  "type": "object",\n  "properties": {\n    "text": { "type": "string" }\n  }\n}'}
           />
           {errors.inputSchema && <p className="text-red-500 text-xs">{errors.inputSchema?.message as string}</p>}
@@ -54,7 +59,7 @@ export const Step2Technical = () => {
           <Label>Output Schema (JSON) <span className="text-red-500">*</span></Label>
           <textarea
             {...register("outputSchema")}
-            className="min-h-[150px] w-full rounded-md border border-white/10 bg-white/5 p-3 font-mono text-xs outline-none hover:border-white/20 focus:border-[#e74c3c]/50"
+            className="control-shell textarea-shell min-h-[150px] w-full bg-white/5 p-3 font-mono text-xs"
             placeholder={'{\n  "type": "object",\n  "properties": {\n    "summary": { "type": "string" }\n  }\n}'}
           />
           {errors.outputSchema && <p className="text-red-500 text-xs">{errors.outputSchema?.message as string}</p>}
@@ -64,7 +69,7 @@ export const Step2Technical = () => {
           <Label>Example Input (JSON) <span className="text-red-500">*</span></Label>
           <textarea
             {...register("exampleInput")}
-            className="min-h-[120px] w-full rounded-md border border-white/10 bg-white/5 p-3 font-mono text-xs outline-none hover:border-white/20 focus:border-[#e74c3c]/50"
+            className="control-shell textarea-shell min-h-[120px] w-full bg-white/5 p-3 font-mono text-xs"
             placeholder={'{\n  "text": "Hello world"\n}'}
           />
           {errors.exampleInput && <p className="text-red-500 text-xs">{errors.exampleInput?.message as string}</p>}
@@ -74,7 +79,7 @@ export const Step2Technical = () => {
           <Label>Example Output (JSON) <span className="text-red-500">*</span></Label>
           <textarea
             {...register("exampleOutput")}
-            className="min-h-[120px] w-full rounded-md border border-white/10 bg-white/5 p-3 font-mono text-xs outline-none hover:border-white/20 focus:border-[#e74c3c]/50"
+            className="control-shell textarea-shell min-h-[120px] w-full bg-white/5 p-3 font-mono text-xs"
             placeholder={'{\n  "summary": "Greeting"\n}'}
           />
           {errors.exampleOutput && <p className="text-red-500 text-xs">{errors.exampleOutput?.message as string}</p>}

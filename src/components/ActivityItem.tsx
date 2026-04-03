@@ -47,7 +47,7 @@ export const ActivityItem = ({ item }: { item: ActivityFeedItem }) => {
           <span className="font-bold text-[#f1f2f6]">{item.agentName}</span>
           {" was "}
           <span className="font-medium text-[#ff8c7e]">{item.eventType}</span>
-          {" by a "}
+          {" in a "}
           <span className="font-medium text-[#8a8fa8]">{item.repoType}</span>
         </p>
         <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.24em] text-[#8a8fa8]">

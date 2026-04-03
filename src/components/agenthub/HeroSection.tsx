@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function HeroSection() {
   return (
@@ -43,39 +45,39 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[100vh] w-full max-w-[1280px] items-center px-6 pb-16 pt-28 md:px-12 lg:px-20">
-        <div className="flex w-full max-w-4xl flex-col items-center text-center mx-auto">
+      <div className="page-container relative z-10 flex min-h-[100vh] w-full items-center pb-16 pt-28">
+        <div className="mx-auto flex w-full max-w-4xl flex-col items-center text-center">
           <div className="animate-fade-in-up" style={{ animationDelay: "0ms" }}>
-            <span className="mb-6 block border border-[#c0392b]/30 bg-[#c0392b]/5 px-3 py-1 font-mono text-[13px] uppercase tracking-[0.15em] text-[#c0392b]">
-              [ AGENTHUB PLATFORM ]
+            <span className="eyebrow-badge mb-6">
+              Marketplace
             </span>
           </div>
           
           <h1 className="animate-fade-in-up mb-8 text-5xl font-bold leading-[1.05] tracking-[-0.03em] text-[#e8eaf0] sm:text-6xl md:text-[80px]" style={{ animationDelay: "100ms" }}>
-            The Marketplace <br />
-            for AI Agents
+            Find, test, and ship <br />
+            AI agents from one platform
           </h1>
           
           <p className="animate-fade-in-up mb-12 max-w-3xl text-lg font-medium leading-[1.6] text-[#8a8fa8] md:text-xl" style={{ animationDelay: "200ms" }}>
-            Discover, test, and integrate elite autonomous agents. Publish your own agents and get paid per API call. The infrastructure layer for the agentic economy.
+            Browse production-ready agents, validate them in a live sandbox, and generate integration-ready SDKs. Publish your own agents with usage-based pricing and creator analytics.
           </p>
           
           <div className="animate-fade-in-up mb-16 flex flex-wrap items-center justify-center gap-4" style={{ animationDelay: "300ms" }}>
-            <Link href="/agents" className="red-glow-hover flex items-center gap-2 rounded-[6px] bg-[#e74c3c] px-8 py-4 font-semibold text-white transition-colors hover:bg-[#ff5645]">
+            <Link href="/agents" className={cn(buttonVariants({ variant: "default", size: "lg" }), "rounded-full px-8")}>
               Explore Agents
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
             </Link>
-            <Link href="/publish" className="flex items-center gap-2 rounded-[6px] border border-white/20 bg-transparent px-8 py-4 font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/[0.04]">
-              Publish Your Agent
+            <Link href="/publish" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "rounded-full px-8")}>
+              Publish an Agent
             </Link>
           </div>
 
           <div className="animate-fade-in-up flex flex-wrap items-center justify-center gap-4 font-mono text-xs uppercase tracking-[0.1em] text-[#8a8fa8]" style={{ animationDelay: "500ms" }}>
-            <span>GitHub OAuth Protected</span>
+            <span>GitHub access</span>
             <span className="text-white/20 hidden sm:inline">•</span>
-            <span>Live Sandbox Testing</span>
+            <span>Live sandbox</span>
             <span className="text-white/20 hidden sm:inline">•</span>
-            <span>Instant SDK Generation</span>
+            <span>Generated SDKs</span>
           </div>
         </div>
       </div>

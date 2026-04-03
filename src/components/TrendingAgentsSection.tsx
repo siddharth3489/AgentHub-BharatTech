@@ -43,13 +43,13 @@ export const TrendingAgentsSection = () => {
               <div className="max-w-2xl">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#e74c3c]/25 bg-[#e74c3c]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#ff8c7e]">
                   <Flame className="h-3.5 w-3.5" />
-                  Trending AI Agents
+                  Trending Repositories
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">
-                  What builders are tracking right now
+                  Repositories with strong recent momentum
                 </h2>
                 <p className="mt-3 max-w-xl text-sm leading-6 text-[#8a8fa8] md:text-base">
-                  A live-looking shelf of agent-adjacent repositories and projects with high recent momentum, updated from the repo’s trending feed.
+                  A curated view of repositories and tools gaining traction across the agent ecosystem.
                 </p>
               </div>
 
@@ -70,7 +70,7 @@ export const TrendingAgentsSection = () => {
                     >
                       <div className="mb-2 flex items-center justify-between">
                         <span className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#ff8c7e]">
-                          Picked
+                          Selected
                         </span>
                         <Sparkles className="h-4 w-4 text-[#ff8c7e]" />
                       </div>
@@ -161,7 +161,7 @@ export const TrendingAgentsSection = () => {
                         </div>
                         <div>
                           <div className="font-bold text-[#e8eaf0]">{agent.velocityScore}/99</div>
-                          <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#8a8fa8]">Heat</p>
+                          <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#8a8fa8]">Velocity</p>
                         </div>
                       </div>
 

@@ -8,17 +8,17 @@ export default function LaunchpadPage() {
   return (
     <FeaturePageShell
       eyebrow="Launchpad"
-      title="Publishing economics, workflow previews, and what is coming next"
-      description="This route is the expansion lane for builders. It keeps monetization, orchestration previews, and roadmap-facing surfaces off the homepage while preserving the same motion-heavy premium presentation."
+      title="Plan launches, pricing, and workflow expansion"
+      description="Review the creator tooling available today and preview the workflow features still in development. Launchpad keeps forward-looking product work visible without overstating what is live."
       metrics={[
-        { label: "Roadmap", value: "Active" },
-        { label: "Workflow", value: "Visual" },
-        { label: "Monetize", value: "Ready" },
+        { label: "Publish", value: "Live today" },
+        { label: "Workflows", value: "Preview" },
+        { label: "Creator", value: "Tracked" },
       ]}
       quickLinks={[
-        { href: "/publish", label: "Publish Agent" },
-        { href: "/chains", label: "Workflows" },
-        { href: "/dashboard", label: "Creator Console" },
+        { href: "/publish", label: "Publish an Agent" },
+        { href: "/chains", label: "View Workflows" },
+        { href: "/dashboard", label: "Open Dashboard" },
       ]}
     >
       <ScrollGlassReveal delayMs={40}>

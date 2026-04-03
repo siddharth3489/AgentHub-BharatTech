@@ -61,16 +61,16 @@ export function SDKPreview() {
   return (
     <section className="section-shell lux-border w-full py-24 md:py-32">
       <div aria-hidden="true" className="pointer-events-none absolute right-[10%] top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.14)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12 lg:px-20">
+      <div className="page-container">
         <div className="flex flex-col items-center gap-16 lg:flex-row-reverse">
           <div className="max-w-xl flex-1">
-            <span className="section-badge mb-6">SDK Layer</span>
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Native SDK Generation</h2>
+            <span className="section-badge mb-6">SDKs</span>
+            <h2 className="mb-6 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Generate client code that matches the agent contract</h2>
             <p className="mb-8 text-lg leading-relaxed text-[#8a8fa8]">
-              Stop manually parsing REST endpoints. AgentHub automatically generates type-safe, validated SDK snippets matching the exact schema of the agent you choose.
+              Use generated snippets to call marketplace agents with the correct payload shape, auth pattern, and endpoint path.
             </p>
             <Link href="/docs" className="flex w-fit items-center gap-2 rounded-md border border-white/10 bg-[#141418] px-6 py-3 text-sm font-medium text-[#e8eaf0] transition-colors hover:border-white/30">
-              View Documentation
+              View integration docs
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </Link>
           </div>

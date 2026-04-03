@@ -132,26 +132,26 @@ function AgentsContent() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,76,60,0.16)_0%,_rgba(8,8,8,0)_34%),linear-gradient(180deg,_rgba(20,20,24,0.8)_0%,_rgba(8,8,8,1)_45%)]" />
       <div className="absolute inset-0 hero-grid opacity-[0.04]" />
 
-      <div className="relative mx-auto max-w-[1280px] px-6 pb-16 pt-32 md:px-12 lg:px-20">
+      <div className="page-container relative pb-16 pt-32">
         <div className="mb-14 text-center">
-          <span className="mb-6 inline-flex rounded-full border border-[#e74c3c]/25 bg-[#e74c3c]/8 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#ff8c7e]">
-            [ Marketplace ]
+          <span className="eyebrow-badge mb-6 inline-flex">
+            Marketplace
           </span>
           <h1 className="mx-auto mb-5 max-w-4xl text-4xl font-black tracking-tight text-[#e8eaf0] md:text-6xl">
-            Discover production-ready AI agents without leaving the platform
+            Browse production-ready AI agents
           </h1>
           <p className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-[#8a8fa8]">
-            Browse verified agents, compare latency and trust signals, and move from discovery to integration inside a single dark, high-signal workspace.
+            Search by capability, language, trust, and cost. Compare agents before you run them in the sandbox or move them into production.
           </p>
           <SearchBar />
         </div>
 
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-[20px] border border-white/8 bg-white/[0.03] px-5 py-4 backdrop-blur-xl">
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] border border-white/8 bg-white/[0.03] px-5 py-4 backdrop-blur-xl">
           <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#8a8fa8]">
-            {filteredAgents.length} agent{filteredAgents.length === 1 ? "" : "s"} matching your current filters
+            {filteredAgents.length} agent{filteredAgents.length === 1 ? "" : "s"} matched
           </div>
           <div className="text-sm text-[#cfd3df]">
-            {q ? <>Showing results for <span className="text-[#e8eaf0]">&quot;{q}&quot;</span></> : "Refine by capability, language, trust, and cost"}
+            {q ? <>Results for <span className="text-[#e8eaf0]">&quot;{q}&quot;</span></> : "Filter by capability, language, trust, and price"}
           </div>
         </div>
 

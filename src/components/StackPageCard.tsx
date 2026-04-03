@@ -33,7 +33,7 @@ export const StackPageCard = ({ agent }: { agent: Agent }) => {
           href={`/agents/${agent.id}`}
           className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#ff8c7e] transition-colors hover:text-white"
         >
-          Integrate this agent
+          View agent
           <ArrowRight className="h-4 w-4" />
         </Link>
       </CardContent>

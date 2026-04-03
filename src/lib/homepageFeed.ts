@@ -85,7 +85,7 @@ export const FALLBACK_TRENDING_AGENTS: TrendingAgentFeedItem[] = [
     stars: 29800,
     forks: 3900,
     language: "Python",
-    topics: ["crew", "workflow", "agentic-ai"],
+    topics: ["crew", "workflow", "agents"],
     updatedAt: "2026-03-16T14:15:00.000Z",
     velocityScore: 90,
   },

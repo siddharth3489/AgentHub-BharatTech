@@ -227,36 +227,36 @@ export const DeveloperAnalytics = ({ agents }: { agents: Agent[] }) => {
     <section className="mt-16 space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-white">Developer Analytics</h2>
-          <p className="mt-2 text-sm text-muted-foreground">Usage, performance, and revenue signals across your published agents.</p>
+          <h2 className="text-3xl font-bold tracking-tight text-white">Usage and revenue</h2>
+          <p className="mt-2 text-sm text-muted-foreground">Operational signals across the agents published from your account.</p>
         </div>
-        <div className={`rounded-full border px-4 py-2 text-sm ${pulse ? "border-emerald-400/40 bg-emerald-500/10 text-emerald-300" : "border-white/10 bg-white/5 text-blue-100/70"}`}>
-          Calls today: {callsToday}
+        <div className={`rounded-full border px-4 py-2 text-sm ${pulse ? "border-emerald-400/40 bg-emerald-500/10 text-emerald-300" : "border-white/10 bg-white/5 text-[#cfd3df]"}`}>
+          Requests today: {callsToday}
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        <Card className="border-white/10 bg-[#111827]"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-blue-100/40">Total Calls</p><p className="mt-3 text-3xl font-mono text-white">{totals.totalCalls.toLocaleString()}</p></CardContent></Card>
-        <Card className="border-white/10 bg-[#111827]"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-blue-100/40">Revenue Earned</p><p className="mt-3 text-3xl font-mono text-white">${totals.revenue.toFixed(2)}</p></CardContent></Card>
-        <Card className="border-white/10 bg-[#111827]"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-blue-100/40">Avg Trust Score</p><p className="mt-3 text-3xl font-mono text-white">{Math.round(totals.avgTrust)}</p></CardContent></Card>
-        <Card className="border-white/10 bg-[#111827]"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-blue-100/40">Active Agents</p><p className="mt-3 text-3xl font-mono text-white">{agents.length}</p></CardContent></Card>
+        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#8a8fa8]">Requests</p><p className="mt-3 text-3xl font-mono text-white">{totals.totalCalls.toLocaleString()}</p></CardContent></Card>
+        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#8a8fa8]">Estimated revenue</p><p className="mt-3 text-3xl font-mono text-white">${totals.revenue.toFixed(2)}</p></CardContent></Card>
+        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#8a8fa8]">Average trust</p><p className="mt-3 text-3xl font-mono text-white">{Math.round(totals.avgTrust)}</p></CardContent></Card>
+        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#8a8fa8]">Published agents</p><p className="mt-3 text-3xl font-mono text-white">{agents.length}</p></CardContent></Card>
       </div>
 
       <div className="grid gap-6 xl:grid-cols-2">
-        <Card className="border-white/10 bg-[#0d1117]"><CardContent className="p-6"><h3 className="mb-4 text-lg font-semibold text-white">Daily calls · last 14 days</h3><div className="h-72"><ResponsiveContainer width="100%" height="100%"><BarChart data={dailyCalls}><CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} /><XAxis dataKey="label" stroke="rgba(255,255,255,0.45)" /><YAxis stroke="rgba(255,255,255,0.45)" /><Tooltip contentStyle={{ background: "#020817", border: "1px solid rgba(255,255,255,0.08)" }} /><Bar dataKey="count" fill="#0F5FFF" radius={[8, 8, 0, 0]} /></BarChart></ResponsiveContainer></div></CardContent></Card>
-        <Card className="border-white/10 bg-[#0d1117]"><CardContent className="p-6"><h3 className="mb-4 text-lg font-semibold text-white">Latency trend · last 7 days</h3><div className="h-72"><ResponsiveContainer width="100%" height="100%"><LineChart data={latencyTrend}><CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} /><XAxis dataKey="label" stroke="rgba(255,255,255,0.45)" /><YAxis stroke="rgba(255,255,255,0.45)" /><Tooltip contentStyle={{ background: "#020817", border: "1px solid rgba(255,255,255,0.08)" }} /><Line type="monotone" dataKey="latency" stroke="#0F5FFF" strokeWidth={3} dot={{ r: 3 }} /></LineChart></ResponsiveContainer></div></CardContent></Card>
+        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><h3 className="mb-4 text-lg font-semibold text-white">Daily requests · last 14 days</h3><div className="h-72"><ResponsiveContainer width="100%" height="100%"><BarChart data={dailyCalls}><CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} /><XAxis dataKey="label" stroke="rgba(255,255,255,0.45)" /><YAxis stroke="rgba(255,255,255,0.45)" /><Tooltip contentStyle={{ background: "#09090b", border: "1px solid rgba(255,255,255,0.08)" }} /><Bar dataKey="count" fill="#e74c3c" radius={[8, 8, 0, 0]} /></BarChart></ResponsiveContainer></div></CardContent></Card>
+        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><h3 className="mb-4 text-lg font-semibold text-white">Latency trend · last 7 days</h3><div className="h-72"><ResponsiveContainer width="100%" height="100%"><LineChart data={latencyTrend}><CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} /><XAxis dataKey="label" stroke="rgba(255,255,255,0.45)" /><YAxis stroke="rgba(255,255,255,0.45)" /><Tooltip contentStyle={{ background: "#09090b", border: "1px solid rgba(255,255,255,0.08)" }} /><Line type="monotone" dataKey="latency" stroke="#ff8c7e" strokeWidth={3} dot={{ r: 3 }} /></LineChart></ResponsiveContainer></div></CardContent></Card>
       </div>
 
-      <Card className="border-white/10 bg-[#0d1117]">
+      <Card className="border-white/10 bg-transparent">
         <CardContent className="p-6">
           <h3 className="mb-4 text-lg font-semibold text-white">Per-agent breakdown</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-white/10 text-blue-100/45">
+                <tr className="border-b border-white/10 text-[#8a8fa8]">
                   {[
                     ["name", "Agent Name"],
-                    ["calls", "Calls (7d)"],
+                    ["calls", "Requests (7d)"],
                     ["latency", "Avg Latency"],
                     ["trust", "Trust Score"],
                     ["rating", "Rating"],

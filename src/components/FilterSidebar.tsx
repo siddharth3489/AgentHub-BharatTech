@@ -41,7 +41,7 @@ export const FilterSidebar = ({ agents }: { agents: Agent[] }) => {
       <div className="flex items-center justify-between border-b border-white/8 pb-5">
         <div>
           <h3 className="text-lg font-semibold tracking-tight text-[#e8eaf0]">Filters</h3>
-          <p className="mt-1 text-sm text-[#8a8fa8]">Narrow the marketplace to the exact agent profile you need.</p>
+          <p className="mt-1 text-sm text-[#8a8fa8]">Refine the catalog to the agents that fit your requirements.</p>
         </div>
         <button
           type="button"
@@ -54,11 +54,11 @@ export const FilterSidebar = ({ agents }: { agents: Agent[] }) => {
       </div>
 
       <div>
-        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#8a8fa8]">Sort By</h4>
+        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#8a8fa8]">Sort</h4>
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="w-full rounded-xl border border-white/10 bg-[#080808] p-3 text-sm text-[#e8eaf0] shadow-sm outline-none transition-colors focus:border-[#e74c3c]/55"
+          className="control-shell select-shell bg-[#080808] text-sm"
         >
           <option value="newest">Newest</option>
           <option value="used">Most Used</option>
@@ -68,7 +68,7 @@ export const FilterSidebar = ({ agents }: { agents: Agent[] }) => {
       </div>
 
       <div>
-        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#8a8fa8]">Max Cost / Call</h4>
+        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#8a8fa8]">Price Ceiling</h4>
         <div className="mb-2 flex items-center justify-between">
           <span className="text-xs text-[#8a8fa8]">$0</span>
           <span className="text-xs font-mono font-bold text-[#ff8c7e]">${maxCost.toFixed(3)}</span>
@@ -84,7 +84,7 @@ export const FilterSidebar = ({ agents }: { agents: Agent[] }) => {
       </div>
 
       <div>
-        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#8a8fa8]">Min Trust Score</h4>
+        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#8a8fa8]">Minimum Trust</h4>
         <div className="mb-2 flex items-center justify-between">
           <span className="text-xs text-[#8a8fa8]">0</span>
           <span className="text-xs font-mono font-bold text-[#ff8c7e]">{minTrust}</span>

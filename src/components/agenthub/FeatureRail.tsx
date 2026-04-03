@@ -10,7 +10,7 @@ type RailVariant = "sticky" | "attached";
 const statusLabel: Record<FeatureNavItem["status"], string> = {
   live: "LIVE",
   new: "NEW",
-  soon: "SOON",
+  soon: "PREVIEW",
 };
 
 const statusClassName: Record<FeatureNavItem["status"], string> = {
@@ -28,8 +28,8 @@ const pickItems = (titles: string[]) =>
     .filter((item): item is FeatureNavItem => Boolean(item));
 
 const railGroups = [
-  { title: "Core Navigation", items: pickItems(coreItems) },
-  { title: "Builder Tools", items: pickItems(builderItems) },
+  { title: "Product", items: pickItems(coreItems) },
+  { title: "Creator Tools", items: pickItems(builderItems) },
 ];
 
 const isItemActive = (pathname: string, href: string) => {
@@ -68,7 +68,7 @@ export function FeatureRail({
                 AgentHub
               </div>
               <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8a8fa8]">
-                Product Map
+                Navigation
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@ export function FeatureQuickMenu({ className }: { className?: string }) {
               "inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors",
               active
                 ? "border-[#e74c3c]/28 bg-[#e74c3c]/10 text-[#ff8c7e]"
-                : "border-white/10 bg-white/[0.03] text-[#8a8fa8] hover:border-white/18 hover:text-[#e8eaf0]"
+                : "border-white/10 bg-white/[0.03] text-[#8a8fa8] hover:border-[#e74c3c]/20 hover:text-[#e8eaf0]"
             )}
           >
             <item.icon className="h-3.5 w-3.5" />

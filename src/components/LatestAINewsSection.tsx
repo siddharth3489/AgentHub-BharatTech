@@ -40,13 +40,13 @@ export const LatestAINewsSection = () => {
         <div className="mb-6">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#e74c3c]/25 bg-[#e74c3c]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-[#ff8c7e]">
             <Newspaper className="h-3.5 w-3.5" />
-            Latest AI News
+            Market Intelligence
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-[#e8eaf0] md:text-3xl">
-            AI and agent news that moves the market
+            Coverage that matters to builders
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-[#8a8fa8]">
-            A curated stream of recent AI developments, agent ecosystem movement, and platform shifts that matter to builders.
+            Recent reporting across models, tooling, and platform changes that shape the agent ecosystem.
           </p>
         </div>
 

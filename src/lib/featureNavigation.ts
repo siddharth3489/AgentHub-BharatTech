@@ -28,14 +28,14 @@ export const featureNavItems: FeatureNavItem[] = [
   {
     title: "Home",
     href: "/",
-    description: "Fast entry into the full AgentHub stack.",
+    description: "Overview of discovery, validation, and publishing.",
     icon: House,
     status: "live",
   },
   {
     title: "Marketplace",
     href: "/agents",
-    description: "Browse verified agents with filters and trust signals.",
+    description: "Browse agents by capability, trust, language, and price.",
     icon: LayoutGrid,
     status: "live",
     topNav: true,
@@ -43,7 +43,7 @@ export const featureNavItems: FeatureNavItem[] = [
   {
     title: "Platform",
     href: "/platform",
-    description: "Explore sandbox, SDKs, and core infra flows.",
+    description: "Run sandbox tests, inspect schemas, and generate SDKs.",
     icon: Shield,
     status: "new",
     topNav: true,
@@ -51,7 +51,7 @@ export const featureNavItems: FeatureNavItem[] = [
   {
     title: "Signal",
     href: "/signal",
-    description: "Track trending repos, AI news, and live activity.",
+    description: "Track repositories, market coverage, and marketplace activity.",
     icon: Activity,
     status: "new",
     topNav: true,
@@ -59,7 +59,7 @@ export const featureNavItems: FeatureNavItem[] = [
   {
     title: "Repo Scan",
     href: "/scan",
-    description: "Map repositories to missing agents and workflows.",
+    description: "Analyze a GitHub repository and identify agent opportunities.",
     icon: Github,
     status: "live",
     topNav: true,
@@ -67,7 +67,7 @@ export const featureNavItems: FeatureNavItem[] = [
   {
     title: "Workflows",
     href: "/chains",
-    description: "Compose multi-agent pipelines and orchestration paths.",
+    description: "Compose saved workflows across multiple agents.",
     icon: Merge,
     status: "live",
     topNav: true,
@@ -75,21 +75,21 @@ export const featureNavItems: FeatureNavItem[] = [
   {
     title: "Publish",
     href: "/publish",
-    description: "Launch your own agent with pricing and schemas.",
+    description: "List an agent with schemas, pricing, and sample payloads.",
     icon: Rocket,
     status: "live",
   },
   {
     title: "Creator",
     href: "/dashboard",
-    description: "Manage keys, revenue, and creator performance.",
+    description: "Manage API keys, usage, earnings, and published agents.",
     icon: Key,
     status: "live",
   },
   {
     title: "Launchpad",
     href: "/launchpad",
-    description: "See roadmap previews and upcoming premium tools.",
+    description: "Preview upcoming workflow and creator tooling.",
     icon: Sparkles,
     status: "soon",
   },
@@ -111,33 +111,33 @@ export const homePortalCards: PortalCard[] = [
   {
     title: "Platform",
     href: "/platform",
-    eyebrow: "Build + Validate",
+    eyebrow: "Validation",
     description:
-      "A tighter route for the product surface: sandbox execution, SDK generation, delivery flow, and infrastructure signals.",
+      "Test agents, inspect structured inputs and outputs, and generate integration-ready SDK snippets.",
     icon: TerminalSquare,
-    bullets: ["Live sandbox", "SDK delivery", "Core infrastructure"],
+    bullets: ["Sandbox execution", "Schema inspection", "Generated SDKs"],
     accentClass:
       "from-[#e74c3c]/16 via-[#141418]/82 to-[#080808]",
   },
   {
     title: "Signal",
     href: "/signal",
-    eyebrow: "Watch + React",
+    eyebrow: "Market Intelligence",
     description:
-      "Trending agents, AI market movement, and marketplace activity now live in a dedicated stream instead of stretching the homepage.",
+      "Follow trending repositories, AI news coverage, and recent marketplace activity from one route.",
     icon: Activity,
-    bullets: ["Trending repos", "AI news", "Live marketplace feed"],
+    bullets: ["Trending repositories", "Recent coverage", "Marketplace activity"],
     accentClass:
       "from-white/[0.08] via-[#141418]/82 to-[#080808]",
   },
   {
     title: "Launchpad",
     href: "/launchpad",
-    eyebrow: "Ship + Expand",
+    eyebrow: "Builder Preview",
     description:
-      "Publishing economics, roadmap surfaces, and chained workflow previews are grouped into one premium expansion lane.",
+      "Review creator tooling, workflow previews, and the next layer of publishing infrastructure.",
     icon: Sparkles,
-    bullets: ["Publishing flow", "Revenue surfaces", "Coming soon previews"],
+    bullets: ["Creator workflow", "Revenue tools", "Workflow previews"],
     accentClass:
       "from-[#ff8c7e]/14 via-[#141418]/82 to-[#080808]",
   },
@@ -147,25 +147,25 @@ export const homeQuickActions = [
   {
     title: "Marketplace",
     href: "/agents",
-    description: "Find an agent instantly.",
+    description: "Browse production-ready agents.",
     icon: LayoutGrid,
   },
   {
     title: "Repo Scan",
     href: "/scan",
-    description: "Analyze your stack and gaps.",
+    description: "Analyze a GitHub repository.",
     icon: Search,
   },
   {
     title: "Workflows",
     href: "/chains",
-    description: "Compose autonomous pipelines.",
+    description: "Build multi-agent workflows.",
     icon: Merge,
   },
   {
     title: "Publish",
     href: "/publish",
-    description: "Launch and monetize your agent.",
+    description: "List an agent on AgentHub.",
     icon: Rocket,
   },
 ];

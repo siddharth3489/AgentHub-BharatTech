@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function StrongCTA() {
   return (
@@ -7,31 +9,30 @@ export function StrongCTA() {
       <div className="animate-aurora-drift absolute left-[6%] top-10 h-52 w-52 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.18)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
       <div className="animate-aurora-drift-reverse absolute right-[8%] bottom-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.08)_0%,_rgba(255,255,255,0)_70%)] blur-3xl" />
 
-      <div className="relative z-10 mx-auto w-full px-6 md:px-12 lg:px-20">
+      <div className="page-container relative z-10 w-full">
         <div className="glass-panel w-full rounded-[2rem] px-6 py-12 md:px-10 lg:px-14 lg:py-16">
           <div className="mx-auto max-w-5xl text-center">
             <h2 className="mb-6 text-4xl font-black tracking-tight text-[#e8eaf0] md:text-6xl">
-              The agentic economy <br className="hidden md:block" />
-              starts here.
+              Build with agents that are ready <br className="hidden md:block" />
+              for production.
             </h2>
             <p className="mx-auto mb-12 max-w-3xl text-lg text-[#8a8fa8]">
-              Stop evaluating agents through fragmented marketing pages. Join the premier
-              marketplace for deterministic, high-performance autonomous models.
+              Evaluate agents in one place, compare their contracts and trust signals, and move from discovery to integration without piecing together separate tools.
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/agents"
-                className="red-glow-hover flex w-full items-center justify-center gap-2 rounded-[6px] bg-[#e74c3c] px-8 py-4 font-semibold text-white transition-colors hover:bg-[#ff5645] sm:w-auto"
+                className={cn(buttonVariants({ variant: "default", size: "lg" }), "w-full rounded-full px-8 sm:w-auto")}
               >
-                Start Exploring Agents
+                Explore Agents
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
               </Link>
               <Link
                 href="/publish"
-                className="flex w-full items-center justify-center gap-2 rounded-[6px] border border-white/20 bg-transparent px-8 py-4 font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/[0.04] sm:w-auto"
+                className={cn(buttonVariants({ variant: "outline", size: "lg" }), "w-full rounded-full px-8 sm:w-auto")}
               >
-                Publish Your First Agent
+                Publish an Agent
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
               </Link>
             </div>
@@ -46,7 +47,7 @@ export function Footer() {
   return (
     <footer className="relative w-full pt-20 pb-12">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-[16%] top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12 lg:px-20">
+      <div className="page-container">
         
         <div className="grid grid-cols-2 md:grid-cols-4 md:gap-x-12 gap-y-12 mb-20 text-sm">
           {/* Logo Col */}
@@ -59,26 +60,26 @@ export function Footer() {
               <span className="font-bold tracking-tight text-[#e8eaf0]">AgentHub</span>
             </Link>
             <p className="text-[#8a8fa8] leading-relaxed">
-              The infrastructure marketplace for the global network of autonomous agents.
+              Discover, validate, and publish AI agents from one platform built for technical teams.
             </p>
           </div>
 
           {/* Links 1 */}
           <div className="flex flex-col">
             <span className="text-[#e8eaf0] font-bold tracking-tight mb-4">Product</span>
-            <Link href="/marketplace" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Marketplace</Link>
-            <Link href="/sandbox" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Live Sandbox</Link>
-            <Link href="/chaining" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Agent Chaining <span className="ml-1 text-[9px] font-mono text-[#e74c3c] border border-[#e74c3c]/30 px-1 py-0.5 rounded">BETA</span></Link>
-            <Link href="/pricing" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors">Pricing</Link>
+            <Link href="/agents" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Marketplace</Link>
+            <Link href="/platform" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Platform</Link>
+            <Link href="/signal" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Signal</Link>
+            <Link href="/chains" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors">Workflows</Link>
           </div>
 
           {/* Links 2 */}
           <div className="flex flex-col">
             <span className="text-[#e8eaf0] font-bold tracking-tight mb-4">Developers</span>
-            <Link href="/docs" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Documentation</Link>
-            <Link href="/publish" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Publish Agent</Link>
-            <Link href="/sdk" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Generate SDKs</Link>
-            <Link href="/status" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors">API Status</Link>
+            <Link href="/scan" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Repository Scan</Link>
+            <Link href="/publish" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Publish</Link>
+            <Link href="/dashboard" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors mb-3">Creator Dashboard</Link>
+            <Link href="/docs" className="text-[#8a8fa8] hover:text-[#e8eaf0] transition-colors">Documentation</Link>
           </div>
 
           {/* Links 3 */}
@@ -94,9 +95,9 @@ export function Footer() {
         <div className="pt-8 border-t border-white/[0.04] flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-[#8a8fa8]">
           <span>© {new Date().getFullYear()} AgentHub Inc. All rights reserved.</span>
           <div className="flex items-center gap-4">
-            <span className="hidden md:inline">Built with GitHub OAuth</span>
+            <span className="hidden md:inline">GitHub-authenticated access</span>
             <span className="hidden md:inline border-r border-white/10 h-3"></span>
-            <span>Powered by AgentHub API</span>
+            <span>Agent discovery, validation, and integration</span>
           </div>
         </div>
 

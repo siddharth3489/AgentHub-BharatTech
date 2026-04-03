@@ -64,11 +64,11 @@ export const AgentCard = ({ agent }: { agent: Agent }) => {
           <div className="flex gap-4">
             <span className="flex items-center gap-1 transition-colors group-hover:text-[#ffd07f]">
               <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-              {agent.rating?.toFixed(1) || "New"}
+              {agent.rating?.toFixed(1) || "No ratings"}
             </span>
             <span className="flex items-center gap-1 truncate transition-colors group-hover:text-[#ff8c7e]">
               <Activity className="w-3.5 h-3.5" />
-              {formatCalls(agent.totalCalls || 0)} calls
+              {formatCalls(agent.totalCalls || 0)} requests
             </span>
           </div>
           <div className="flex items-baseline gap-1 text-right text-[#e8eaf0]">

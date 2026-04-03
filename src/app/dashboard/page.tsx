@@ -36,12 +36,12 @@ export default function DashboardPage() {
       <div className="min-h-[70vh] px-6 py-20 text-[#e8eaf0]">
         <div className="mx-auto flex max-w-2xl flex-col items-center rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.18),transparent_55%),#0b0b0f] px-8 py-14 text-center shadow-[0_28px_90px_rgba(0,0,0,0.4)]">
           <CloudFog className="mb-5 h-16 w-16 text-[#ff8c7e]" />
-          <span className="mb-5 inline-flex rounded-full border border-[#e74c3c]/30 bg-[#e74c3c]/10 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[#ff8c7e]">
-            [ Developer Access ]
+          <span className="eyebrow-badge mb-5 inline-flex">
+            Creator Dashboard
           </span>
-          <h2 className="mb-3 text-3xl font-bold tracking-tight">Authentication Required</h2>
+          <h2 className="mb-3 text-3xl font-bold tracking-tight">Sign in to open your creator dashboard</h2>
           <p className="max-w-md text-base leading-7 text-[#8a8fa8]">
-            Sign in with GitHub to open your creator dashboard, manage API keys, and track the performance of your published agents.
+            Use GitHub access to manage API keys, review usage, and monitor the performance of your published agents.
           </p>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="mx-auto min-h-screen max-w-[1280px] px-6 py-14 text-[#e8eaf0] md:px-10">
+    <div className="page-container min-h-screen py-14 text-[#e8eaf0]">
       <div className="mb-12 flex flex-col gap-8 rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(231,76,60,0.18),transparent_42%),#0b0b0f] p-8 shadow-[0_24px_90px_rgba(0,0,0,0.4)] lg:flex-row lg:items-start lg:justify-between">
         <div className="flex items-center gap-6">
           <Image
@@ -86,35 +86,35 @@ export default function DashboardPage() {
             alt={`${githubProfile.githubUsername} avatar`}
           />
           <div>
-            <span className="mb-3 inline-flex rounded-full border border-[#e74c3c]/30 bg-[#e74c3c]/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-[#ff8c7e]">
-              [ Creator Console ]
+            <span className="eyebrow-badge mb-3 inline-flex">
+              Creator Dashboard
             </span>
-            <h1 className="text-3xl font-bold md:text-4xl">{githubProfile.githubUsername} Dashboard</h1>
+            <h1 className="text-3xl font-bold md:text-4xl">{githubProfile.githubUsername}</h1>
             <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm text-[#8a8fa8]">
-              <CheckCircle2 className="h-4 w-4 text-[#ff8c7e]" /> Developer Account Verified
+              <CheckCircle2 className="h-4 w-4 text-[#ff8c7e]" /> Verified creator account
             </p>
           </div>
         </div>
         <p className="max-w-md text-sm leading-7 text-[#8a8fa8]">
-          Track earnings, rotate keys, and watch your marketplace agents perform in one place.
+          Review usage, rotate API keys, and monitor the agents you publish from one console.
         </p>
       </div>
 
       <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-3">
         <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#101014] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#e74c3c]/50 to-transparent" />
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a8fa8]">Total Earnings</p>
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a8fa8]">Estimated earnings</p>
           <div className="text-4xl font-mono">${totalEarnings.toFixed(2)}</div>
         </div>
         <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#101014] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#e74c3c]/50 to-transparent" />
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a8fa8]">Active Agents</p>
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a8fa8]">Published agents</p>
           <div className="text-4xl font-mono">{myAgents.length}</div>
         </div>
         <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#101014] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#e74c3c]/50 to-transparent" />
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a8fa8]">Global Usage</p>
-          <div className="text-4xl font-mono">{myAgents.reduce((a, c) => a + (c.totalCalls || 0), 0).toLocaleString()} <span className="text-sm text-[#8a8fa8]">calls</span></div>
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#8a8fa8]">Requests</p>
+          <div className="text-4xl font-mono">{myAgents.reduce((a, c) => a + (c.totalCalls || 0), 0).toLocaleString()} <span className="text-sm text-[#8a8fa8]">total</span></div>
         </div>
       </div>
 
@@ -126,17 +126,17 @@ export default function DashboardPage() {
           <div className="rounded-[1.75rem] border border-white/10 bg-[#101014] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
             <div className="mb-6 flex items-end gap-3">
               <div className="flex-1">
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.18em] text-[#8a8fa8]">New Key Label</label>
+                <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.18em] text-[#8a8fa8]">Key label</label>
                 <input
                   type="text"
                   value={newKeyLabel}
                   onChange={e => setNewKeyLabel(e.target.value)}
-                  placeholder="e.g. Production App"
-                  className="w-full rounded-xl border border-white/10 bg-black/40 px-3 py-3 text-sm text-[#e8eaf0] outline-none transition focus:border-[#e74c3c]/50 focus:ring-1 focus:ring-[#e74c3c]/40"
+                  placeholder="Production app"
+                  className="control-shell bg-black/40 text-sm"
                 />
               </div>
               <Button onClick={createKey} className="h-11 rounded-xl bg-[#e74c3c] px-5 text-white hover:bg-[#f05a48]">
-                <Plus className="w-4 h-4 mr-2" /> Create Key
+                <Plus className="w-4 h-4 mr-2" /> Create key
               </Button>
             </div>
 
@@ -161,13 +161,13 @@ export default function DashboardPage() {
         </div>
 
         <div>
-          <h2 className="mb-6 text-2xl font-bold">Your Published Agents</h2>
+          <h2 className="mb-6 text-2xl font-bold">Published agents</h2>
           {myAgents.length === 0 && !isLoading ? (
             <div className="rounded-[1.75rem] border border-dashed border-[#e74c3c]/25 bg-[linear-gradient(180deg,rgba(231,76,60,0.08),rgba(255,255,255,0.02))] p-10 text-center">
-              <h3 className="text-xl font-semibold">You haven&apos;t published any agents yet</h3>
-              <p className="mt-2 text-sm text-[#8a8fa8]">Publish your first agent to start generating usage, trust signals, and revenue.</p>
+              <h3 className="text-xl font-semibold">No published agents yet</h3>
+              <p className="mt-2 text-sm text-[#8a8fa8]">Publish your first agent to start collecting requests, trust signals, and revenue.</p>
               <Link href="/publish" className="mt-6 inline-flex h-11 items-center rounded-xl bg-[#e74c3c] px-5 text-sm font-medium text-white hover:bg-[#f05a48]">
-                Publish your first agent
+                Publish an agent
               </Link>
             </div>
           ) : (
@@ -181,12 +181,12 @@ export default function DashboardPage() {
       {showKeyModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4">
           <div className="w-full max-w-lg rounded-[1.75rem] border border-white/10 bg-[#0e0f14] p-6 text-[#e8eaf0] shadow-[0_28px_90px_rgba(0,0,0,0.5)]">
-            <h3 className="mb-2 text-xl font-bold">API Key Created</h3>
+            <h3 className="mb-2 text-xl font-bold">API key created</h3>
             <p className="mb-6 rounded-xl border border-[#e74c3c]/20 bg-[#e74c3c]/10 p-3 text-sm text-[#ffb2a7]">
               Copy and store this key securely. For security reasons, it will only be shown once.
             </p>
             <div className="flex gap-2">
-              <input readOnly value={showKeyModal} className="w-full rounded-xl border border-white/10 bg-black px-4 py-3 font-mono text-[#ff8c7e]" />
+              <input readOnly value={showKeyModal} className="control-shell bg-black font-mono text-[#ff8c7e]" />
               <Button onClick={() => {
                 navigator.clipboard.writeText(showKeyModal);
                 toast("Copied!");

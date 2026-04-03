@@ -59,7 +59,7 @@ console.log(result);`;
   const onCopy = (code: string) => {
     navigator.clipboard.writeText(code);
     setCopied(true);
-    toast("Copied to clipboard!");
+    toast("Copied to clipboard.");
     setTimeout(() => setCopied(false), 2000);
   };
 

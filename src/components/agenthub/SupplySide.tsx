@@ -1,29 +1,29 @@
 export function SupplySide() {
   const steps = [
-    "Define Agent",
-    "Set Schema",
-    "Configure Pricing",
-    "Set Rate Limits",
+    "Describe Agent",
+    "Define Schemas",
+    "Set Pricing",
+    "Configure Limits",
     "Publish"
   ];
 
   const metrics = [
-    { label: "Total API Calls", value: "1,240,882", trend: "+12.5%" },
-    { label: "Total Earnings", value: "$2,481.76", trend: "+8.2%" },
-    { label: "Cost Per Call", value: "$0.002", trend: "0.0%" },
-    { label: "Active Integrations", value: "847", trend: "+24.1%" }
+    { label: "Pricing", value: "Usage-based", trend: "Per request" },
+    { label: "Schemas", value: "Structured", trend: "JSON contracts" },
+    { label: "Access", value: "GitHub", trend: "Creator identity" },
+    { label: "Monitoring", value: "Tracked", trend: "Usage and revenue" }
   ];
 
   return (
     <section className="section-shell w-full py-24 md:py-32">
       <div aria-hidden="true" className="pointer-events-none absolute left-[10%] top-[18%] h-60 w-60 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.13)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12 lg:px-20">
+      <div className="page-container">
         {/* Publishing Flow */}
         <div className="mb-32">
           <div className="mb-12">
-             <span className="section-badge mb-6">Supply Side</span>
-             <h2 className="mb-4 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">The Developer Protocol</h2>
-             <p className="max-w-2xl text-lg text-[#8a8fa8]">A deterministic publishing pipeline. Wrap your model or API, define your I/O schema mathematically, and start monetizing instantly.</p>
+             <span className="section-badge mb-6">Creator Workflow</span>
+             <h2 className="mb-4 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Publish an agent with a clear technical contract</h2>
+             <p className="max-w-2xl text-lg text-[#8a8fa8]">Define how the agent behaves, document the input and output schema, and list it with pricing that fits your API economics.</p>
           </div>
           
           <div className="glass-panel rounded-[2rem] border border-white/5 p-8 md:p-12">
@@ -54,8 +54,8 @@ export function SupplySide() {
         {/* Analytics Dashboard */}
         <div>
           <div className="mb-12">
-             <h2 className="mb-4 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Earn While You Sleep</h2>
-             <p className="max-w-2xl text-lg text-[#8a8fa8]">Per-call monetization creates a passive revenue stream for elite engineers. Track telemetry and payouts with zero abstraction.</p>
+             <h2 className="mb-4 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Creator operations at a glance</h2>
+             <p className="max-w-2xl text-lg text-[#8a8fa8]">Track pricing, usage, and account configuration with the same product language used across the marketplace and dashboard.</p>
           </div>
           
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -63,8 +63,7 @@ export function SupplySide() {
               <div key={metric.label} className="glass-panel flex flex-col rounded-[1.6rem] border border-white/5 p-6 transition-transform hover:-translate-y-1">
                 <span className="mb-4 font-mono text-xs uppercase tracking-wider text-[#8a8fa8]">{metric.label}</span>
                 <span className="mb-2 text-3xl font-bold tracking-tight text-[#e8eaf0]">{metric.value}</span>
-                <div className="flex items-center text-xs font-mono font-medium text-[#4ade80]">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <div className="flex items-center text-xs font-mono font-medium text-[#ff8c7e]">
                   {metric.trend}
                 </div>
               </div>

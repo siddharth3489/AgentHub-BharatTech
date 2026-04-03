@@ -63,13 +63,13 @@ function LoginPageContent() {
           <section className="animate-in fade-in slide-in-from-left-8 duration-700">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#e74c3c]/25 bg-[#e74c3c]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.26em] text-[#ff8c7e]">
               <Activity className="h-3.5 w-3.5" />
-              AgentHub Access
+              Access
             </div>
 
             <h1 className="max-w-4xl text-5xl font-black tracking-tight text-white md:text-7xl">
-              Enter the marketplace for
+              Sign in to manage
               <span className="block bg-gradient-to-r from-white via-[#ffb0a5] to-[#e74c3c] bg-clip-text text-transparent">
-                autonomous agents
+                agents and API access
               </span>
             </h1>
 
@@ -101,9 +101,9 @@ function LoginPageContent() {
                   <Github className="h-7 w-7 text-white" />
                 </div>
 
-                <h2 className="text-3xl font-bold tracking-tight text-white">Sign in with GitHub</h2>
+                <h2 className="text-3xl font-bold tracking-tight text-white">Continue with GitHub</h2>
                 <p className="mt-3 text-sm leading-7 text-[#a1a6ba]">
-                  We use GitHub identity to provision developer access, connect published agents to creators, and secure API key issuance.
+                  GitHub identity is used to provision developer access, connect published agents to creators, and secure API key issuance.
                 </p>
 
                 <Button

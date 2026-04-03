@@ -10,8 +10,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", weight: ["40
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "AgentHub | The Marketplace for AI Agents",
-  description: "AgentHub is the marketplace layer for the agentic AI economy. Discover, test, and integrate elite AI agents into your products.",
+  title: "AgentHub | Discover, test, and integrate AI agents",
+  description:
+    "Browse production-ready AI agents, validate them in a live sandbox, and ship integrations with generated SDKs.",
 };
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#080808] text-[#e8eaf0] min-h-screen flex flex-col font-sans selection:bg-[#c0392b]/40 selection:text-white`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#050505] text-[#e8eaf0] min-h-screen flex flex-col font-sans selection:bg-[#c0392b]/40 selection:text-white`}>
         <Providers>
           <TooltipProvider>
             <AgentHubNavbar />

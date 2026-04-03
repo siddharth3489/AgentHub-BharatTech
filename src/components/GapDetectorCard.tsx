@@ -29,7 +29,7 @@ export function GapDetectorCard({ gapInfo, onAdd }: { gapInfo: any; onAdd?: () =
         </div>
 
         <Button onClick={onAdd} className="group mt-4 w-full border border-white/10 bg-white/[0.04] font-bold text-[#e8eaf0] hover:bg-white/[0.08]">
-          Add to your stack <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          {onAdd ? "Add to workflow" : "Review recommendation"} <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Button>
       </div>
     </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { topFeatureNavItems } from "@/lib/featureNavigation";
+import { buttonVariants } from "@/components/ui/button";
 
 export function AgentHubNavbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +38,7 @@ export function AgentHubNavbar() {
 
   return (
     <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(8,8,8,0.95),rgba(8,8,8,0.82))] shadow-[0_14px_40px_rgba(0,0,0,0.28)] backdrop-blur-[16px]" : "border-b border-transparent bg-transparent"}`}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-20 h-20 flex items-center justify-between">
+      <div className="page-container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-8 h-8 bg-[#080808] border border-white/20 rounded-sm flex items-center justify-center relative shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
             <div className="absolute -top-px -right-px w-2 h-2 bg-[#e74c3c]"></div>
@@ -45,7 +46,7 @@ export function AgentHubNavbar() {
           </div>
           <span className="font-bold text-lg tracking-[-0.02em] text-[#e8eaf0]">AgentHub</span>
         </Link>
-        <div className="hidden md:flex items-center gap-3 text-[14px] font-medium text-[#8a8fa8]">
+        <div className="hidden md:flex items-center gap-2 text-[14px] font-medium text-[#8a8fa8]">
           {topFeatureNavItems.map((item) => {
             const active =
               pathname === item.href || pathname.startsWith(`${item.href}/`);
@@ -57,8 +58,8 @@ export function AgentHubNavbar() {
                 className={cn(
                   "rounded-full px-3 py-2 transition-colors",
                   active
-                    ? "bg-white/[0.06] text-[#e8eaf0]"
-                    : "hover:bg-white/[0.04] hover:text-white"
+                    ? "border border-white/10 bg-white/[0.06] text-[#e8eaf0]"
+                    : "border border-transparent hover:border-white/8 hover:bg-white/[0.04] hover:text-white"
                 )}
               >
                 {item.title}
@@ -66,10 +67,10 @@ export function AgentHubNavbar() {
             );
           })}
         </div>
-        <div className="flex items-center gap-6">
-          <Link href="/login" className="hidden text-[14px] font-medium text-[#8a8fa8] transition-colors hover:text-white sm:block">Sign in with GitHub</Link>
-          <Link href="/publish" className="text-[14px] font-medium bg-[#0f0f0f] border border-white/10 text-white px-4 py-2 rounded-[6px] hover:border-[#e74c3c]/50 hover:text-[#e74c3c] transition-all shadow-[0_0_15px_rgba(192,57,43,0)] hover:shadow-[0_0_15px_rgba(192,57,43,0.15)] flex items-center gap-2">
-            Publish Agent
+        <div className="flex items-center gap-3">
+          <Link href="/login" className="hidden text-[14px] font-medium text-[#8a8fa8] transition-colors hover:text-white sm:block">Sign in</Link>
+          <Link href="/publish" className={cn(buttonVariants({ variant: "outline", size: "sm" }), "rounded-full px-4")}>
+            Publish an Agent
           </Link>
         </div>
       </div>

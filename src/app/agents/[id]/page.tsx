@@ -68,7 +68,7 @@ export default function AgentDetailPage() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(231,76,60,0.14),transparent_30%),linear-gradient(180deg,rgba(20,20,24,0.7)_0%,rgba(8,8,8,1)_40%)]" />
       <div className="absolute inset-0 hero-grid opacity-[0.04]" />
 
-      <div className="relative mx-auto max-w-[1280px] px-6 pb-32 pt-28 md:px-12 lg:px-20">
+      <div className="page-container relative pb-32 pt-28">
         <div className="mb-12 flex flex-col items-start justify-between gap-8 lg:flex-row">
           <div className="max-w-3xl space-y-5">
             <div className="flex flex-wrap items-center gap-3">
@@ -87,7 +87,7 @@ export default function AgentDetailPage() {
                 alt=""
               />
               <div>
-                <div className="text-sm font-semibold text-[#8a8fa8]">Creator</div>
+                <div className="text-sm font-semibold text-[#8a8fa8]">Publisher</div>
                 <div className="flex items-center gap-1 font-mono text-base font-bold text-[#ff8c7e]">
                   @{agent.creatorUsername}
                 </div>
@@ -98,7 +98,7 @@ export default function AgentDetailPage() {
           <div className="w-full shrink-0 space-y-4 lg:w-96">
             <div className="grid grid-cols-2 gap-4 rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,22,0.98),rgba(9,9,11,0.98))] p-6 shadow-[0_18px_45px_rgba(0,0,0,0.26)]">
               <div className="space-y-1">
-                <div className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#8a8fa8]"><Activity className="h-3.5 w-3.5" /> Total Calls</div>
+                <div className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#8a8fa8]"><Activity className="h-3.5 w-3.5" /> Requests</div>
                 <div className="text-2xl font-mono font-bold text-[#f1f2f6]">{((agent.totalCalls || 0) / 1000).toFixed(1)}k</div>
               </div>
               <div className="space-y-1">
@@ -119,14 +119,14 @@ export default function AgentDetailPage() {
               className="h-14 w-full gap-2 bg-[#e74c3c] text-lg font-bold text-white shadow-[0_14px_35px_rgba(231,76,60,0.28)] transition-all hover:bg-[#ff5645]"
               onClick={() => {
                 if (!user) {
-                  toast("Please login with GitHub first to purchase agents.");
+                  toast("Sign in with GitHub to provision access.");
                   return;
                 }
-                toast.success("Redirecting to Dashboard to provision your API Key...");
+                toast.success("Redirecting to the dashboard to provision API access...");
                 setTimeout(() => { window.location.href = "/dashboard"; }, 1000);
               }}
             >
-              Buy for ${agent.costPerCall}/call
+              Provision access for ${agent.costPerCall}/call
             </Button>
           </div>
         </div>
@@ -146,29 +146,29 @@ export default function AgentDetailPage() {
         <div className="grid grid-cols-1 gap-12 border-t border-white/10 pt-10 lg:grid-cols-2">
           <div>
             <h3 className="mb-6 flex items-center gap-2 text-2xl font-bold text-[#e8eaf0]">
-              <Terminal className="h-6 w-6 text-[#ff8c7e]" /> Test Sandbox
+              <Terminal className="h-6 w-6 text-[#ff8c7e]" /> Sandbox
             </h3>
-            <p className="mb-6 text-[#8a8fa8]">Run this agent directly in your browser. Live requests are routed through AgentHub&apos;s API.</p>
+            <p className="mb-6 text-[#8a8fa8]">Run this agent in the browser to validate the request contract and inspect the response payload.</p>
             <SandboxPanel agent={agent} />
           </div>
 
           <div>
             <h3 className="mb-6 flex items-center justify-between text-2xl font-bold text-[#e8eaf0]">
-              Integration SDK
+              Integration
               <span className="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-sm font-mono text-[#cfd3df]">
-                Cost: ${agent.costPerCall}/call
+                ${agent.costPerCall}/call
               </span>
             </h3>
-            <p className="mb-6 text-[#8a8fa8]">Copy and paste the snippet below to integrate into your application. We automatically secure requests and enforce SLAs.</p>
+            <p className="mb-6 text-[#8a8fa8]">Use the generated examples below to call this agent through the AgentHub API.</p>
             <SDKSnippet agent={agent} />
           </div>
         </div>
 
         <div className="mt-24 max-w-3xl border-t border-white/10 pt-12">
-          <h3 className="mb-8 text-2xl font-bold text-[#e8eaf0]">Ratings & Reviews ({agent.reviewCount || 0})</h3>
+          <h3 className="mb-8 text-2xl font-bold text-[#e8eaf0]">Ratings and reviews ({agent.reviewCount || 0})</h3>
 
           {reviews.length === 0 ? (
-            <p className="text-[#8a8fa8]">No reviews yet.</p>
+            <p className="text-[#8a8fa8]">No reviews yet. Run the agent in the sandbox to leave the first review.</p>
           ) : (
             <div className="mb-12 space-y-6">
               {reviews.map((r) => (
@@ -189,7 +189,7 @@ export default function AgentDetailPage() {
 
           {user && hasRun && (
             <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,22,0.98),rgba(9,9,11,0.98))] p-6 shadow-[0_18px_45px_rgba(0,0,0,0.22)]">
-              <h4 className="mb-4 text-lg font-bold text-[#e8eaf0]">Leave a Review</h4>
+              <h4 className="mb-4 text-lg font-bold text-[#e8eaf0]">Leave a review</h4>
               <div className="mb-4 flex gap-2">
                 {[1, 2, 3, 4, 5].map((v) => (
                   <Star key={v} className={`h-6 w-6 cursor-pointer transition-transform hover:scale-110 ${v <= rating ? "fill-[#ffd07f] text-[#ffd07f]" : "text-white/20"}`} onClick={() => setRating(v)} />
@@ -198,11 +198,11 @@ export default function AgentDetailPage() {
               <textarea
                 value={reviewBody}
                 onChange={(e) => setReviewBody(e.target.value)}
-                className="mb-4 h-24 w-full resize-none rounded-xl border border-white/10 bg-black/20 p-3 text-sm text-[#e8eaf0] outline-none transition-colors placeholder:text-[#8a8fa8]/65 focus:border-[#e74c3c]/55"
-                placeholder="How was your experience using this agent?"
+                className="control-shell textarea-shell mb-4 h-24 bg-black/20 text-sm"
+                placeholder="Describe response quality, latency, and fit for your use case."
               />
               <Button onClick={submitReview} disabled={submitting || !reviewBody} className="bg-[#e74c3c] text-white hover:bg-[#ff5645]">
-                {submitting ? "Submitting..." : "Post Review"}
+                {submitting ? "Submitting..." : "Submit review"}
               </Button>
             </div>
           )}

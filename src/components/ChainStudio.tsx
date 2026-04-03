@@ -33,12 +33,12 @@ export function ChainStudio() {
 
       {/* Sidebar sidebar */}
       <div className="z-10 flex w-80 flex-col border-r border-white/10 bg-[linear-gradient(180deg,rgba(231,76,60,0.08),rgba(0,0,0,0.45))] p-6 shadow-xl backdrop-blur-md">
-        <h2 className="text-xl font-bold mb-6">Agent Toolkit</h2>
+        <h2 className="mb-6 text-xl font-bold">Agent library</h2>
         <div className="relative mb-6">
           <Search className="w-4 h-4 absolute left-3 top-3 text-muted-foreground" />
           <Input
             className="w-full border-white/10 bg-white/5 pl-10 text-white focus-visible:ring-[#e74c3c]/45"
-            placeholder="Search agents..."
+            placeholder="Search agents"
             value={search}
             onChange={e => setSearch(e.target.value)}
           />
@@ -92,9 +92,9 @@ export function ChainStudio() {
           <div className="w-px h-8 bg-white/10"></div>
           <Button onClick={async () => {
             const id = await saveChain();
-            alert("Chain Saved! ID: " + id);
+            alert("Workflow saved. ID: " + id);
           }} className="bg-[#e74c3c] px-6 font-bold hover:bg-[#f05a48]">
-            <Save className="w-4 h-4 mr-2" /> Save & Deploy Endpoint
+            <Save className="w-4 h-4 mr-2" /> Save workflow
           </Button>
         </div>
       </div>

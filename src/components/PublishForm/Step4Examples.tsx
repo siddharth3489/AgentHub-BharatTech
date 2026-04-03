@@ -21,10 +21,15 @@ export const Step4Examples = ({ onSubmit, isSubmitting }: { onSubmit: () => void
 
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight text-[#e8eaf0]">Review and publish</h2>
+        <p className="text-sm leading-6 text-[#8a8fa8]">Confirm the marketplace profile, technical contract, and pricing before the agent is listed.</p>
+      </div>
+
       <div className="bg-white/5 border border-white/10 rounded-xl p-6">
         <h4 className="text-lg font-bold mb-4 font-mono flex items-center gap-2">
           <CopyIcon className="w-5 h-5 text-[#ff8c7e]" />
-          Review Configuration
+          Review configuration
         </h4>
 
         <div className="grid grid-cols-2 gap-x-8">
@@ -55,7 +60,7 @@ export const Step4Examples = ({ onSubmit, isSubmitting }: { onSubmit: () => void
           disabled={isSubmitting}
           className="h-12 w-full rounded-full bg-[#e74c3c] px-8 font-bold text-white shadow-lg transition-transform hover:scale-[1.02] hover:bg-[#f05a48]"
         >
-          {isSubmitting ? "Publishing Agent..." : "Deploy to Marketplace"}
+          {isSubmitting ? "Publishing agent..." : "Publish agent"}
         </Button>
       </div>
     </div>

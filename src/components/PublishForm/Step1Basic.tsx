@@ -12,17 +12,22 @@ export const Step1Basic = () => {
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight text-[#e8eaf0]">Agent profile</h2>
+        <p className="text-sm leading-6 text-[#8a8fa8]">Define how the agent should appear in the marketplace and which workloads it supports.</p>
+      </div>
+
+      <div className="space-y-2">
         <Label>Agent Name <span className="text-red-500">*</span></Label>
-        <Input placeholder="e.g. PR Review Agent" {...register("name")} className="bg-white/5 border-white/10" />
+        <Input placeholder="PR Review Agent" {...register("name")} className="bg-white/5 border-white/10" />
         {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name?.message as string}</p>}
       </div>
 
       <div className="space-y-2">
         <Label>Description <span className="text-red-500">*</span></Label>
         <textarea
-          placeholder="What does it do? Who is it for?"
+          placeholder="Explain what the agent does, which users it serves, and the outcome it produces."
           {...register("description")}
-          className="min-h-[100px] w-full resize-y rounded-md border border-white/10 bg-white/5 p-3 text-sm outline-none transition-all hover:border-white/20 focus:border-[#e74c3c]/50 focus:ring-1 focus:ring-[#e74c3c]/40"
+          className="control-shell textarea-shell min-h-[100px] w-full bg-white/5 p-3 text-sm"
         />
         {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description?.message as string}</p>}
       </div>

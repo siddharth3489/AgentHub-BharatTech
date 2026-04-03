@@ -7,18 +7,18 @@ import { ScrollGlassReveal } from "@/components/ScrollGlassReveal";
 export default function SignalPage() {
   return (
     <FeaturePageShell
-      eyebrow="Signal Stream"
-      title="Watch the market, not just the marketing page"
-      description="All of the live-looking and data-heavy discovery surfaces move here. That keeps the homepage leaner while giving signal its own animated lane for trending agents, AI ecosystem news, and real-time marketplace activity."
+      eyebrow="Signal"
+      title="Track activity across the agent ecosystem"
+      description="Monitor trending repositories, recent AI news, and marketplace activity in one place. Use this view to follow tooling movement, adoption patterns, and new integration opportunities."
       metrics={[
-        { label: "Feeds", value: "3" },
-        { label: "Trending", value: "Live" },
-        { label: "Refresh", value: "Fast" },
+        { label: "Coverage", value: "3 live views" },
+        { label: "Repos", value: "Trending" },
+        { label: "Activity", value: "Updated" },
       ]}
       quickLinks={[
         { href: "/agents", label: "Explore Agents" },
-        { href: "/scan", label: "Scan Repo" },
-        { href: "/platform", label: "Platform" },
+        { href: "/scan", label: "Run Repository Scan" },
+        { href: "/platform", label: "Open Platform" },
       ]}
     >
       <ScrollGlassReveal delayMs={40}>

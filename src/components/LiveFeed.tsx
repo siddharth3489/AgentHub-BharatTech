@@ -66,11 +66,11 @@ export const LiveFeed = () => {
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-[#4ade80]/20 bg-[#4ade80]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.24em] text-[#86efac]">
               <CircleDot className="h-3.5 w-3.5 live-dot" />
-              Live on AgentHub
+              Activity
             </div>
             <h3 className="mt-4 text-2xl font-bold tracking-tight text-[#e8eaf0]">Marketplace activity</h3>
             <p className="mt-2 text-sm leading-6 text-[#8a8fa8]">
-              Recent launches, integrations, and active usage events across the marketplace.
+              Recent launches, integrations, and usage events across the marketplace.
             </p>
           </div>
         </div>

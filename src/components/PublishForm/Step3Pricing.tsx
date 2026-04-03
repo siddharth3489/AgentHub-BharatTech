@@ -10,6 +10,11 @@ export const Step3Pricing = () => {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight text-[#e8eaf0]">Pricing and limits</h2>
+        <p className="text-sm leading-6 text-[#8a8fa8]">Set request pricing, expected latency, and usage limits for the published agent.</p>
+      </div>
+
       <div className="space-y-4">
         <Label className="flex justify-between items-end">
           <span>Cost Per Call (USD) <span className="text-red-500">*</span></span>
@@ -51,7 +56,7 @@ export const Step3Pricing = () => {
             {...register("latencyMs", { valueAsNumber: true })}
             className="bg-white/5 border-white/10 font-mono"
           />
-          <p className="text-xs text-muted-foreground mt-1">What is your SLA latency in ms?</p>
+          <p className="text-xs text-muted-foreground mt-1">Expected response time for a standard request.</p>
           {errors.latencyMs && <p className="text-red-500 text-xs">{errors.latencyMs?.message as string}</p>}
         </div>
 
@@ -63,7 +68,7 @@ export const Step3Pricing = () => {
             {...register("rateLimit", { valueAsNumber: true })}
             className="bg-white/5 border-white/10 font-mono"
           />
-          <p className="text-xs text-muted-foreground mt-1">Max calls per minute</p>
+          <p className="text-xs text-muted-foreground mt-1">Maximum requests allowed per minute.</p>
           {errors.rateLimit && <p className="text-red-500 text-xs">{errors.rateLimit?.message as string}</p>}
         </div>
       </div>

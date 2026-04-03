@@ -2,15 +2,15 @@ export function ChainingPreview() {
   return (
     <section className="section-shell lux-border w-full overflow-hidden py-24 md:py-32">
       <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-16 h-56 w-[34rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.16)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
-      <div className="mx-auto flex max-w-[1280px] flex-col items-center px-6 text-center md:px-12 lg:px-20">
+      <div className="page-container flex flex-col items-center text-center">
         
-        <span className="font-mono text-[#8a8fa8] text-xs uppercase tracking-[0.15em] mb-6 block border border-white/10 px-3 py-1 bg-white/[0.02]">
-          [ COMING SOON ]
+        <span className="eyebrow-badge mb-6 block">
+          Workflow Preview
         </span>
         
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#e8eaf0] mb-6 max-w-3xl">Agent Chaining Studio</h2>
-        <p className="text-[#8a8fa8] text-lg max-w-2xl mb-16">
-          Visually pipe the output of one agent into the input schema of another. Compose complex, autonomous workflows natively in the browser.
+        <h2 className="mb-6 max-w-3xl text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-5xl">Compose multi-agent workflows visually</h2>
+        <p className="mb-16 max-w-2xl text-lg text-[#8a8fa8]">
+          The workflow builder is in development. This preview shows how agents will pass structured data from one step to the next.
         </p>
 
         <div className="glass-panel relative flex min-h-[400px] w-full max-w-5xl items-center justify-center rounded-[2rem] border border-white/10 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.6)] md:p-16">
@@ -21,10 +21,10 @@ export function ChainingPreview() {
              
              {/* Node 1 */}
              <div className="w-[200px] bg-[#141418] border border-[#e74c3c]/30 rounded-lg p-4 shadow-[0_0_30px_rgba(231,76,60,0.15)] relative">
-               <div className="text-[10px] font-mono text-[#e74c3c] uppercase tracking-wider mb-2">Web Scraper</div>
-               <div className="text-sm font-bold text-[#e8eaf0] mb-3">Extract URL Data</div>
+               <div className="text-[10px] font-mono text-[#e74c3c] uppercase tracking-wider mb-2">Web Fetch</div>
+               <div className="text-sm font-bold text-[#e8eaf0] mb-3">Collect source content</div>
                <div className="p-2 bg-[#080808] rounded border border-white/5 text-[10px] font-mono text-[#8a8fa8]">
-                 OUT: {"{ raw_html: string }"}
+                 Out: {"{ raw_html: string }"}
                </div>
                {/* Right Hook */}
                <div className="hidden md:block absolute top-[50%] right-[-10px] w-3 h-3 bg-[#080808] border border-white/20 rounded-full translate-y-[-50%] z-20"></div>
@@ -34,16 +34,16 @@ export function ChainingPreview() {
              <div className="relative hidden h-[2px] flex-1 bg-gradient-to-r from-[#e74c3c]/50 to-white/10 md:block">
                <div className="animate-data-flow absolute inset-y-0 h-full w-24 bg-gradient-to-r from-transparent via-[#ff8c7e] to-transparent opacity-90" />
                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 bg-[#080808] border border-white/10 text-[9px] font-mono text-[#8a8fa8] px-2 py-0.5 rounded">
-                 MAP
+                 Map fields
                </div>
              </div>
 
              {/* Node 2 */}
              <div className="w-[200px] bg-[#141418] border border-white/10 rounded-lg p-4 relative hover:border-white/30 transition-colors">
-               <div className="mb-2 text-[10px] font-mono uppercase tracking-wider text-[#ff8c7e]">NLP AI</div>
-               <div className="text-sm font-bold text-[#e8eaf0] mb-3">Summarize Text</div>
+               <div className="mb-2 text-[10px] font-mono uppercase tracking-wider text-[#ff8c7e]">Analysis</div>
+               <div className="text-sm font-bold text-[#e8eaf0] mb-3">Summarize content</div>
                <div className="p-2 bg-[#080808] rounded border border-white/5 text-[10px] font-mono text-[#8a8fa8]">
-                 IN: {"{ raw_text: string }"}
+                 In: {"{ raw_text: string }"}
                </div>
                {/* Left/Right Hooks */}
                <div className="hidden md:block absolute top-[50%] left-[-10px] w-3 h-3 bg-[#e74c3c] rounded-full translate-y-[-50%] shadow-[0_0_10px_rgba(231,76,60,0.5)] z-20"></div>
@@ -57,10 +57,10 @@ export function ChainingPreview() {
 
              {/* Node 3 */}
              <div className="w-[200px] bg-[#141418] border border-white/10 rounded-lg p-4 relative hover:border-white/30 transition-colors">
-               <div className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider mb-2">Integration</div>
-               <div className="text-sm font-bold text-[#e8eaf0] mb-3">Post to Slack</div>
+               <div className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider mb-2">Delivery</div>
+               <div className="text-sm font-bold text-[#e8eaf0] mb-3">Send to Slack</div>
                <div className="p-2 bg-[#080808] rounded border border-white/5 text-[10px] font-mono text-[#8a8fa8]">
-                 IN: {"{ message: string }"}
+                 In: {"{ message: string }"}
                </div>
                {/* Left Hook */}
                <div className="hidden md:block absolute top-[50%] left-[-10px] w-3 h-3 bg-[#080808] border border-white/20 rounded-full translate-y-[-50%] z-20"></div>

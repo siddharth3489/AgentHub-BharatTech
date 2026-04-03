@@ -123,11 +123,11 @@ export default function PublishPage() {
     <div className="mx-auto min-h-screen max-w-4xl px-6 py-14 text-[#e8eaf0]">
       <div className="mb-12 flex flex-col gap-8 rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(231,76,60,0.18),transparent_42%),#0b0b0f] p-8 shadow-[0_24px_90px_rgba(0,0,0,0.4)] md:flex-row md:items-end md:justify-between">
         <div>
-          <span className="mb-4 inline-flex rounded-full border border-[#e74c3c]/30 bg-[#e74c3c]/10 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[#ff8c7e]">
-            [ Seller Onboarding ]
+          <span className="eyebrow-badge mb-4 inline-flex">
+            Publish
           </span>
-          <h1 className="mb-2 text-3xl font-bold">Publish an Agent</h1>
-          <p className="text-[#8a8fa8]">List your micro-service or agent model in the open marketplace.</p>
+          <h1 className="mb-2 text-3xl font-bold">List an agent on AgentHub</h1>
+          <p className="text-[#8a8fa8]">Provide marketplace details, the technical contract, pricing, and sample payloads.</p>
         </div>
         <div className="text-right">
           <div className="mb-1 font-mono text-xl font-semibold text-[#ff8c7e]">Step {step} of 4</div>
