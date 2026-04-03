@@ -33,8 +33,8 @@ export const LatestAINewsSection = () => {
   const items = data?.items || [];
 
   return (
-    <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,22,0.98),rgba(9,9,11,0.98))] p-6 shadow-[0_24px_60px_rgba(0,0,0,0.3)] md:p-8">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(231,76,60,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.04),transparent_38%)]" />
+    <section className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(250,250,252,0.98))] p-6 shadow-[0_24px_60px_rgba(0,0,0,0.06)] md:p-8">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(231,76,60,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.02),transparent_38%)]" />
 
       <div className="relative z-10">
         <div className="mb-6">
@@ -42,10 +42,10 @@ export const LatestAINewsSection = () => {
             <Newspaper className="h-3.5 w-3.5" />
             Market Intelligence
           </div>
-          <h2 className="text-2xl font-bold tracking-tight text-[#e8eaf0] md:text-3xl">
+          <h2 className="text-2xl font-bold tracking-tight text-[#1a1a2e] md:text-3xl">
             Coverage that matters to builders
           </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-[#8a8fa8]">
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-[#64748b]">
             Recent reporting across models, tooling, and platform changes that shape the agent ecosystem.
           </p>
         </div>
@@ -55,31 +55,31 @@ export const LatestAINewsSection = () => {
             ? Array.from({ length: 4 }, (_, index) => (
               <div
                 key={`skeleton-${index}`}
-                className="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5 transition-colors hover:border-[#e74c3c]/25 hover:bg-white/[0.05]"
+                className="rounded-[1.5rem] border border-black/8 bg-black/[0.02] p-5 transition-colors hover:border-[#e74c3c]/25 hover:bg-black/[0.03]"
               >
                 <div className="space-y-4">
-                  <Skeleton className="h-4 w-28 bg-white/8" />
-                  <Skeleton className="h-14 w-full bg-white/8" />
-                  <Skeleton className="h-4 w-36 bg-white/8" />
+                  <Skeleton className="h-4 w-28 bg-black/8" />
+                  <Skeleton className="h-14 w-full bg-black/8" />
+                  <Skeleton className="h-4 w-36 bg-black/8" />
                 </div>
               </div>
             ))
             : items.slice(0, 4).map((item) => (
               <div
                 key={item.id}
-                className="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5 transition-colors hover:border-[#e74c3c]/25 hover:bg-white/[0.05]"
+                className="rounded-[1.5rem] border border-black/8 bg-black/[0.02] p-5 transition-colors hover:border-[#e74c3c]/25 hover:bg-black/[0.03]"
               >
                 <div className="flex h-full flex-col">
                   <div className="mb-3 flex items-center justify-between gap-3">
-                    <Badge variant="outline" className="border-white/10 bg-white/[0.04] font-medium text-[#e8eaf0]">
+                    <Badge variant="outline" className="border-black/10 bg-black/[0.03] font-medium text-[#1a1a2e]">
                       {item.source}
                     </Badge>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8a8fa8]">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#64748b]">
                       {formatPublishedDate(item.publishedAt)}
                     </span>
                   </div>
 
-                  <p className="flex-1 text-base font-bold leading-7 text-[#f1f2f6]">
+                  <p className="flex-1 text-base font-bold leading-7 text-[#1a1a2e]">
                     {item.title}
                   </p>
 
@@ -87,7 +87,7 @@ export const LatestAINewsSection = () => {
                     href={item.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#ff8c7e] transition-colors hover:text-white"
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#ff8c7e] transition-colors hover:text-[#1a1a2e]"
                   >
                     Open story
                     <ArrowUpRight className="h-4 w-4" />

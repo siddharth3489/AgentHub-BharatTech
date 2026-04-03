@@ -128,8 +128,8 @@ function AgentsContent() {
   }, [agents, q, tags, langs, maxCost, minTrust, sort]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#080808]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,76,60,0.16)_0%,_rgba(8,8,8,0)_34%),linear-gradient(180deg,_rgba(20,20,24,0.8)_0%,_rgba(8,8,8,1)_45%)]" />
+    <div className="relative min-h-screen overflow-hidden bg-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,76,60,0.16)_0%,_rgba(255,255,255,0)_34%),linear-gradient(180deg,_rgba(250,250,252,0.8)_0%,_rgba(255,255,255,1)_45%)]" />
       <div className="absolute inset-0 hero-grid opacity-[0.04]" />
 
       <div className="page-container relative pb-16 pt-32">
@@ -137,21 +137,21 @@ function AgentsContent() {
           <span className="eyebrow-badge mb-6 inline-flex">
             Marketplace
           </span>
-          <h1 className="mx-auto mb-5 max-w-4xl text-4xl font-black tracking-tight text-[#e8eaf0] md:text-6xl">
+          <h1 className="mx-auto mb-5 max-w-4xl text-4xl font-black tracking-tight text-[#1a1a2e] md:text-6xl">
             Browse production-ready AI agents
           </h1>
-          <p className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-[#8a8fa8]">
+          <p className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-[#64748b]">
             Search by capability, language, trust, and cost. Compare agents before you run them in the sandbox or move them into production.
           </p>
           <SearchBar />
         </div>
 
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] border border-white/8 bg-white/[0.03] px-5 py-4 backdrop-blur-xl">
-          <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#8a8fa8]">
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4 rounded-[1.5rem] border border-black/8 bg-black/[0.02] px-5 py-4 backdrop-blur-xl">
+          <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#64748b]">
             {filteredAgents.length} agent{filteredAgents.length === 1 ? "" : "s"} matched
           </div>
-          <div className="text-sm text-[#cfd3df]">
-            {q ? <>Results for <span className="text-[#e8eaf0]">&quot;{q}&quot;</span></> : "Filter by capability, language, trust, and price"}
+          <div className="text-sm text-[#374151]">
+            {q ? <>Results for <span className="text-[#1a1a2e]">&quot;{q}&quot;</span></> : "Filter by capability, language, trust, and price"}
           </div>
         </div>
 
@@ -171,7 +171,7 @@ function AgentsContent() {
 
 export default function AgentsPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#080808]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
       <AgentsContent />
     </Suspense>
   );

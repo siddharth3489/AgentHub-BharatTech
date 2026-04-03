@@ -46,9 +46,9 @@ export default async function StackPage({ params }: { params: Promise<{ owner: s
   if (!stack) {
     return (
       <div className="container mx-auto min-h-[70vh] px-6 py-24">
-        <div className="mx-auto max-w-2xl rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.18),transparent_55%),#0d1117] p-10 text-center">
-          <h1 className="text-4xl font-black tracking-tight text-white">{ownerRepo}</h1>
-          <p className="mt-4 text-lg text-[#8a8fa8]">No public repository analysis has been generated yet.</p>
+        <div className="mx-auto max-w-2xl rounded-[2rem] border border-black/10 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.18),transparent_55%),#fafafa] p-10 text-center">
+          <h1 className="text-4xl font-black tracking-tight text-[#1a1a2e]">{ownerRepo}</h1>
+          <p className="mt-4 text-lg text-[#64748b]">No public repository analysis has been generated yet.</p>
           <Link href="/scan" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#e74c3c] px-6 py-3 font-semibold text-white hover:bg-[#f05a48]">
             Run repository scan
             <ArrowRight className="h-4 w-4" />
@@ -63,12 +63,12 @@ export default async function StackPage({ params }: { params: Promise<{ owner: s
   return (
     <div className="container mx-auto px-6 py-20">
       <header className="mb-12 text-center">
-        <p className="font-mono text-5xl font-black text-white">{ownerRepo}</p>
-        <p className="mt-4 text-lg text-[#8a8fa8]">Repository analysis powered by AgentHub</p>
+        <p className="font-mono text-5xl font-black text-[#1a1a2e]">{ownerRepo}</p>
+        <p className="mt-4 text-lg text-[#64748b]">Repository analysis powered by AgentHub</p>
         <p className="mt-2 text-sm uppercase tracking-[0.22em] text-[#ff8c7e]/70">
           Generated {generatedAt.toLocaleDateString()}
         </p>
-        <Link href="/scan" className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#e74c3c]/25 bg-[#e74c3c]/10 px-5 py-3 text-sm font-semibold text-white hover:bg-[#e74c3c]/16">
+        <Link href="/scan" className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#e74c3c]/25 bg-[#e74c3c]/10 px-5 py-3 text-sm font-semibold text-[#e74c3c] hover:bg-[#e74c3c]/16">
           Analyze another repository
           <ArrowRight className="h-4 w-4" />
         </Link>

@@ -101,32 +101,32 @@ export default async function MarketingPage({
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#080808] py-32">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,76,60,0.16)_0%,_rgba(8,8,8,0)_35%)]"></div>
+    <section className="relative overflow-hidden bg-white py-32">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(231,76,60,0.16)_0%,_rgba(255,255,255,0)_35%)]"></div>
       <div className="relative mx-auto flex max-w-5xl flex-col gap-10 px-6 md:px-12">
         <div className="max-w-3xl">
           <span className="eyebrow-badge mb-6 inline-flex">
             {page.eyebrow}
           </span>
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-[#e8eaf0] md:text-6xl">
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-[#1a1a2e] md:text-6xl">
             {page.title}
           </h1>
-          <p className="max-w-2xl text-lg leading-8 text-[#8a8fa8]">{page.description}</p>
+          <p className="max-w-2xl text-lg leading-8 text-[#64748b]">{page.description}</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
-          <div className="glass-panel rounded-[28px] border border-white/8 p-8">
+          <div className="glass-panel rounded-[28px] border border-black/8 p-8">
             <div className="mb-6 flex flex-wrap gap-4">
               <Link href={page.primary.href} className="red-glow-hover rounded-[8px] bg-[#e74c3c] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#ff5645]">
                 {page.primary.label}
               </Link>
-              <Link href={page.secondary.href} className="rounded-[8px] border border-white/15 px-6 py-3 font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/[0.04]">
+              <Link href={page.secondary.href} className="rounded-[8px] border border-black/15 px-6 py-3 font-semibold text-[#1a1a2e] transition-colors hover:border-black/40 hover:bg-black/[0.04]">
                 {page.secondary.label}
               </Link>
             </div>
             <div className="space-y-3">
               {page.bullets.map((bullet) => (
-                <div key={bullet} className="flex items-center gap-3 text-sm text-[#d4d7e2]">
+                <div key={bullet} className="flex items-center gap-3 text-sm text-[#374151]">
                   <div className="h-2 w-2 rounded-full bg-[#e74c3c]"></div>
                   <span>{bullet}</span>
                 </div>
@@ -134,15 +134,15 @@ export default async function MarketingPage({
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-white/8 bg-[#111115] p-8 shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
-            <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-[#8a8fa8]">
+          <div className="rounded-[28px] border border-black/8 bg-[#f5f5f7] p-8 shadow-[0_24px_60px_rgba(0,0,0,0.08)]">
+            <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-[#64748b]">
               Available now
             </div>
-            <div className="space-y-4 text-sm leading-7 text-[#cfd3df]">
-              <p>Marketplace at <span className="text-white">/agents</span></p>
-              <p>Repository scan at <span className="text-white">/scan</span></p>
-              <p>Workflows at <span className="text-white">/chains</span></p>
-              <p>Publish at <span className="text-white">/publish</span></p>
+            <div className="space-y-4 text-sm leading-7 text-[#374151]">
+              <p>Marketplace at <span className="text-[#1a1a2e] font-semibold">/agents</span></p>
+              <p>Repository scan at <span className="text-[#1a1a2e] font-semibold">/scan</span></p>
+              <p>Workflows at <span className="text-[#1a1a2e] font-semibold">/chains</span></p>
+              <p>Publish at <span className="text-[#1a1a2e] font-semibold">/publish</span></p>
             </div>
           </div>
         </div>

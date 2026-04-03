@@ -31,10 +31,10 @@ export function FeaturePageShell({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#050505]">
+    <div className="relative min-h-screen overflow-hidden bg-[#ffffff]">
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.12),transparent_24%),linear-gradient(180deg,#060606_0%,#09090b_52%,#050505_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.12),transparent_24%),linear-gradient(180deg,#fafafa_0%,#f5f5f7_52%,#ffffff_100%)]"
       />
       <div aria-hidden="true" className="absolute inset-0 hero-grid opacity-[0.04]" />
       <div
@@ -51,7 +51,7 @@ export function FeaturePageShell({
           <FeatureRail variant="attached" />
         </aside>
 
-        <div className="page-container max-w-[1340px] pb-20 pt-32">
+        <div className="page-container max-w-[1340px] pb-20 pt-24">
           <FeatureQuickMenu />
 
           <section
@@ -61,10 +61,10 @@ export function FeaturePageShell({
             <div className="flex flex-col gap-8 2xl:flex-row 2xl:items-end 2xl:justify-between">
               <div className="max-w-3xl 2xl:flex-[1_1_640px]">
                 <span className="eyebrow-badge mb-6">{eyebrow}</span>
-                <h1 className="text-4xl font-black tracking-tight text-[#e8eaf0] md:text-6xl">
+                <h1 className="text-4xl font-black tracking-tight text-[#1a1a2e] md:text-6xl">
                   {title}
                 </h1>
-                <p className="mt-6 max-w-2xl text-base leading-8 text-[#8a8fa8] md:text-lg">
+                <p className="mt-6 max-w-2xl text-base leading-8 text-[#64748b] md:text-lg">
                   {description}
                 </p>
 

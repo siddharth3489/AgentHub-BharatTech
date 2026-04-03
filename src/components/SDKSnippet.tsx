@@ -64,13 +64,13 @@ console.log(result);`;
   };
 
   return (
-    <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(18,18,22,0.98),rgba(9,9,11,0.98))] shadow-[0_20px_55px_rgba(0,0,0,0.28)]">
+    <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-black/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(250,250,252,0.98))] shadow-[0_20px_55px_rgba(0,0,0,0.06)]">
       <Tabs defaultValue="python" className="w-full">
-        <div className="flex items-center justify-between border-b border-white/10 bg-black/20 pr-4">
+        <div className="flex items-center justify-between border-b border-black/10 bg-black/[0.02] pr-4">
           <TabsList variant="line" className="h-11 bg-transparent p-0">
-            <TabsTrigger value="python" className="h-11 rounded-none border-b-2 border-transparent px-4 font-bold text-[#8a8fa8] data-active:border-[#e74c3c] data-active:text-[#ff8c7e]">Python</TabsTrigger>
-            <TabsTrigger value="javascript" className="h-11 rounded-none border-b-2 border-transparent px-4 font-bold text-[#8a8fa8] data-active:border-[#e74c3c] data-active:text-[#ff8c7e]">JavaScript</TabsTrigger>
-            <TabsTrigger value="curl" className="h-11 rounded-none border-b-2 border-transparent px-4 font-bold text-[#8a8fa8] data-active:border-[#e74c3c] data-active:text-[#ff8c7e]">cURL</TabsTrigger>
+            <TabsTrigger value="python" className="h-11 rounded-none border-b-2 border-transparent px-4 font-bold text-[#64748b] data-active:border-[#e74c3c] data-active:text-[#ff8c7e]">Python</TabsTrigger>
+            <TabsTrigger value="javascript" className="h-11 rounded-none border-b-2 border-transparent px-4 font-bold text-[#64748b] data-active:border-[#e74c3c] data-active:text-[#ff8c7e]">JavaScript</TabsTrigger>
+            <TabsTrigger value="curl" className="h-11 rounded-none border-b-2 border-transparent px-4 font-bold text-[#64748b] data-active:border-[#e74c3c] data-active:text-[#ff8c7e]">cURL</TabsTrigger>
           </TabsList>
           <button
             type="button"
@@ -82,7 +82,7 @@ console.log(result);`;
               else if (v === "javascript") onCopy(jsCode);
               else onCopy(curlCode);
             }}
-            className="text-[#8a8fa8] transition-colors hover:text-white"
+            className="text-[#64748b] transition-colors hover:text-[#1a1a2e]"
           >
             {copied ? <Check className="h-4 w-4 text-[#4ade80]" /> : <Copy className="h-4 w-4" />}
           </button>

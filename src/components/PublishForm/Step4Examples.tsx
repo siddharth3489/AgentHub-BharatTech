@@ -7,10 +7,10 @@ export const Step4Examples = ({ onSubmit, isSubmitting }: { onSubmit: () => void
   const formValues = watch();
 
   const previewField = (label: string, value: any) => (
-    <div className="space-y-1 pb-3 mb-3 border-b border-white/5 last:border-0">
+    <div className="space-y-1 pb-3 mb-3 border-b border-black/5 last:border-0">
       <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</div>
       {typeof value === 'object' ? (
-        <pre className="overflow-x-auto rounded border border-white/5 bg-black/40 p-2 text-xs font-mono text-[#ffb2a7]">
+        <pre className="overflow-x-auto rounded border border-black/5 bg-black/[0.03] p-2 text-xs font-mono text-[#ffb2a7]">
           {JSON.stringify(value, null, 2)}
         </pre>
       ) : (
@@ -22,11 +22,11 @@ export const Step4Examples = ({ onSubmit, isSubmitting }: { onSubmit: () => void
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold tracking-tight text-[#e8eaf0]">Review and publish</h2>
-        <p className="text-sm leading-6 text-[#8a8fa8]">Confirm the marketplace profile, technical contract, and pricing before the agent is listed.</p>
+        <h2 className="text-2xl font-bold tracking-tight text-[#1a1a2e]">Review and publish</h2>
+        <p className="text-sm leading-6 text-[#64748b]">Confirm the marketplace profile, technical contract, and pricing before the agent is listed.</p>
       </div>
 
-      <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+      <div className="bg-black/[0.03] border border-black/10 rounded-xl p-6">
         <h4 className="text-lg font-bold mb-4 font-mono flex items-center gap-2">
           <CopyIcon className="w-5 h-5 text-[#ff8c7e]" />
           Review configuration

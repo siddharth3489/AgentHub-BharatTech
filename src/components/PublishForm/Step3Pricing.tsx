@@ -11,8 +11,8 @@ export const Step3Pricing = () => {
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold tracking-tight text-[#e8eaf0]">Pricing and limits</h2>
-        <p className="text-sm leading-6 text-[#8a8fa8]">Set request pricing, expected latency, and usage limits for the published agent.</p>
+        <h2 className="text-2xl font-bold tracking-tight text-[#1a1a2e]">Pricing and limits</h2>
+        <p className="text-sm leading-6 text-[#64748b]">Set request pricing, expected latency, and usage limits for the published agent.</p>
       </div>
 
       <div className="space-y-4">
@@ -54,7 +54,7 @@ export const Step3Pricing = () => {
             type="number"
             placeholder="e.g. 500"
             {...register("latencyMs", { valueAsNumber: true })}
-            className="bg-white/5 border-white/10 font-mono"
+            className="bg-black/[0.03] border-black/10 font-mono"
           />
           <p className="text-xs text-muted-foreground mt-1">Expected response time for a standard request.</p>
           {errors.latencyMs && <p className="text-red-500 text-xs">{errors.latencyMs?.message as string}</p>}
@@ -66,14 +66,14 @@ export const Step3Pricing = () => {
             type="number"
             placeholder="e.g. 60"
             {...register("rateLimit", { valueAsNumber: true })}
-            className="bg-white/5 border-white/10 font-mono"
+            className="bg-black/[0.03] border-black/10 font-mono"
           />
           <p className="text-xs text-muted-foreground mt-1">Maximum requests allowed per minute.</p>
           {errors.rateLimit && <p className="text-red-500 text-xs">{errors.rateLimit?.message as string}</p>}
         </div>
       </div>
 
-      <div className="space-y-4 pt-4 border-t border-white/10">
+      <div className="space-y-4 pt-4 border-t border-black/10">
         <div className="flex items-center space-x-3">
           <Controller
             name="isOpenSource"
@@ -83,7 +83,7 @@ export const Step3Pricing = () => {
                 id="isOpenSource"
                 checked={field.value}
                 onCheckedChange={field.onChange}
-                className="border-white/20 data-[state=checked]:border-[#e74c3c] data-[state=checked]:bg-[#e74c3c]"
+                className="border-black/20 data-[state=checked]:border-[#e74c3c] data-[state=checked]:bg-[#e74c3c]"
               />
             )}
           />
@@ -96,7 +96,7 @@ export const Step3Pricing = () => {
             <Input
               placeholder="https://github.com/your-username/repo"
               {...register("sourceUrl")}
-              className="bg-white/5 border-white/10"
+              className="bg-black/[0.03] border-black/10"
             />
             {errors.sourceUrl && <p className="text-red-500 text-xs">{errors.sourceUrl?.message as string}</p>}
           </div>

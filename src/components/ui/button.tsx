@@ -11,14 +11,14 @@ const buttonVariants = cva(
         default:
           "border-[#e74c3c] bg-[#e74c3c] text-white shadow-[0_14px_35px_rgba(231,76,60,0.24)] hover:border-[#f05a48] hover:bg-[#f05a48]",
         outline:
-          "border-white/10 bg-white/[0.03] text-[#e8eaf0] hover:border-[#e74c3c]/28 hover:bg-white/[0.05]",
+          "border-black/10 bg-black/[0.02] text-[#1a1a2e] hover:border-[#e74c3c]/28 hover:bg-black/[0.05]",
         secondary:
-          "border-white/10 bg-[rgba(255,255,255,0.03)] text-[#e8eaf0] hover:border-[#e74c3c]/25 hover:bg-white/[0.05]",
+          "border-black/10 bg-[rgba(0,0,0,0.02)] text-[#1a1a2e] hover:border-[#e74c3c]/25 hover:bg-black/[0.05]",
         ghost:
-          "border-transparent bg-transparent text-[#8a8fa8] hover:bg-white/[0.04] hover:text-[#e8eaf0]",
+          "border-transparent bg-transparent text-[#64748b] hover:bg-black/[0.03] hover:text-[#1a1a2e]",
         destructive:
           "border-[#7f1d1d] bg-[#7f1d1d]/15 text-[#ffb2a7] hover:bg-[#7f1d1d]/25 focus-visible:ring-[rgba(127,29,29,0.25)]",
-        link: "border-transparent bg-transparent p-0 text-[#ff8c7e] shadow-none hover:text-white",
+        link: "border-transparent bg-transparent p-0 text-[#ff8c7e] shadow-none hover:text-[#1a1a2e]",
       },
       size: {
         default:

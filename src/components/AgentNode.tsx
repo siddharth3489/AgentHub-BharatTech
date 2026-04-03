@@ -8,12 +8,12 @@ export function AgentNode({ data }: { data: any }) {
   const outputFields = Object.keys(agent.outputSchema?.properties || agent.outputSchema || {});
 
   return (
-    <div className="relative w-64 rounded-xl border border-[#e74c3c]/35 bg-[#0a0a0f]/95 p-4 shadow-2xl shadow-black/40">
-      <Handle type="target" position={Position.Top} className="h-3 w-3 border-2 border-black bg-[#ff8c7e]" />
+    <div className="relative w-64 rounded-xl border border-[#e74c3c]/35 bg-[#fafafa]/95 p-4 shadow-2xl shadow-black/10">
+      <Handle type="target" position={Position.Top} className="h-3 w-3 border-2 border-white bg-[#ff8c7e]" />
 
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="font-bold text-white mb-1 flex items-center gap-2">
+          <h3 className="font-bold text-[#1a1a2e] mb-1 flex items-center gap-2">
             <Network className="w-4 h-4 text-[#ff8c7e]" />
             {agent.name}
           </h3>
@@ -25,7 +25,7 @@ export function AgentNode({ data }: { data: any }) {
 
       <div className="space-y-3">
         {inputFields.length > 0 && (
-          <div className="rounded-lg bg-white/[0.04] p-2">
+          <div className="rounded-lg bg-black/[0.03] p-2">
             <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold mb-2">Input Fields</div>
             <div className="space-y-1">
               {inputFields.map(f => (
@@ -38,7 +38,7 @@ export function AgentNode({ data }: { data: any }) {
         )}
 
         {outputFields.length > 0 && (
-          <div className="rounded-lg bg-white/[0.04] p-2">
+          <div className="rounded-lg bg-black/[0.03] p-2">
             <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold mb-2">Output Fields</div>
             <div className="space-y-1">
               {outputFields.map(f => (
@@ -51,7 +51,7 @@ export function AgentNode({ data }: { data: any }) {
         )}
       </div>
 
-      <Handle type="source" position={Position.Bottom} className="h-3 w-3 border-2 border-black bg-amber-400" />
+      <Handle type="source" position={Position.Bottom} className="h-3 w-3 border-2 border-white bg-amber-400" />
     </div>
   );
 }

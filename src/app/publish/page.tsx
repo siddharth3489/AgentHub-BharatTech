@@ -120,34 +120,34 @@ export default function PublishPage() {
   };
 
   return (
-    <div className="mx-auto min-h-screen max-w-4xl px-6 py-14 text-[#e8eaf0]">
-      <div className="mb-12 flex flex-col gap-8 rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(231,76,60,0.18),transparent_42%),#0b0b0f] p-8 shadow-[0_24px_90px_rgba(0,0,0,0.4)] md:flex-row md:items-end md:justify-between">
+    <div className="mx-auto min-h-screen max-w-4xl px-6 py-14 text-[#1a1a2e]">
+      <div className="mb-12 flex flex-col gap-8 rounded-[2rem] border border-black/10 bg-[radial-gradient(circle_at_top_right,rgba(231,76,60,0.18),transparent_42%),#fafafa] p-8 shadow-[0_24px_90px_rgba(0,0,0,0.08)] md:flex-row md:items-end md:justify-between">
         <div>
           <span className="eyebrow-badge mb-4 inline-flex">
             Publish
           </span>
           <h1 className="mb-2 text-3xl font-bold">List an agent on AgentHub</h1>
-          <p className="text-[#8a8fa8]">Provide marketplace details, the technical contract, pricing, and sample payloads.</p>
+          <p className="text-[#64748b]">Provide marketplace details, the technical contract, pricing, and sample payloads.</p>
         </div>
         <div className="text-right">
           <div className="mb-1 font-mono text-xl font-semibold text-[#ff8c7e]">Step {step} of 4</div>
           <div className="flex gap-1">
-            {[1, 2, 3, 4].map(s => <div key={s} className={`h-1.5 w-8 rounded-full ${s <= step ? 'bg-[#e74c3c]' : 'bg-white/10'}`} />)}
+            {[1, 2, 3, 4].map(s => <div key={s} className={`h-1.5 w-8 rounded-full ${s <= step ? 'bg-[#e74c3c]' : 'bg-black/10'}`} />)}
           </div>
         </div>
       </div>
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit((d) => publishAgent(d as unknown as FormValues))}>
-          <div className="min-h-[400px] rounded-[1.75rem] border border-white/10 bg-[#101014] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.34)] md:p-8">
+          <div className="min-h-[400px] rounded-[1.75rem] border border-black/10 bg-[#f0f0f2] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.06)] md:p-8">
             {step === 1 && <Step1Basic />}
             {step === 2 && <Step2Technical />}
             {step === 3 && <Step3Pricing />}
             {step === 4 && <Step4Examples onSubmit={methods.handleSubmit((d) => publishAgent(d as unknown as FormValues))} isSubmitting={isSubmitting} />}
           </div>
 
-          <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
-            <Button type="button" variant="ghost" className="text-muted-foreground hover:bg-white/5" disabled={step === 1 || isSubmitting} onClick={() => setStep(p => p - 1)}>
+          <div className="mt-8 flex items-center justify-between border-t border-black/10 pt-6">
+            <Button type="button" variant="ghost" className="text-muted-foreground hover:bg-black/5" disabled={step === 1 || isSubmitting} onClick={() => setStep(p => p - 1)}>
               <ArrowLeft className="w-4 h-4 mr-2" /> Back
             </Button>
 

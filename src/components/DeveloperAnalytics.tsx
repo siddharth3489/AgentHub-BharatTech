@@ -215,10 +215,10 @@ export const DeveloperAnalytics = ({ agents }: { agents: Agent[] }) => {
       <div className="space-y-6">
         <div className="grid gap-4 md:grid-cols-4">
           {Array.from({ length: 4 }).map((_, index) => (
-            <Skeleton key={index} className="h-28 rounded-2xl bg-white/6" />
+            <Skeleton key={index} className="h-28 rounded-2xl bg-black/6" />
           ))}
         </div>
-        <Skeleton className="h-72 rounded-3xl bg-white/6" />
+        <Skeleton className="h-72 rounded-3xl bg-black/6" />
       </div>
     );
   }
@@ -227,33 +227,33 @@ export const DeveloperAnalytics = ({ agents }: { agents: Agent[] }) => {
     <section className="mt-16 space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-white">Usage and revenue</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#1a1a2e]">Usage and revenue</h2>
           <p className="mt-2 text-sm text-muted-foreground">Operational signals across the agents published from your account.</p>
         </div>
-        <div className={`rounded-full border px-4 py-2 text-sm ${pulse ? "border-emerald-400/40 bg-emerald-500/10 text-emerald-300" : "border-white/10 bg-white/5 text-[#cfd3df]"}`}>
+        <div className={`rounded-full border px-4 py-2 text-sm ${pulse ? "border-emerald-400/40 bg-emerald-500/10 text-emerald-300" : "border-black/10 bg-black/[0.03] text-[#374151]"}`}>
           Requests today: {callsToday}
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#8a8fa8]">Requests</p><p className="mt-3 text-3xl font-mono text-white">{totals.totalCalls.toLocaleString()}</p></CardContent></Card>
-        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#8a8fa8]">Estimated revenue</p><p className="mt-3 text-3xl font-mono text-white">${totals.revenue.toFixed(2)}</p></CardContent></Card>
-        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#8a8fa8]">Average trust</p><p className="mt-3 text-3xl font-mono text-white">{Math.round(totals.avgTrust)}</p></CardContent></Card>
-        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#8a8fa8]">Published agents</p><p className="mt-3 text-3xl font-mono text-white">{agents.length}</p></CardContent></Card>
+        <Card className="border-black/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#64748b]">Requests</p><p className="mt-3 text-3xl font-mono text-[#1a1a2e]">{totals.totalCalls.toLocaleString()}</p></CardContent></Card>
+        <Card className="border-black/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#64748b]">Estimated revenue</p><p className="mt-3 text-3xl font-mono text-[#1a1a2e]">${totals.revenue.toFixed(2)}</p></CardContent></Card>
+        <Card className="border-black/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#64748b]">Average trust</p><p className="mt-3 text-3xl font-mono text-[#1a1a2e]">{Math.round(totals.avgTrust)}</p></CardContent></Card>
+        <Card className="border-black/10 bg-transparent"><CardContent className="p-6"><p className="text-xs uppercase tracking-[0.22em] text-[#64748b]">Published agents</p><p className="mt-3 text-3xl font-mono text-[#1a1a2e]">{agents.length}</p></CardContent></Card>
       </div>
 
       <div className="grid gap-6 xl:grid-cols-2">
-        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><h3 className="mb-4 text-lg font-semibold text-white">Daily requests · last 14 days</h3><div className="h-72"><ResponsiveContainer width="100%" height="100%"><BarChart data={dailyCalls}><CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} /><XAxis dataKey="label" stroke="rgba(255,255,255,0.45)" /><YAxis stroke="rgba(255,255,255,0.45)" /><Tooltip contentStyle={{ background: "#09090b", border: "1px solid rgba(255,255,255,0.08)" }} /><Bar dataKey="count" fill="#e74c3c" radius={[8, 8, 0, 0]} /></BarChart></ResponsiveContainer></div></CardContent></Card>
-        <Card className="border-white/10 bg-transparent"><CardContent className="p-6"><h3 className="mb-4 text-lg font-semibold text-white">Latency trend · last 7 days</h3><div className="h-72"><ResponsiveContainer width="100%" height="100%"><LineChart data={latencyTrend}><CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} /><XAxis dataKey="label" stroke="rgba(255,255,255,0.45)" /><YAxis stroke="rgba(255,255,255,0.45)" /><Tooltip contentStyle={{ background: "#09090b", border: "1px solid rgba(255,255,255,0.08)" }} /><Line type="monotone" dataKey="latency" stroke="#ff8c7e" strokeWidth={3} dot={{ r: 3 }} /></LineChart></ResponsiveContainer></div></CardContent></Card>
+        <Card className="border-black/10 bg-transparent"><CardContent className="p-6"><h3 className="mb-4 text-lg font-semibold text-[#1a1a2e]">Daily requests · last 14 days</h3><div className="h-72"><ResponsiveContainer width="100%" height="100%"><BarChart data={dailyCalls}><CartesianGrid stroke="rgba(0,0,0,0.06)" vertical={false} /><XAxis dataKey="label" stroke="rgba(0,0,0,0.45)" /><YAxis stroke="rgba(0,0,0,0.45)" /><Tooltip contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,0,0,0.08)" }} /><Bar dataKey="count" fill="#e74c3c" radius={[8, 8, 0, 0]} /></BarChart></ResponsiveContainer></div></CardContent></Card>
+        <Card className="border-black/10 bg-transparent"><CardContent className="p-6"><h3 className="mb-4 text-lg font-semibold text-[#1a1a2e]">Latency trend · last 7 days</h3><div className="h-72"><ResponsiveContainer width="100%" height="100%"><LineChart data={latencyTrend}><CartesianGrid stroke="rgba(0,0,0,0.06)" vertical={false} /><XAxis dataKey="label" stroke="rgba(0,0,0,0.45)" /><YAxis stroke="rgba(0,0,0,0.45)" /><Tooltip contentStyle={{ background: "#ffffff", border: "1px solid rgba(0,0,0,0.08)" }} /><Line type="monotone" dataKey="latency" stroke="#ff8c7e" strokeWidth={3} dot={{ r: 3 }} /></LineChart></ResponsiveContainer></div></CardContent></Card>
       </div>
 
-      <Card className="border-white/10 bg-transparent">
+      <Card className="border-black/10 bg-transparent">
         <CardContent className="p-6">
-          <h3 className="mb-4 text-lg font-semibold text-white">Per-agent breakdown</h3>
+          <h3 className="mb-4 text-lg font-semibold text-[#1a1a2e]">Per-agent breakdown</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-white/10 text-[#8a8fa8]">
+                <tr className="border-b border-black/10 text-[#6b7280]">
                   {[
                     ["name", "Agent Name"],
                     ["calls", "Requests (7d)"],
@@ -270,7 +270,7 @@ export const DeveloperAnalytics = ({ agents }: { agents: Agent[] }) => {
               </thead>
               <tbody>
                 {agentBreakdown.map((row) => (
-                  <tr key={row.id} className="border-b border-white/6 text-white/85">
+                  <tr key={row.id} className="border-b border-black/6 text-[#374151]">
                     <td className="px-4 py-3"><a href={`/agents/${row.id}`} className="hover:text-[#ff8c7e]">{row.name}</a></td>
                     <td className="px-4 py-3">{row.calls}</td>
                     <td className="px-4 py-3">{row.latency} ms</td>

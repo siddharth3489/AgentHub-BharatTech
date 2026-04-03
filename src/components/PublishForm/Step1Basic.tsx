@@ -12,13 +12,13 @@ export const Step1Basic = () => {
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold tracking-tight text-[#e8eaf0]">Agent profile</h2>
-        <p className="text-sm leading-6 text-[#8a8fa8]">Define how the agent should appear in the marketplace and which workloads it supports.</p>
+        <h2 className="text-2xl font-bold tracking-tight text-[#1a1a2e]">Agent profile</h2>
+        <p className="text-sm leading-6 text-[#64748b]">Define how the agent should appear in the marketplace and which workloads it supports.</p>
       </div>
 
       <div className="space-y-2">
         <Label>Agent Name <span className="text-red-500">*</span></Label>
-        <Input placeholder="PR Review Agent" {...register("name")} className="bg-white/5 border-white/10" />
+        <Input placeholder="PR Review Agent" {...register("name")} className="bg-black/[0.03] border-black/10" />
         {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name?.message as string}</p>}
       </div>
 
@@ -27,7 +27,7 @@ export const Step1Basic = () => {
         <textarea
           placeholder="Explain what the agent does, which users it serves, and the outcome it produces."
           {...register("description")}
-          className="control-shell textarea-shell min-h-[100px] w-full bg-white/5 p-3 text-sm"
+          className="control-shell textarea-shell min-h-[100px] w-full bg-black/[0.03] p-3 text-sm"
         />
         {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description?.message as string}</p>}
       </div>
@@ -41,7 +41,7 @@ export const Step1Basic = () => {
               name="capabilityTags"
               control={control}
               render={({ field }) => (
-                <label className={`cursor-pointer rounded-full border px-3 py-1.5 text-xs font-mono transition-colors ${field.value?.includes(tag) ? 'border-[#e74c3c]/45 bg-[#e74c3c]/12 text-[#ff9b8f]' : 'border-white/10 bg-white/5 text-muted-foreground hover:bg-white/10'}`}>
+                <label className={`cursor-pointer rounded-full border px-3 py-1.5 text-xs font-mono transition-colors ${field.value?.includes(tag) ? 'border-[#e74c3c]/45 bg-[#e74c3c]/12 text-[#ff9b8f]' : 'border-black/10 bg-black/[0.03] text-muted-foreground hover:bg-black/[0.06]'}`}>
                   <input
                     type="checkbox"
                     className="hidden"
@@ -80,9 +80,9 @@ export const Step1Basic = () => {
                         : field.value?.filter((l: string) => l !== lang);
                       field.onChange(updated);
                     }}
-                    className="border-white/20 data-[state=checked]:border-[#e74c3c] data-[state=checked]:bg-[#e74c3c]"
+                    className="border-black/20 data-[state=checked]:border-[#e74c3c] data-[state=checked]:bg-[#e74c3c]"
                   />
-                  <span className="text-sm text-muted-foreground group-hover:text-white transition-colors">{lang}</span>
+                  <span className="text-sm text-muted-foreground group-hover:text-[#1a1a2e] transition-colors">{lang}</span>
                 </label>
               )}
             />

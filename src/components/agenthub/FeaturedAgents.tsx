@@ -26,21 +26,21 @@ export function FeaturedAgents() {
   }, [activeTab]);
 
   return (
-    <section className="page-section relative w-full">
+    <section className="relative w-full pt-12 md:pt-16 pb-6">
       <div className="page-container">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="max-w-xl">
-             <h2 className="mb-4 text-3xl font-bold tracking-tight text-[#e8eaf0] md:text-4xl">Featured agents</h2>
-             <p className="text-base text-[#8a8fa8] md:text-lg">Representative agents across extraction, code, automation, and analytics. Compare their contract, runtime profile, and pricing before you integrate.</p>
+        <div className="flex flex-col mb-12 gap-6">
+          <div>
+             <h2 className="mb-4 text-4xl font-bold tracking-tight text-[#1a1a2e] md:text-5xl lg:text-6xl">Featured agents</h2>
+             <p className="text-base text-[#64748b] md:text-lg">Representative agents across extraction, code, automation, and analytics. Compare their contract, runtime profile, and pricing before you integrate.</p>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 w-full">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 type="button"
                 onClick={() => setActiveTab(tab)}
-                className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${activeTab === tab ? "border-[#e74c3c]/25 bg-[#e74c3c]/10 text-[#ff8c7e]" : "border-white/10 bg-white/[0.03] text-[#8a8fa8] hover:border-[#e74c3c]/20 hover:text-[#e8eaf0]"}`}
+                className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${activeTab === tab ? "border-[#e74c3c]/25 bg-[#e74c3c]/10 text-[#ff8c7e]" : "border-black/10 bg-black/[0.02] text-[#64748b] hover:border-[#e74c3c]/20 hover:text-[#1a1a2e]"}`}
               >
                 {tab}
               </button>
@@ -50,38 +50,38 @@ export function FeaturedAgents() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {visibleAgents.map((agent) => (
-            <div key={agent.name} className="surface-primary group flex h-full flex-col rounded-[1.75rem] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#e74c3c]/28">
+            <div key={agent.name} className="surface-primary group flex h-full flex-col rounded-[1.75rem] p-6 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:border-[#e74c3c]/28 hover:shadow-[0_16px_40px_rgba(231,76,60,0.08)] cursor-pointer">
               <div className="flex justify-between items-start mb-4">
-                <Badge variant="outline" className={agent.color}>
+                <Badge variant="outline" className={cn(agent.color, "transition-transform duration-300 group-hover:scale-110")}>
                   {agent.category}
                 </Badge>
-                <span className="text-[#8a8fa8] text-xs font-mono uppercase tracking-[0.18em]">{agent.lang}</span>
+                <span className="text-[#64748b] text-xs font-mono uppercase tracking-[0.18em] transition-colors duration-300 group-hover:text-[#e74c3c]">{agent.lang}</span>
               </div>
-              
-              <h3 className="text-xl font-bold text-[#e8eaf0] tracking-tight mb-3">{agent.name}</h3>
-              <p className="text-[#8a8fa8] text-sm leading-relaxed mb-6 flex-grow">{agent.desc}</p>
-              
-              <div className="flex items-center gap-2 mb-6">
-                 <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 flex items-center gap-1.5">
-                   <div className="w-1.5 h-1.5 rounded-full bg-[#8a8fa8]/40"></div>
-                   <span className="text-[11px] font-mono text-[#8a8fa8]">In: {agent.input}</span>
+
+              <h3 className="text-xl font-bold text-[#1a1a2e] tracking-tight mb-3 transition-colors duration-300 group-hover:text-[#e74c3c]">{agent.name}</h3>
+              <p className="text-[#64748b] text-sm leading-relaxed mb-6 flex-grow transition-colors duration-300 group-hover:text-[#374151]">{agent.desc}</p>
+
+              <div className="flex items-center gap-2 mb-6 transition-transform duration-300 group-hover:translate-x-1">
+                 <div className="rounded-full border border-black/10 bg-black/[0.02] px-3 py-1.5 flex items-center gap-1.5 transition-all duration-300 group-hover:border-[#e74c3c]/15">
+                   <div className="w-1.5 h-1.5 rounded-full bg-[#8a8fa8]/40 transition-colors duration-300 group-hover:bg-[#e74c3c]/40"></div>
+                   <span className="text-[11px] font-mono text-[#64748b]">In: {agent.input}</span>
                  </div>
-                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8a8fa8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                 <div className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 flex items-center gap-1.5">
+                 <svg className="transition-transform duration-300 group-hover:translate-x-1" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                 <div className="rounded-full border border-black/10 bg-black/[0.02] px-3 py-1.5 flex items-center gap-1.5 transition-all duration-300 group-hover:border-[#e74c3c]/15">
                    <div className="w-1.5 h-1.5 rounded-full bg-[#e74c3c]"></div>
-                   <span className="text-[11px] font-mono text-[#e8eaf0]">Out: {agent.output}</span>
+                   <span className="text-[11px] font-mono text-[#1a1a2e]">Out: {agent.output}</span>
                  </div>
               </div>
 
-              <div className="flex items-center justify-between pt-5 border-t border-white/5 mt-auto">
+              <div className="flex items-center justify-between pt-5 border-t border-black/5 mt-auto transition-all duration-300 group-hover:border-[#e74c3c]/10">
                  <div className="flex flex-col">
                    <div className="flex items-center gap-1 mb-1">
-                     <svg width="12" height="12" viewBox="0 0 24 24" fill="#e74c3c" stroke="#e74c3c" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                     <span className="text-xs font-bold text-[#e8eaf0]">{agent.score}</span>
+                     <svg className="transition-transform duration-300 group-hover:scale-125" width="12" height="12" viewBox="0 0 24 24" fill="#e74c3c" stroke="#e74c3c" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                     <span className="text-xs font-bold text-[#1a1a2e]">{agent.score}</span>
                    </div>
-                   <span className="text-xs font-mono text-[#8a8fa8]">{agent.price} / call</span>
+                   <span className="text-xs font-mono text-[#64748b]">{agent.price} / call</span>
                  </div>
-                 <Link href={`/agents?q=${encodeURIComponent(agent.name)}`} className={cn(buttonVariants({ variant: "outline", size: "sm" }), "rounded-full")}>
+                 <Link href={`/agents?q=${encodeURIComponent(agent.name)}`} className={cn(buttonVariants({ variant: "outline", size: "sm" }), "rounded-full transition-all duration-300 group-hover:bg-[#e74c3c] group-hover:text-white group-hover:border-[#e74c3c]")}>
                    View Agent
                  </Link>
               </div>

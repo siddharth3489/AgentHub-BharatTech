@@ -40,17 +40,17 @@ export const ActivityItem = ({ item }: { item: ActivityFeedItem }) => {
   const timestamp = normalizeDate(item.timestamp);
 
   return (
-    <div className="flex items-start gap-3 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 transition-colors hover:border-[#e74c3c]/20 hover:bg-white/[0.05]">
+    <div className="flex items-start gap-3 rounded-2xl border border-black/8 bg-black/[0.02] px-4 py-3 transition-colors hover:border-[#e74c3c]/20 hover:bg-black/[0.03]">
       <span className={`mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full ${accent}`} />
       <div className="min-w-0 flex-1">
-        <p className="text-sm leading-6 text-[#cfd3df]">
-          <span className="font-bold text-[#f1f2f6]">{item.agentName}</span>
+        <p className="text-sm leading-6 text-[#374151]">
+          <span className="font-bold text-[#1a1a2e]">{item.agentName}</span>
           {" was "}
           <span className="font-medium text-[#ff8c7e]">{item.eventType}</span>
           {" in a "}
-          <span className="font-medium text-[#8a8fa8]">{item.repoType}</span>
+          <span className="font-medium text-[#64748b]">{item.repoType}</span>
         </p>
-        <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.24em] text-[#8a8fa8]">
+        <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.24em] text-[#64748b]">
           {formatDistanceToNow(timestamp, { addSuffix: true })}
         </p>
       </div>

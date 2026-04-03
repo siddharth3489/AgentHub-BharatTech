@@ -21,15 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#050505] text-[#e8eaf0] min-h-screen flex flex-col font-sans selection:bg-[#c0392b]/40 selection:text-white`}>
+    <html lang="en" className="light">
+      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-white text-[#1a1a2e] min-h-screen flex flex-col font-sans selection:bg-[#c0392b]/40 selection:text-white`}>
         <Providers>
           <TooltipProvider>
             <AgentHubNavbar />
             <main className="flex-1">
               {children}
             </main>
-            <Toaster theme="dark" position="bottom-right" />
+            <Toaster theme="light" position="bottom-right" />
           </TooltipProvider>
         </Providers>
       </body>
