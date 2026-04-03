@@ -1,16 +1,17 @@
 import { db } from "./firebase";
 import { collection, doc, getDocs, getDoc, setDoc, updateDoc, addDoc, query, where, orderBy, Timestamp, runTransaction } from "firebase/firestore";
 import { Agent, AgentCall, AgentReview } from "./types";
-import { MOCK_AGENTS } from "./dummyData";
+import { MOCK_AGENTS } from "./dummyData"; // TODO: DEMO — Remove once Firestore has real agents
 
 export const getAgents = async (): Promise<Agent[]> => {
   const q = query(collection(db, "agents"), where("status", "==", "active"));
   const snapshot = await getDocs(q);
-  if (snapshot.empty) return MOCK_AGENTS;
+  if (snapshot.empty) return MOCK_AGENTS; // TODO: DEMO — Return [] once Firestore has real agents
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Agent));
 };
 
 export const getAgentById = async (id: string): Promise<Agent | null> => {
+  // TODO: DEMO — Remove this MOCK_AGENTS check. It runs BEFORE Firestore, so mock agents always take priority.
   const mockAgent = MOCK_AGENTS.find(a => a.id === id);
   if (mockAgent) return mockAgent;
 
@@ -75,4 +76,32 @@ export const addReview = async (agentId: string, userId: string, rating: number,
       updatedAt: Timestamp.now()
     });
   });
+};
+
+export const submitCopyrightClaim = async (claim: {
+  agentId: string;
+  agentName: string;
+  reporterId: string;
+  reporterUsername: string;
+  originalAgentUrl: string;
+  description: string;
+  evidenceUrl: string;
+  relationship: "creator" | "representative";
+}): Promise<string> => {
+  const docRef = await addDoc(collection(db, "copyright_claims"), {
+    ...claim,
+    status: "pending",
+    createdAt: Timestamp.now(),
+  });
+  return docRef.id;
+};
+
+export const hasCopyrightClaim = async (agentId: string, userId: string): Promise<boolean> => {
+  const q = query(
+    collection(db, "copyright_claims"),
+    where("agentId", "==", agentId),
+    where("reporterId", "==", userId)
+  );
+  const snapshot = await getDocs(q);
+  return !snapshot.empty;
 };

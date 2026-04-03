@@ -80,3 +80,17 @@ export interface Chain {
   schemaMappings: any;
   createdAt: any;
 }
+
+export interface CopyrightClaim {
+  id: string;
+  agentId: string;
+  agentName: string;
+  reporterId: string;
+  reporterUsername: string;
+  originalAgentUrl: string;
+  description: string;
+  evidenceUrl: string;
+  relationship: "creator" | "representative";
+  status: "pending" | "reviewed" | "resolved" | "dismissed";
+  createdAt: any;
+}
