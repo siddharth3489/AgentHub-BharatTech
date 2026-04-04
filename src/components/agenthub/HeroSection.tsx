@@ -63,7 +63,7 @@ export function HeroSection({ variant = "static" }: { variant?: HeroVariant }) {
           </div>
           
           <h1 className="animate-fade-in-up animate-hero-color mb-8 text-3xl sm:text-5xl md:text-6xl lg:text-[80px] font-bold leading-[1.05] tracking-[-0.03em]" style={{ animationDelay: "100ms" }}>
-            Find, test, and ship <br />
+            Find, Test, and Ship <br />
             <span className="text-shine-orange">AI agents</span> from one platform
           </h1>
           

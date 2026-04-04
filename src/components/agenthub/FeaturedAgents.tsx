@@ -73,7 +73,13 @@ export function FeaturedAgents() {
       <div className="page-container">
         
         <div className="flex flex-col mb-12 gap-6">
-          <div>
+          <div className="flex items-center gap-4 md:gap-6">
+             <img
+               src="/assets/images/robot-mascot.png"
+               alt="AgentHub mascot"
+               className="h-28 w-28 md:h-40 md:w-40 object-contain drop-shadow-lg"
+             />
+             <div>
              <h2 ref={headingRef} className="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#1a1a2e]">
                {done ? headingText : headingText.split("").map((char, i) => (
                  <span
@@ -90,6 +96,7 @@ export function FeaturedAgents() {
                ))}
              </h2>
              <p className="text-base text-[#64748b] md:text-lg">Representative agents across extraction, code, automation, and analytics. Compare their contract, runtime profile, and pricing before you integrate.</p>
+             </div>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 w-full">
             {tabs.map((tab) => (
