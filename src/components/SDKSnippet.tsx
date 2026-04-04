@@ -64,7 +64,7 @@ console.log(result);`;
   };
 
   return (
-    <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-black/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(250,250,252,0.98))] shadow-[0_20px_55px_rgba(0,0,0,0.06)]">
+    <div className="mt-8 h-[600px] flex flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(250,250,252,0.98))] shadow-[0_20px_55px_rgba(0,0,0,0.06)]">
       <Tabs defaultValue="python" className="w-full">
         <div className="flex items-center justify-between border-b border-black/10 bg-black/[0.02] pr-4">
           <TabsList variant="line" className="h-11 bg-transparent p-0">
@@ -88,9 +88,9 @@ console.log(result);`;
           </button>
         </div>
 
-        <TabsContent value="python" className="ui-highlight-container m-0 overflow-x-auto p-4 text-sm" dangerouslySetInnerHTML={{ __html: snippets.py }} />
-        <TabsContent value="javascript" className="ui-highlight-container m-0 overflow-x-auto p-4 text-sm" dangerouslySetInnerHTML={{ __html: snippets.js }} />
-        <TabsContent value="curl" className="ui-highlight-container m-0 overflow-x-auto p-4 text-sm" dangerouslySetInnerHTML={{ __html: snippets.cur }} />
+        <TabsContent value="python" className="ui-highlight-container m-0 flex-1 overflow-auto p-4 text-sm" dangerouslySetInnerHTML={{ __html: snippets.py }} />
+        <TabsContent value="javascript" className="ui-highlight-container m-0 flex-1 overflow-auto p-4 text-sm" dangerouslySetInnerHTML={{ __html: snippets.js }} />
+        <TabsContent value="curl" className="ui-highlight-container m-0 flex-1 overflow-auto p-4 text-sm" dangerouslySetInnerHTML={{ __html: snippets.cur }} />
       </Tabs>
       <style>{`
         .ui-highlight-container pre { background-color: transparent !important; margin: 0; }

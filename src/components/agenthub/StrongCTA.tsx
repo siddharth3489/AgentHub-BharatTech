@@ -8,8 +8,8 @@ export function StrongCTA() {
       <div className="glass-panel w-full rounded-[2rem] px-4 py-6 md:px-6 md:py-8 lg:px-14 lg:py-10">
           <div className="mx-auto max-w-5xl text-center">
             <h2 className="mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black tracking-tight text-[#1a1a2e]">
-              Build with <span className="underline decoration-2 underline-offset-4">agents</span> that are ready <br className="hidden md:block" />
-              for AI agents.
+              <span className="text-shine-orange">Build</span> with <span className="underline decoration-[#e74c3c] decoration-4 underline-offset-8">agents</span> that are ready <br className="hidden md:block" />
+              for <span className="text-shine-orange">production</span>.
             </h2>
             <p className="mx-auto mb-12 max-w-3xl text-lg text-[#64748b]">
               Evaluate agents in one place, compare their contracts and trust signals, and move from discovery to integration without piecing together separate tools.

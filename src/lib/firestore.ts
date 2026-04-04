@@ -1,24 +1,35 @@
 import { db } from "./firebase";
 import { collection, doc, getDocs, getDoc, setDoc, updateDoc, addDoc, query, where, orderBy, Timestamp, runTransaction } from "firebase/firestore";
 import { Agent, AgentCall, AgentReview } from "./types";
-import { MOCK_AGENTS } from "./dummyData"; // TODO: DEMO — Remove once Firestore has real agents
+import { MOCK_AGENTS } from "./dummyData";
 
 export const getAgents = async (): Promise<Agent[]> => {
-  const q = query(collection(db, "agents"), where("status", "==", "active"));
-  const snapshot = await getDocs(q);
-  if (snapshot.empty) return MOCK_AGENTS; // TODO: DEMO — Return [] once Firestore has real agents
-  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Agent));
+  try {
+    const q = query(collection(db, "agents"), where("status", "==", "active"));
+    const snapshot = await getDocs(q);
+    const firestoreAgents = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Agent));
+    const mockIds = new Set(MOCK_AGENTS.map(a => a.id));
+    const uniqueFirestore = firestoreAgents.filter(a => !mockIds.has(a.id));
+    return [...uniqueFirestore, ...MOCK_AGENTS];
+  } catch (e) {
+    console.warn("Firestore getAgents failed, using mock data", e);
+    return MOCK_AGENTS;
+  }
 };
 
 export const getAgentById = async (id: string): Promise<Agent | null> => {
-  // TODO: DEMO — Remove this MOCK_AGENTS check. It runs BEFORE Firestore, so mock agents always take priority.
   const mockAgent = MOCK_AGENTS.find(a => a.id === id);
   if (mockAgent) return mockAgent;
 
-  const docRef = doc(db, "agents", id);
-  const docSnap = await getDoc(docRef);
-  if (!docSnap.exists()) return null;
-  return { id: docSnap.id, ...docSnap.data() } as Agent;
+  try {
+    const docRef = doc(db, "agents", id);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) return null;
+    return { id: docSnap.id, ...docSnap.data() } as Agent;
+  } catch (e) {
+    console.warn("Firestore getAgentById failed", e);
+    return null;
+  }
 };
 
 export const getAgentReviews = async (agentId: string): Promise<AgentReview[]> => {

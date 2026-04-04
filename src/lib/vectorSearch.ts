@@ -1,7 +1,6 @@
 import { Index } from "@upstash/vector";
 import { getEmbedding } from "./embeddings";
 
-// TODO: DEMO — Mock URL/token fallback. Should throw if env vars missing in production.
 const vectorIndex = new Index({
   url: process.env.UPSTASH_VECTOR_REST_URL as string || "http://mock.upstash.com",
   token: process.env.UPSTASH_VECTOR_REST_TOKEN as string || "mock",

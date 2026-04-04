@@ -9,7 +9,7 @@ import { useMemo } from "react";
 export const FilterSidebar = ({ agents }: { agents: Agent[] }) => {
   const [tags, setTags] = useQueryState("tags", parseAsArrayOf(parseAsString).withDefault([]));
   const [langs, setLangs] = useQueryState("langs", parseAsArrayOf(parseAsString).withDefault([]));
-  const [maxCost, setMaxCost] = useQueryState("cost", parseAsFloat.withDefault(0.1));
+  const [maxCost, setMaxCost] = useQueryState("cost", parseAsFloat.withDefault(2.0));
   const [minTrust, setMinTrust] = useQueryState("trust", parseAsFloat.withDefault(0));
   const [sort, setSort] = useQueryState("sort", parseAsString.withDefault("newest"));
 
@@ -26,12 +26,12 @@ export const FilterSidebar = ({ agents }: { agents: Agent[] }) => {
     else setLangs([...langs, lang]);
   };
 
-  const hasFilters = tags.length > 0 || langs.length > 0 || maxCost < 0.1 || minTrust > 0 || sort !== "newest";
+  const hasFilters = tags.length > 0 || langs.length > 0 || maxCost < 2.0 || minTrust > 0 || sort !== "newest";
 
   const resetFilters = () => {
     setTags([]);
     setLangs([]);
-    setMaxCost(0.1);
+    setMaxCost(2.0);
     setMinTrust(0);
     setSort("newest");
   };
@@ -71,13 +71,13 @@ export const FilterSidebar = ({ agents }: { agents: Agent[] }) => {
         <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#64748b]">Price Ceiling</h4>
         <div className="mb-2 flex items-center justify-between">
           <span className="text-xs text-[#64748b]">$0</span>
-          <span className="text-xs font-mono font-bold text-[#ff8c7e]">${maxCost.toFixed(3)}</span>
+          <span className="text-xs font-mono font-bold text-[#ff8c7e]">${maxCost.toFixed(2)}</span>
         </div>
         <Slider
           value={[maxCost]}
           min={0}
-          max={0.1}
-          step={0.001}
+          max={2.0}
+          step={0.01}
           onValueChange={(vals) => setMaxCost((vals as number[])[0])}
           className="w-full accent-[#e74c3c]"
         />

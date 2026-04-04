@@ -10,6 +10,7 @@ import { Button } from './ui/button';
 import { Save, Search } from 'lucide-react';
 import { useAgents } from '@/hooks/useAgents';
 import { Input } from './ui/input';
+import { toast } from 'sonner';
 
 const nodeTypes = { agentNode: AgentNode };
 
@@ -91,8 +92,12 @@ export function ChainStudio() {
           />
           <div className="w-px h-8 bg-black/10"></div>
           <Button onClick={async () => {
-            const id = await saveChain();
-            alert("Workflow saved. ID: " + id);
+            try {
+              const id = await saveChain();
+              toast.success("Workflow saved successfully!");
+            } catch (err) {
+              toast.error("Failed to save workflow");
+            }
           }} className="bg-[#e74c3c] px-6 font-bold hover:bg-[#f05a48]">
             <Save className="w-4 h-4 mr-2" /> Save workflow
           </Button>

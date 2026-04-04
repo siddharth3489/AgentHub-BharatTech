@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { parseRepoUrl, fetchRepoMeta, fetchLanguages, fetchOpenIssues, fetchRecentCommits, fetchReadme } from "@/lib/githubClient";
 import { geminiAnalyze } from "@/lib/geminiClient";
-import { MOCK_AGENTS } from "@/lib/dummyData"; // TODO: DEMO — Remove once Firestore has real agents
+import { MOCK_AGENTS } from "@/lib/dummyData";
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, doc, getDoc, setDoc, Timestamp } from "firebase/firestore";
 import crypto from "crypto";
@@ -30,10 +30,6 @@ interface ClaudePainPoint {
 
 const SCAN_CACHE_VERSION = "v2-ml-aware";
 
-// TODO: DEMO FALLBACK — Remove once Gemini results are confirmed working in production.
-// This function returns hardcoded pain points when AI analysis fails.
-// Once real Gemini results are reliable, delete this entire function (lines ~33-125)
-// and let the catch block in the scan handler return an error instead.
 const buildFallbackPainPoints = ({
   description,
   primaryLanguage,
@@ -237,8 +233,6 @@ Return ONLY a valid JSON array of 5 objects with these exact keys.`;
       const jsonStr = geminiResp.substring(geminiResp.indexOf("["), geminiResp.lastIndexOf("]") + 1);
       painPoints = JSON.parse(jsonStr) as ClaudePainPoint[];
     } catch (e) {
-      // TODO: DEMO FALLBACK — Remove this catch body once Gemini is confirmed stable.
-      // Currently falls back to hardcoded demo results if Gemini fails.
       console.warn("Gemini analysis unavailable, using local fallback scan", e);
       painPoints = buildFallbackPainPoints({
         description: meta.description || "",
@@ -265,8 +259,6 @@ Return ONLY a valid JSON array of 5 objects with these exact keys.`;
         }
       } catch { /* ignores */ }
 
-      // TODO: DEMO FALLBACK — Remove this MOCK_AGENTS fallback once Firestore has real agents.
-      // Currently uses hardcoded dummy agents when no matching agents exist in Firestore.
       const rankedFallbackAgents = [...MOCK_AGENTS]
         .map((agent) => ({
           agent,

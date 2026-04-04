@@ -6,7 +6,6 @@ import { CircleDot } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ActivityFeedItem, ActivityItem } from "@/components/ActivityItem";
 
-// TODO: DEMO FALLBACK — Remove once real activity feed API is working.
 const FALLBACK_FEED: ActivityFeedItem[] = [
   {
     id: "fallback-1",

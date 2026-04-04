@@ -6,11 +6,14 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { topFeatureNavItems } from "@/lib/featureNavigation";
 import { buttonVariants } from "@/components/ui/button";
+import { useAuth } from "@/lib/AuthContext";
+import { LogOut } from "lucide-react";
 
 export function AgentHubNavbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { user, signOut, githubProfile } = useAuth();
   const navRef = useRef<HTMLDivElement>(null);
   const [hoverStyle, setHoverStyle] = useState<{ left: number; width: number } | null>(null);
 
@@ -55,7 +58,7 @@ export function AgentHubNavbar() {
 
   return (
     <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? "border-b border-black/[0.08] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.82))] shadow-[0_14px_40px_rgba(0,0,0,0.06)] backdrop-blur-[16px]" : "border-b border-transparent bg-transparent"}`}>
-      <div className="page-container flex h-20 items-center justify-between">
+      <div className="flex h-20 items-center justify-between px-4 md:px-8 lg:px-12">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-8 h-8 bg-white border border-black/20 rounded-sm flex items-center justify-center relative shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
             <div className="absolute -top-px -right-px w-2 h-2 bg-[#e74c3c] transition-all duration-300 group-hover:w-2.5 group-hover:h-2.5"></div>
@@ -106,7 +109,28 @@ export function AgentHubNavbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Link href="/login" className="hidden text-[14px] font-medium text-[#64748b] transition-all duration-200 hover:text-[#e74c3c] sm:block">Sign in</Link>
+          {user ? (
+            <>
+              <Link href="/dashboard" className="hidden sm:flex items-center gap-2">
+                <img
+                  src={githubProfile?.avatar_url || `https://github.com/${githubProfile?.login || "ghost"}.png?size=32`}
+                  alt=""
+                  className="h-7 w-7 rounded-full border border-black/10"
+                />
+                <span className="text-[13px] font-medium text-[#1a1a2e]">{githubProfile?.login || "Account"}</span>
+              </Link>
+              <button
+                type="button"
+                onClick={signOut}
+                className="hidden sm:flex items-center gap-1.5 rounded-full border border-black/10 bg-black/[0.02] px-3 py-1.5 text-xs font-medium text-[#64748b] transition-all duration-200 hover:border-[#e74c3c]/30 hover:text-[#e74c3c]"
+              >
+                <LogOut className="h-3.5 w-3.5" />
+                Sign out
+              </button>
+            </>
+          ) : (
+            <Link href="/login" className="hidden text-[14px] font-medium text-[#64748b] transition-all duration-200 hover:text-[#e74c3c] sm:block">Sign in</Link>
+          )}
           <Link href="/publish" className={cn(buttonVariants({ variant: "outline", size: "sm" }), "rounded-full px-4 transition-all duration-200 hover:border-[#e74c3c]/30 hover:text-[#e74c3c] hover:shadow-[0_0_12px_rgba(231,76,60,0.1)]")}>
             Publish an Agent
           </Link>
@@ -153,13 +177,24 @@ export function AgentHubNavbar() {
               </Link>
             );
           })}
-          <Link
-            href="/login"
-            onClick={() => setMenuOpen(false)}
-            className="rounded-lg px-4 py-3 text-[14px] font-medium text-[#64748b] hover:bg-black/[0.03] hover:text-[#1a1a2e] transition-colors sm:hidden"
-          >
-            Sign in
-          </Link>
+          {user ? (
+            <button
+              type="button"
+              onClick={() => { signOut(); setMenuOpen(false); }}
+              className="rounded-lg px-4 py-3 text-[14px] font-medium text-[#64748b] hover:bg-[#e74c3c]/5 hover:text-[#e74c3c] transition-colors flex items-center gap-2.5 sm:hidden"
+            >
+              <LogOut className="h-4 w-4" />
+              Sign out
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-lg px-4 py-3 text-[14px] font-medium text-[#64748b] hover:bg-black/[0.03] hover:text-[#1a1a2e] transition-colors sm:hidden"
+            >
+              Sign in
+            </Link>
+          )}
         </div>
       </div>
     </nav>

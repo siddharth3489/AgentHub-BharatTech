@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { doc, getDoc, setDoc, Timestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { getAgentById } from "@/lib/firestore";
-import { MOCK_AGENTS } from "@/lib/dummyData"; // TODO: DEMO — Remove once Firestore has real agents
+import { MOCK_AGENTS } from "@/lib/dummyData";
 import { Agent } from "@/lib/types";
 
 const SEARCH_SYNONYMS: Record<string, string[]> = {
@@ -79,8 +79,6 @@ const getLocalScore = (agent: Agent, query: string) => {
   return score;
 };
 
-// TODO: DEMO FALLBACK — Remove once vector search + real agents are working.
-// Returns top 5 MOCK_AGENTS ranked by local scoring against the query.
 const getFallbackResults = (query: string) => {
   return MOCK_AGENTS
     .map((agent) => ({

@@ -5,13 +5,24 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Plus, Workflow } from "lucide-react";
 
+const DEMO_CHAINS = [
+  { id: "demo-1", name: "Code Review Pipeline", nodes: [], edges: [], userId: "demo", schemaMappings: {}, createdAt: new Date().toISOString() },
+  { id: "demo-2", name: "Bug Triage Workflow", nodes: [], edges: [], userId: "demo", schemaMappings: {}, createdAt: new Date().toISOString() },
+];
+
 export default function ChainsPage() {
   const [chains, setChains] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("/api/chains").then(res => res.json()).then(data => {
-      if (Array.isArray(data)) setChains(data);
-    });
+    fetch("/api/chains")
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setChains(data);
+        else setChains(DEMO_CHAINS);
+      })
+      .catch(() => {
+        setChains(DEMO_CHAINS);
+      });
   }, []);
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -17,8 +17,51 @@ const agents = [
   { name: "QueryGenius", category: "Code", color: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20", desc: "Turn natural-language requests into executable SQL aligned to your schema and constraints.", input: "Prompt and schema", output: "SQL query", lang: "Python", score: "4.9", price: "$0.003" }
 ];
 
+const headingText = "Featured agents";
+
 export function FeaturedAgents() {
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("All");
+  const [visibleCharIndex, setVisibleCharIndex] = useState(headingText.length);
+  const [loopCount, setLoopCount] = useState(0);
+  const [triggered, setTriggered] = useState(false);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const done = loopCount >= 2 && triggered;
+
+  useEffect(() => {
+    const el = headingRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTriggered(true);
+          setVisibleCharIndex(0);
+          setLoopCount(0);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!triggered || done) {
+      if (done) setVisibleCharIndex(headingText.length);
+      return;
+    }
+    const interval = setInterval(() => {
+      setVisibleCharIndex((prev) => {
+        const next = prev + 1;
+        if (next > headingText.length) {
+          setLoopCount((c) => c + 1);
+          return 0;
+        }
+        return next;
+      });
+    }, 120);
+    return () => clearInterval(interval);
+  }, [loopCount, done, triggered]);
 
   const visibleAgents = useMemo(() => {
     if (activeTab === "All") return agents;
@@ -31,7 +74,21 @@ export function FeaturedAgents() {
         
         <div className="flex flex-col mb-12 gap-6">
           <div>
-             <h2 className="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#1a1a2e]">Featured agents</h2>
+             <h2 ref={headingRef} className="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#1a1a2e]">
+               {done ? headingText : headingText.split("").map((char, i) => (
+                 <span
+                   key={i}
+                   className="inline-block transition-all duration-200"
+                   style={{
+                     opacity: i < visibleCharIndex ? 1 : 0.1,
+                     transform: i < visibleCharIndex ? "translateY(0)" : "translateY(4px)",
+                     width: char === " " ? "0.3em" : undefined,
+                   }}
+                 >
+                   {char}
+                 </span>
+               ))}
+             </h2>
              <p className="text-base text-[#64748b] md:text-lg">Representative agents across extraction, code, automation, and analytics. Compare their contract, runtime profile, and pricing before you integrate.</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 w-full">

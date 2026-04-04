@@ -46,17 +46,6 @@ function LoginPageContent() {
     <div className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#fafafa_100%)]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(231,76,60,0.22),transparent_28%),radial-gradient(circle_at_78%_16%,rgba(192,57,43,0.14),transparent_22%),radial-gradient(circle_at_60%_70%,rgba(231,76,60,0.1),transparent_32%)]" />
       <div className="absolute inset-0 hero-grid opacity-[0.04]" />
-      <div className="pointer-events-none absolute inset-y-0 right-[-4%] hidden w-[48vw] max-w-[640px] md:block">
-        <div className="animate-ambient-glow absolute inset-[18%_10%_10%_14%] rounded-full bg-[radial-gradient(circle,_rgba(231,76,60,0.18)_0%,_rgba(231,76,60,0)_72%)] blur-3xl" />
-        <Image
-          src="/hero/ezgif-frame-007.png"
-          alt=""
-          fill
-          aria-hidden="true"
-          className="animate-hero-drift object-contain object-center opacity-18"
-          sizes="48vw"
-        />
-      </div>
 
       <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl items-center px-6 py-16">
         <div className="grid w-full gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">

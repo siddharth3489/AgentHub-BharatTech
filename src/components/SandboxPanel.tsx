@@ -4,7 +4,7 @@ import { useState } from "react";
 import Editor from "@monaco-editor/react";
 import { Agent } from "@/lib/types";
 import { Button } from "@/components/ui/button";
-import { Play, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Play, Loader2, AlertCircle, CheckCircle2, Maximize2, Minimize2 } from "lucide-react";
 
 export const SandboxPanel = ({ agent }: { agent: Agent }) => {
   const defaultInput = agent.exampleInput ? JSON.stringify(agent.exampleInput, null, 2) : "{\n  \n}";
@@ -14,6 +14,7 @@ export const SandboxPanel = ({ agent }: { agent: Agent }) => {
   const [latency, setLatency] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [apiKey, setApiKey] = useState("");
+  const [expanded, setExpanded] = useState(false);
 
   const handleRun = async () => {
     setIsLoading(true);
@@ -48,7 +49,9 @@ export const SandboxPanel = ({ agent }: { agent: Agent }) => {
   };
 
   return (
-    <div className="flex h-[600px] flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(250,250,252,0.98))] shadow-[0_20px_55px_rgba(0,0,0,0.06)]">
+    <>
+    {expanded && <div className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm" onClick={() => setExpanded(false)} />}
+    <div className={`flex flex-col overflow-hidden rounded-[1.75rem] border border-black/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(250,250,252,0.98))] shadow-[0_20px_55px_rgba(0,0,0,0.06)] transition-all duration-300 ${expanded ? "fixed inset-4 z-50 h-auto rounded-[1.75rem]" : "h-[600px]"}`}>
       <div className="flex items-center justify-between border-b border-black/10 bg-black/[0.02] px-4 py-3">
         <div className="flex items-center gap-4">
           <span className="text-sm font-bold text-[#1a1a2e]">Sandbox execution</span>
@@ -77,8 +80,20 @@ export const SandboxPanel = ({ agent }: { agent: Agent }) => {
             {isLoading ? <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" /> : <Play className="mr-2 h-3.5 w-3.5" />}
             Run request
           </Button>
+          <button
+            type="button"
+            onClick={() => setExpanded((e) => !e)}
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-black/10 bg-black/[0.02] text-[#64748b] transition-colors hover:text-[#e74c3c] hover:border-[#e74c3c]/20"
+            aria-label={expanded ? "Shrink terminal" : "Expand terminal"}
+          >
+            {expanded ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+          </button>
         </div>
       </div>
+
+      {!apiKey && (
+        <p className="px-4 py-2 text-xs text-[#64748b]">Create an API key in the dashboard to test agents</p>
+      )}
 
       <div className="grid flex-1 grid-cols-2 divide-x divide-black/10">
         <div className="relative flex h-full flex-col">
@@ -125,5 +140,6 @@ export const SandboxPanel = ({ agent }: { agent: Agent }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };

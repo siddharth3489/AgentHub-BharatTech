@@ -88,7 +88,7 @@ function AgentsContent() {
   const [q] = useQueryState("q", { defaultValue: "" });
   const [tags] = useQueryState("tags", parseAsArrayOf(parseAsString).withDefault([]));
   const [langs] = useQueryState("langs", parseAsArrayOf(parseAsString).withDefault([]));
-  const [maxCost] = useQueryState("cost", parseAsFloat.withDefault(1.0));
+  const [maxCost] = useQueryState("cost", parseAsFloat.withDefault(2.0));
   const [minTrust] = useQueryState("trust", parseAsFloat.withDefault(0));
   const [sort] = useQueryState("sort", parseAsString.withDefault("newest"));
 

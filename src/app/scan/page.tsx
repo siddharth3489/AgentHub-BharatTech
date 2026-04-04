@@ -77,6 +77,10 @@ export default function ScanPage() {
 
         {(isScanning || scanResult) && <RepoDNAResult result={scanResult} />}
 
+        {scanResult && gapAgents.length === 0 && !isScanning && (
+          <p className="mt-12 text-center text-[#64748b]">No additional capability gaps detected for this repository.</p>
+        )}
+
         {scanResult && gapAgents.length > 0 && (
           <div className="mt-24 animate-in slide-in-from-bottom-8 fade-in border-t border-black/10 pt-12 duration-1000 delay-500">
             <h2 className="mb-8 text-center text-2xl font-bold tracking-tight text-[#1a1a2e]">Suggested capabilities</h2>

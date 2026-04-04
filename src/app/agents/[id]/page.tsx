@@ -131,6 +131,25 @@ export default function AgentDetailPage() {
             >
               Provision access for ${agent.costPerCall}/call
             </Button>
+
+            {user ? (
+              <button
+                type="button"
+                onClick={() => setClaimOpen(true)}
+                className="flex w-full flex-col items-center gap-1 rounded-xl border border-black/[0.06] bg-black/[0.01] py-3 text-[#64748b] transition-all hover:border-[#e74c3c]/20 hover:text-[#e74c3c]"
+              >
+                <Shield className="h-5 w-5" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Report</span>
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="flex w-full flex-col items-center gap-1 rounded-xl border border-black/[0.06] bg-black/[0.01] py-3 text-[#64748b] transition-all hover:border-[#e74c3c]/20 hover:text-[#e74c3c]"
+              >
+                <Shield className="h-5 w-5" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Report</span>
+              </Link>
+            )}
           </div>
         </div>
 
@@ -211,23 +230,6 @@ export default function AgentDetailPage() {
           )}
         </div>
 
-        <div className="mt-12 border-t border-black/[0.06] pt-6">
-          {user ? (
-            <button
-              type="button"
-              onClick={() => setClaimOpen(true)}
-              className="flex items-center gap-2 text-sm text-[#64748b] transition-colors hover:text-[#e74c3c]"
-            >
-              <Shield className="h-4 w-4" />
-              Report Copyright Infringement
-            </button>
-          ) : (
-            <Link href="/login" className="flex items-center gap-2 text-sm text-[#64748b] transition-colors hover:text-[#e74c3c]">
-              <Shield className="h-4 w-4" />
-              Sign in to report infringement
-            </Link>
-          )}
-        </div>
 
         {user && (
           <CopyrightClaimModal

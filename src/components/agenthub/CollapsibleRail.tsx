@@ -1,20 +1,22 @@
 "use client";
 
-import { useEffect, useState, useCallback, type ReactNode } from "react";
+import { useEffect, useState, useCallback, useRef, type ReactNode } from "react";
 import { FeatureRail } from "./FeatureRail";
 
 export function CollapsibleRail({ children }: { children: ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [userToggled, setUserToggled] = useState(false);
+  const hasCollapsedRef = useRef(false);
 
   useEffect(() => {
     let frameId = 0;
 
     const sync = () => {
       frameId = 0;
-      if (userToggled) return;
-      const scrolled = window.scrollY > 80;
-      setCollapsed((c) => (c === scrolled ? c : scrolled));
+      if (hasCollapsedRef.current) return;
+      if (window.scrollY > 80) {
+        hasCollapsedRef.current = true;
+        setCollapsed(true);
+      }
     };
 
     const onScroll = () => {
@@ -22,17 +24,18 @@ export function CollapsibleRail({ children }: { children: ReactNode }) {
       frameId = requestAnimationFrame(sync);
     };
 
-    sync();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       if (frameId) cancelAnimationFrame(frameId);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [userToggled]);
+  }, []);
 
   const toggle = useCallback(() => {
-    setUserToggled(true);
-    setCollapsed((c) => !c);
+    setCollapsed((c) => {
+      hasCollapsedRef.current = !c;
+      return !c;
+    });
   }, []);
 
   return (
