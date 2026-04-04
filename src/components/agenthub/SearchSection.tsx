@@ -31,7 +31,7 @@ export function SearchSection() {
         <div className="glass-panel group relative overflow-hidden rounded-[1.75rem] p-2 md:p-2.5">
           <div className="absolute inset-0 bg-gradient-to-r from-[#e74c3c]/0 via-[#e74c3c]/10 to-[#e74c3c]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -translate-x-full group-hover:translate-x-full ease-in-out"></div>
           
-          <form onSubmit={handleSubmit} className="flex items-center rounded-[1.25rem] border border-black/10 bg-white/90 px-5 py-4 transition-all focus-within:border-[#e74c3c]/60 focus-within:shadow-[0_0_20px_rgba(231,76,60,0.15)]">
+          <form onSubmit={handleSubmit} className="flex items-center rounded-[1.25rem] border border-black/10 bg-white/90 px-3 py-3 md:px-5 md:py-4 transition-all focus-within:border-[#e74c3c]/60 focus-within:shadow-[0_0_20px_rgba(231,76,60,0.15)]">
             <svg className="w-5 h-5 text-[#64748b] mr-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             <input 
               type="text" 

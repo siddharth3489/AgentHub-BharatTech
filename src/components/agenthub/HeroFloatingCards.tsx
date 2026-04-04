@@ -77,7 +77,7 @@ export function HeroFloatingCards() {
         handleMouseMove(e);
       }}
       onMouseLeave={handleMouseLeave}
-      className="pointer-events-auto absolute inset-0 z-[1] overflow-hidden"
+      className="pointer-events-auto absolute inset-0 z-[1] overflow-hidden hidden md:block"
     >
       {cards.map((card) => {
         const scale = depthScale[card.depth];

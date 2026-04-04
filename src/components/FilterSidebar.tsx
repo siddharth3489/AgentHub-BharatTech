@@ -37,7 +37,7 @@ export const FilterSidebar = ({ agents }: { agents: Agent[] }) => {
   };
 
   return (
-    <div className="sticky top-28 space-y-8 rounded-[28px] border border-black/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(250,250,252,0.98))] p-6 shadow-[0_24px_60px_rgba(0,0,0,0.06)] backdrop-blur-xl">
+    <div className="lg:sticky lg:top-28 space-y-8 rounded-[28px] border border-black/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(250,250,252,0.98))] p-4 md:p-6 shadow-[0_24px_60px_rgba(0,0,0,0.06)] backdrop-blur-xl">
       <div className="flex items-center justify-between border-b border-black/8 pb-5">
         <div>
           <h3 className="text-lg font-semibold tracking-tight text-[#1a1a2e]">Filters</h3>

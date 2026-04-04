@@ -62,16 +62,16 @@ export function HeroSection({ variant = "static" }: { variant?: HeroVariant }) {
             </span>
           </div>
           
-          <h1 className="animate-fade-in-up animate-hero-color mb-8 text-5xl font-bold leading-[1.05] tracking-[-0.03em] sm:text-6xl md:text-[80px]" style={{ animationDelay: "100ms" }}>
+          <h1 className="animate-fade-in-up animate-hero-color mb-8 text-3xl sm:text-5xl md:text-6xl lg:text-[80px] font-bold leading-[1.05] tracking-[-0.03em]" style={{ animationDelay: "100ms" }}>
             Find, test, and ship <br />
             <span className="text-shine-orange">AI agents</span> from one platform
           </h1>
           
-          <p className="animate-fade-in-up mb-12 max-w-3xl text-lg font-medium leading-[1.6] text-[#64748b] md:text-xl" style={{ animationDelay: "200ms" }}>
+          <p className="animate-fade-in-up mb-12 max-w-3xl text-base md:text-lg lg:text-xl font-medium leading-[1.6] text-[#64748b]" style={{ animationDelay: "200ms" }}>
             Browse production-ready agents, validate them in a live sandbox, and generate integration-ready SDKs. Publish your own agents with usage-based pricing and creator analytics.
           </p>
           
-          <div className="animate-fade-in-up mb-16 flex flex-wrap items-center justify-center gap-4" style={{ animationDelay: "300ms" }}>
+          <div className="animate-fade-in-up mb-10 md:mb-16 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4" style={{ animationDelay: "300ms" }}>
             <Link href="/agents" className={cn(buttonVariants({ variant: "default", size: "lg" }), "rounded-full px-8 relative overflow-hidden btn-shine-orange")}>
               <span className="relative z-10 flex items-center gap-2">
                 Explore Agents

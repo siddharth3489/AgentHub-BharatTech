@@ -55,11 +55,11 @@ function StatItem({ value, suffix, label, active, delay }: {
 
   return (
     <div className="flex flex-col items-center gap-1 py-2">
-      <span className="text-4xl font-bold tracking-tight text-[#1a1a2e] md:text-5xl">
+      <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#1a1a2e]">
         {started ? count : 0}
         <span className="text-[#e74c3c]">{suffix}</span>
       </span>
-      <span className="text-sm font-mono uppercase tracking-[0.2em] text-[#64748b]">
+      <span className="text-xs md:text-sm font-mono uppercase tracking-[0.2em] text-[#64748b]">
         {label}
       </span>
     </div>

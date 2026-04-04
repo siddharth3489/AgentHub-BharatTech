@@ -55,13 +55,13 @@ export default function ScanPage() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(231,76,60,0.16)_0%,rgba(255,255,255,0)_32%),linear-gradient(180deg,rgba(250,250,252,0.72)_0%,rgba(255,255,255,1)_40%)]" />
       <div className="absolute inset-0 hero-grid opacity-[0.04]" />
 
-      <div className="page-container relative py-24">
+      <div className="page-container relative py-16 md:py-24">
         <div className="mx-auto mb-16 max-w-4xl text-center">
           <ScanHeroTree />
           <span className="eyebrow-badge mb-6 inline-flex">
             Repository Scan
           </span>
-          <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-[#1a1a2e] md:text-5xl">Analyze a GitHub repository and identify agent opportunities</h1>
+          <h1 className="mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1a1a2e]">Analyze a GitHub repository and identify agent opportunities</h1>
           <p className="text-lg text-[#64748b]">
             Paste a GitHub repository URL to inspect the codebase, surface missing automation capabilities, and match relevant agents from the marketplace.
           </p>

@@ -31,10 +31,10 @@ export function FeaturedAgents() {
         
         <div className="flex flex-col mb-12 gap-6">
           <div>
-             <h2 className="mb-4 text-4xl font-bold tracking-tight text-[#1a1a2e] md:text-5xl lg:text-6xl">Featured agents</h2>
+             <h2 className="mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#1a1a2e]">Featured agents</h2>
              <p className="text-base text-[#64748b] md:text-lg">Representative agents across extraction, code, automation, and analytics. Compare their contract, runtime profile, and pricing before you integrate.</p>
           </div>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 w-full">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -50,7 +50,7 @@ export function FeaturedAgents() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {visibleAgents.map((agent) => (
-            <div key={agent.name} className="surface-primary group flex h-full flex-col rounded-[1.75rem] p-6 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:border-[#e74c3c]/28 hover:shadow-[0_16px_40px_rgba(231,76,60,0.08)] cursor-pointer">
+            <div key={agent.name} className="surface-primary group flex h-full flex-col rounded-[1.75rem] p-4 md:p-6 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:border-[#e74c3c]/28 hover:shadow-[0_16px_40px_rgba(231,76,60,0.08)] cursor-pointer">
               <div className="flex justify-between items-start mb-4">
                 <Badge variant="outline" className={cn(agent.color, "transition-transform duration-300 group-hover:scale-110")}>
                   {agent.category}

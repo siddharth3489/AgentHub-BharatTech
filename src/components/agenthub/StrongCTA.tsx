@@ -5,11 +5,11 @@ import { cn } from "@/lib/utils";
 export function StrongCTA() {
   return (
     <section className="relative w-full px-6 md:px-12 lg:px-20 pt-8">
-      <div className="glass-panel w-full rounded-[2rem] px-6 py-8 md:px-10 lg:px-14 lg:py-10">
+      <div className="glass-panel w-full rounded-[2rem] px-4 py-6 md:px-6 md:py-8 lg:px-14 lg:py-10">
           <div className="mx-auto max-w-5xl text-center">
-            <h2 className="mb-6 text-4xl font-black tracking-tight text-[#1a1a2e] md:text-6xl">
-              Build with agents that are ready <br className="hidden md:block" />
-              for production.
+            <h2 className="mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black tracking-tight text-[#1a1a2e]">
+              Build with <span className="underline decoration-2 underline-offset-4">agents</span> that are ready <br className="hidden md:block" />
+              for AI agents.
             </h2>
             <p className="mx-auto mb-12 max-w-3xl text-lg text-[#64748b]">
               Evaluate agents in one place, compare their contracts and trust signals, and move from discovery to integration without piecing together separate tools.
@@ -39,7 +39,7 @@ export function StrongCTA() {
 
 export function Footer() {
   return (
-    <footer className="relative w-full pt-20 pb-12">
+    <footer className="relative w-full pt-10 md:pt-20 pb-12">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-[16%] top-0 h-px bg-gradient-to-r from-transparent via-black/15 to-transparent" />
       <div className="page-container">
         

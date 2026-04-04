@@ -61,7 +61,7 @@ export function AgentHubNavbar() {
             <div className="absolute -top-px -right-px w-2 h-2 bg-[#e74c3c] transition-all duration-300 group-hover:w-2.5 group-hover:h-2.5"></div>
             <span className="text-[#1a1a2e] font-mono font-bold text-lg leading-none group-hover:text-[#e74c3c] transition-colors pb-[2px]">A</span>
           </div>
-          <span className="font-bold text-lg tracking-[-0.02em] text-[#1a1a2e] transition-colors duration-300 group-hover:text-[#e74c3c]">AgentHub</span>
+          <span className="font-bold text-base md:text-lg tracking-[-0.02em] text-[#1a1a2e] transition-colors duration-300 group-hover:text-[#e74c3c]">AgentHub</span>
         </Link>
 
         <div

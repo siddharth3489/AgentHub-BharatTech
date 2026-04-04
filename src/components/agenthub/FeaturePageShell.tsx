@@ -51,7 +51,7 @@ export function FeaturePageShell({
           <FeatureRail variant="attached" />
         </aside>
 
-        <div className="page-container max-w-[1340px] pb-20 pt-24">
+        <div className="page-container max-w-[1340px] pb-20 pt-20 md:pt-24">
           <FeatureQuickMenu />
 
           <section
@@ -61,7 +61,7 @@ export function FeaturePageShell({
             <div className="flex flex-col gap-8 2xl:flex-row 2xl:items-end 2xl:justify-between">
               <div className="max-w-3xl 2xl:flex-[1_1_640px]">
                 <span className="eyebrow-badge mb-6">{eyebrow}</span>
-                <h1 className="text-4xl font-black tracking-tight text-[#1a1a2e] md:text-6xl">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-[#1a1a2e]">
                   {title}
                 </h1>
                 <p className="mt-6 max-w-2xl text-base leading-8 text-[#64748b] md:text-lg">

@@ -23,7 +23,7 @@ export default function Home() {
 
       <CollapsibleRail>
         <div className="xl:hidden">
-          <div className="px-6 pt-24 md:px-12 lg:px-20">
+          <div className="px-6 pt-20 md:pt-24 md:px-12 lg:px-20">
             <FeatureQuickMenu className="mb-0" />
           </div>
         </div>

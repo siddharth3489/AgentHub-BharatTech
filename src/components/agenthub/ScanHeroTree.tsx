@@ -124,7 +124,7 @@ export function ScanHeroTree() {
           handleMouseMove(e);
         }}
         onMouseLeave={handleMouseLeave}
-        className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-black/10 bg-[#fafafa]/95 p-6 font-mono text-sm md:p-8 md:text-base"
+        className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-black/10 bg-[#fafafa]/95 p-3 font-mono text-xs md:p-6 md:text-sm lg:p-8 lg:text-base"
         style={{
           transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
           transition: hovering ? "transform 0.1s ease-out" : "transform 0.5s ease-out",
@@ -209,7 +209,7 @@ export function ScanHeroTree() {
         </div>
 
         {/* title bar dots */}
-        <div className="absolute left-5 top-4 flex items-center gap-1.5 md:left-7 md:top-5">
+        <div className="absolute left-3 top-3 md:left-5 md:top-4 flex items-center gap-1.5 md:left-7 md:top-5">
           <div className="h-2.5 w-2.5 rounded-full bg-[#e74c3c]/60" />
           <div className="h-2.5 w-2.5 rounded-full bg-amber-400/40" />
           <div className="h-2.5 w-2.5 rounded-full bg-emerald-400/40" />
